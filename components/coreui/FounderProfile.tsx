@@ -19,7 +19,7 @@ const FounderProfile: React.FC<{
         />
       </div>
       <div className="flex flex-col">
-        <a className="text-inception-brown text-xl">{name}</a>
+        <a className="text-inception-brown mt-4 text-xl">{name}</a>
         <a className="text-inception-light-brown text-lg">{title}</a>
         <p className="text-inception-light-brown my-2 text-sm">{description}</p>
         <p className="text-inception-light-brown text-sm">{extraDescription}</p>
