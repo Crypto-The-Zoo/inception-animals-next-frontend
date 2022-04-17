@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
 
   return (
     <div className="flex items-center justify-between bottom-16 right-0 z-50 opacity-80 hover:opacity-100 absolute">
-      <div className="relative right-20">
+      <div className="relative right-20 hidden sm:flex">
         <img src="/images/grapevine.png" alt="" className="h-20 relative" />
         <div className="flex absolute bottom-8 right-10 gap-1">
           <img

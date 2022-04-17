@@ -18,6 +18,8 @@ module.exports = {
       backgroundImage: {
         parchment: "url('/images/parchment.png')",
         "parchment-plain": "url('/images/parchment_plain.png')",
+        "smoking-hippo": "url('/images/smoking_hippo.png')",
+        "cyber-hippo": "url('/images/hippo_7.jpg')",
       },
       animation: {
         fadeIn: "fadeIn 2s",
