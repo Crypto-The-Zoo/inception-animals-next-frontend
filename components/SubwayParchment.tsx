@@ -19,18 +19,18 @@ const Parchment: React.FC = () => {
       imgSrc: "cyber_hippo.jpg",
     },
     {
-      name: "Juss",
-      title: "Community Lead",
-      description: `Juss is leading the community of Inception Animals from Australia.`,
-      extraDescription: "Being a crypto OG on both Ethereum and Flow blockchain, Juss is bringing his 10+ years of experience in marketing to Inception Animals.",
-      imgSrc: "koala_1.jpg",
-    },
-    {
       name: "Yan",
       title: "Strategy & Operations",
       description: `Ex-McKinsey & Company management consultant, ex-UNESCO consultant. Yan is currently a core member of Moody's Investors Service in Asia.`,
       extraDescription: "Yan has 7 years of experience in management consulting, investment, and non-profit organizations after graduating from Johns Hopkins University.",
       imgSrc: "yokatta_hippo.jpg",
+    },
+    {
+      name: "Juss",
+      title: "Community Lead",
+      description: `Juss is leading the community of Inception Animals from Australia.`,
+      extraDescription: "Being a crypto OG on both Ethereum and Flow blockchain, Juss is bringing his 10+ years of experience in marketing to Inception Animals.",
+      imgSrc: "koala_1.jpg",
     },
     {
       name: "Jin",
@@ -93,7 +93,7 @@ const Parchment: React.FC = () => {
           A collection of 3,333 avatars of various animals that give you a
           unique identity to the universe driven by a never-ending grudge
           between generations of merits, soldiers, and inventions going against
-          each other in two once peaceful cities:
+          each other in two once peaceful but turned against each other cities:
           Ascos and Lucinia.
         </p>
         <p className="text-inception-light-brown my-4">

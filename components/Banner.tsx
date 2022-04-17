@@ -16,7 +16,7 @@ const Banner: React.FC = () => {
         />
 
         <h1 className="font-inception text-inception-gray -ml-20 relative z-20 text-md">
-          A retrofuturistic metaverse brand
+          A retro futuristic metaverse brand
         </h1>
       </div>
       <img src="/images/smoking_hippo.png" alt="" className="h-full" />

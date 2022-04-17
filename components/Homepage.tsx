@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
           }}
         />
         <h1 className="font-inception text-inception-gray lg:-ml-20 relative z-20 text-md">
-          A retrofuturistic metaverse brand
+          A retro futuristic metaverse brand
         </h1>
       </div>
       <div className="flex items-center gap-4 absolute bottom-3 left-3">
