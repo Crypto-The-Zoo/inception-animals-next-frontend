@@ -121,7 +121,7 @@ const Parchment: React.FC = () => {
     return (
       <div className="relative m-2 mt-6 font-inception lg:pr-72 text-xl">
         <p className="text-inception-light-brown my-4">
-          Because, apparently...
+          Because, obviously...
         </p>
       </div>
     )

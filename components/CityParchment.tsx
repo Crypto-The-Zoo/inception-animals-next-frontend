@@ -43,11 +43,11 @@ const CityParchment: React.FC = () => {
           {`“We were there. We knew what happened, saw who did it, but couldn’t
             restore what was already broken. But maybe you can...”`}
         </p>
-        <img
+        {/* <img
           className="absolute bottom-0 right-6 h-72 z-10 opacity-20 hover:opacity-100 hover:scale-110 transform duration-500 rounded-md"
           src="/images/cyber_hippo.jpg"
           alt=""
-        ></img>
+        ></img> */}
       </div>
     )
   }
@@ -70,11 +70,11 @@ const CityParchment: React.FC = () => {
         <p className="text-inception-light-brown my-4">
           {`The prodigy of science and proposer of body mech advancement movement, Terion Shabody of Ascos and the guardian of Zion, Edward Whiteblade of Luciniya. These two leaders of Zion who looked over the well-being of the land of Zion suggested a united project called "World Trigger."`}
         </p>
-        <img
+        {/* <img
           className="absolute bottom-0 right-6 h-72 z-10 opacity-20 hover:opacity-100 hover:scale-110 transform duration-500 rounded-md"
           src="/images/smoking_hippo.png"
           alt=""
-        ></img>
+        ></img> */}
       </div>
     )
   }
@@ -101,11 +101,11 @@ const CityParchment: React.FC = () => {
         <p className="text-inception-light-brown my-4">
           {`And after almost two decades of research, engineering, and sacrifice, on SOL 2269. The initial design of the World Trigger was completed by the citizen of Ascos. The creation of artificial Evernight was also completed in the following year. And at the beginning of SOL 2270, World Trigger was set to be launched.`}
         </p>
-        <img
+        {/* <img
           className="absolute bottom-0 right-6 h-72 z-10 opacity-20 hover:opacity-100 hover:scale-110 transform duration-500 rounded-md"
           src="/images/yokatta_hippo.jpg"
           alt=""
-        ></img>
+        ></img> */}
       </div>
     )
   }
@@ -120,11 +120,11 @@ const CityParchment: React.FC = () => {
         <p className="text-inception-light-brown my-4">{`And soon, amidst the destruction of Zion, a war between Ascos & Luciniya broke out, and ever since then, the two cities and their residents are at each other's throats.`}</p>
         <p className="text-inception-light-brown my-4">{`The destruction of the world trigger also forced the people of each city to evolve in order to survive in Zion as they overexposed artificial Everlights had a corrosive effect on skin and brain functions. The ideal of Terion Shabody did come into fruition as people of Ascos started to do body enhancement, and soon the people of Luciniya followed.`}</p>
         <p className="text-inception-light-brown my-4">{`While the old wounds did heal, the scar between the two cities remained, and the hatred and animosity between each other still light brightly. The citizen of each city has established trade routes and still wants the best for Zion. Only by the brotherhood of tinkers is the two cities are actually connected. But nobody knows who they are and which city do their support belongs to.`}</p>
-        <img
+        {/* <img
           className="absolute bottom-0 right-6 h-72 z-10 opacity-20 hover:opacity-100 hover:scale-110 transform duration-500 rounded-md"
           src="/images/sports_hippo.jpg"
           alt=""
-        ></img>
+        ></img> */}
       </div>
     )
   }
