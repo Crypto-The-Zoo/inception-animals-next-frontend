@@ -10,6 +10,8 @@ module.exports = {
         "inception-off-white": "#fff9ef",
         "inception-gray": "#A8A2A2",
         "inception-red": "rgb(192, 53, 64)",
+        "inception-brown": "#402d28",
+        "inception-light-brown": "#bb9772",
       },
       fontFamily: {
         inception: ['"INCEPTION"', "cursive"],
@@ -19,7 +21,7 @@ module.exports = {
         parchment: "url('/images/parchment.png')",
         "parchment-plain": "url('/images/parchment_plain.png')",
         "smoking-hippo": "url('/images/smoking_hippo.png')",
-        "cyber-hippo": "url('/images/hippo_7.jpg')",
+        "cyber-hippo": "url('/images/cyber_hippo.jpg')",
       },
       animation: {
         fadeIn: "fadeIn 2s",
