@@ -19,9 +19,27 @@ const Navigation: React.FC = () => {
   const navLinks = [
     { name: "HOME", link: "/", isOpen: true },
     { name: "SUBWAY", link: "/subway", isOpen: true },
-    { name: "THE CITY", link: "/city", isOpen: true },
-    { name: "MARKETPLACE", link: "/marketplace", isOpen: false },
-    { name: "BLUEPRINT", link: "/blueprint", isOpen: false },
+    { name: "CITY", link: "/city", isOpen: true },
+    { name: "MARKETPLACE", link: "", isOpen: false },
+    { name: "BLUEPRINT", link: "", isOpen: false },
+  ]
+
+  const externalNavLinks = [
+    {
+      name: <FontAwesomeIcon icon={faTwitter} className="w-4 h-4" />,
+      link: "https://twitter.com/Inceptionft",
+      isOpen: true,
+    },
+    {
+      name: <FontAwesomeIcon icon={faDiscord} className="w-4 h-4" />,
+      link: "https://discord.gg/zDbDHjTTvY",
+      isOpen: true,
+    },
+    {
+      name: <FontAwesomeIcon icon={faBookBookmark} className="w-4 h-4" />,
+      link: "https://alliu930410.gitbook.io/inception-animals",
+      isOpen: true,
+    },
   ]
 
   return (
@@ -30,7 +48,7 @@ const Navigation: React.FC = () => {
         <Link href="/" passHref>
           <h2 className="w-28 cursor-pointer">
             <img
-              src="/images/logo.png"
+              src="/logo.png"
               alt=""
               className="w-full h-full relative z-50"
             />
@@ -41,24 +59,49 @@ const Navigation: React.FC = () => {
           {navLinks.map((navLinkObj, index) => (
             <Link
               key={index}
-              href={navLinkObj?.isOpen ? navLinkObj.link : "/"}
+              href={navLinkObj?.isOpen ? navLinkObj.link : ""}
               passHref
             >
               <button
-                className={`text-inception-green font-inception font-extrabold hover:text-white transition-all duration-100 hover:bg-inception-green px-4 py-2 bg-white backdrop-blur-sm rounded bg-opacity-60 ${
+                className={`text-inception-green font-inception font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-light-green backdrop-blur-sm rounded bg-opacity-60 ${
                   pathname === navLinkObj.link
-                    ? "border-[1px] border-inception-green border-opacity-60"
+                    ? "border-[1px] border-inception-green"
                     : ""
                 }
+                ${
+                  navLinkObj?.isOpen
+                    ? " hover:cursor-pointer"
+                    : " hover:cursor-not-allowed opacity-50"
+                }
+                `}
+              >
+                {navLinkObj.name}
+              </button>
+            </Link>
+          ))}
+          {externalNavLinks.map((navLinkObj, index) => (
+            <Link
+              key={index}
+              href={navLinkObj?.isOpen ? navLinkObj.link : "/"}
+              passHref
+            >
+              <a target="_blank" rel="noopener noreferrer">
+                <button
+                  className={`text-inception-green font-inception font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-light-green backdrop-blur-sm rounded bg-opacity-60 ${
+                    pathname === navLinkObj.link
+                      ? "border-[1px] border-inception-green"
+                      : ""
+                  }
                 ${
                   navLinkObj?.isOpen
                     ? " hover:cursor-pointer"
                     : " hover:cursor-not-allowed"
                 }
                 `}
-              >
-                {navLinkObj.name}
-              </button>
+                >
+                  {navLinkObj.name}
+                </button>
+              </a>
             </Link>
           ))}
         </section>
@@ -101,9 +144,9 @@ const Navigation: React.FC = () => {
                           ? setShowMenu(!showMenu)
                           : null
                       }}
-                      className={`flex justify-between w-full items-center relative hover:text-white transition-all duration-100 hover:bg-inception-green px-4 py-4 bg-white backdrop-blur-sm rounded bg-opacity-60 mt-1 ${
+                      className={`flex justify-between w-full items-center relative hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-4 bg-inception-light-green backdrop-blur-sm rounded bg-opacity-60 mt-1 ${
                         pathname === navLinkObj.link
-                          ? "border-[1px] border-inception-green border-opacity-60"
+                          ? "border-[1px] border-inception-green"
                           : ""
                       }`}
                     >

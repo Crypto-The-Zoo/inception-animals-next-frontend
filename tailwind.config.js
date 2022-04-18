@@ -6,8 +6,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "inception-green": "#008056",
-        "inception-off-white": "#fff9ef",
+        "inception-green": "#C56348",
+        "inception-light-green": "#EBD5CA",
+        "inception-off-white": "#f4f2ea",
         "inception-gray": "#A8A2A2",
         "inception-red": "rgb(192, 53, 64)",
         "inception-brown": "#402d28",

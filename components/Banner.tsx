@@ -2,10 +2,10 @@
 const Banner: React.FC = () => {
   return (
     <div className="flex flex-col justify-center items-end lg:flex-row w-full h-full">
-      <div className="h-full pt-32 pl-10 pb-10 mt-auto">
+      <div className="h-full pt-32 pl-10 pb-10">
         <img
           className="w-full max-h-full"
-          src="/images/banner_masked.png"
+          src="/images/banner.png"
           alt=""
           onMouseOver={(e) => {
             e.currentTarget.src = "/images/banner.png"

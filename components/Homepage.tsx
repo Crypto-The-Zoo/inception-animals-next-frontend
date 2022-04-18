@@ -3,9 +3,6 @@ import { useState } from "react"
 /* eslint-disable @next/next/no-img-element */
 const HomePage: React.FC = () => {
   const [displayText, setDisplayText] = useState<boolean>(false)
-  const [displayImageSrc, setDisplayImageSrc] = useState<string>(
-    "/images/banner_masked.png"
-  )
 
   return (
     <div
@@ -15,29 +12,29 @@ const HomePage: React.FC = () => {
       }}
     >
       <div className="hidden sm:block m-auto sm:h-[500px] max-w-full justify-center">
-        <div className="h-6">
-          <h1 className="text-inception-green text-xl font-inception m-auto">
-            {displayText
-              ? "Yo stranger, welcome to Zion, have you heard of the World Trigger?"
-              : " "}
+        <div className="h-6 mb-4 animate-fadeIn">
+          <h1
+            className={`text-inception-green text-xl font-inception m-auto text-center md:text-left lg:-ml-24 ${
+              displayText ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            Yo stranger, welcome to Zion, have you heard of the World Trigger?
           </h1>
         </div>
         <img
           className="w-full max-h-full animate-fadeIn"
-          src={displayImageSrc}
+          src="/images/banner_masked.png"
           alt=""
           onMouseOver={(e) => {
-            // e.currentTarget.src = "/images/banner.png"
-            setDisplayImageSrc("/images/banner.png")
+            e.currentTarget.src = "/images/banner.png"
             setDisplayText(true)
           }}
           onMouseOut={(e) => {
-            // e.currentTarget.src = "/images/banner_masked.png"
-            setDisplayImageSrc("/images/banner_masked.png")
+            e.currentTarget.src = "/images/banner_masked.png"
             setDisplayText(false)
           }}
         />
-        <h1 className="font-inception text-inception-gray lg:-ml-20 relative z-20 text-md">
+        <h1 className="font-inception text-inception-gray lg:-ml-20 relative z-20 text-md mt-4">
           A retro futuristic metaverse brand
         </h1>
       </div>
@@ -47,13 +44,13 @@ const HomePage: React.FC = () => {
           <a>All Rights Reserved.</a>
         </div>
 
-        <div className="hidden gap-4 md:flex">
+        {/* <div className="hidden gap-4 md:flex">
           <img className="h-8" src="/icons/dapper.png" alt=""></img>
           <img className="h-8" src="/icons/nftgenius.png" alt=""></img>
           <img className="h-8" src="/icons/gaia.png" alt=""></img>
           <img className="h-8" src="/icons/flunks.png" alt=""></img>
           <img className="h-8" src="/icons/on_flow.png" alt=""></img>
-        </div>
+        </div> */}
       </div>
     </div>
   )

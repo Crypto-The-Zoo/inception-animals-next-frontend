@@ -8,7 +8,7 @@ const Home: NextPage = () => {
     <div className="w-full max-h-screen">
       <Navigation />
       <HomePage />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
