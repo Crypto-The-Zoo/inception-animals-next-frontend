@@ -95,7 +95,7 @@ const Navigation: React.FC = () => {
                 ${
                   navLinkObj?.isOpen
                     ? " hover:cursor-pointer"
-                    : " hover:cursor-not-allowed"
+                    : " hover:cursor-not-allowed opacity-50"
                 }
                 `}
                 >
@@ -131,11 +131,11 @@ const Navigation: React.FC = () => {
                   className={`border-b border-white curs border-opacity-30 ${
                     navLinkObj?.isOpen
                       ? "hover:cursor-pointer"
-                      : "hover:cursor-not-allowed"
+                      : "hover:cursor-not-allowed opacity-50"
                   }`}
                 >
                   <Link
-                    href={navLinkObj?.isOpen ? navLinkObj.link : "/"}
+                    href={navLinkObj?.isOpen ? navLinkObj.link : ""}
                     passHref
                   >
                     <span

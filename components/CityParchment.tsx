@@ -130,7 +130,7 @@ const CityParchment: React.FC = () => {
   }
 
   return (
-    <div className="mt-20 lg:mt-32 relative h-full pb-40">
+    <div className="mt-24 lg:mt-32 relative h-full pb-40">
       <section className="font-arcane px-12 lg:px-24 flex flex-col">
         <h1 className="uppercase font-inception text-2xl text-inception-light-brown">
           Ascos & Lucinia
