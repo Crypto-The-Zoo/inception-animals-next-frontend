@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy:staging": "yarn build && gcloud app deploy app.staging.yaml --project inception-staging"
+    "deploy:staging": "yarn build && gcloud app deploy app.staging.yaml --project inception-staging",
+    "deploy:production": "yarn build && gcloud app deploy app.production.yaml --project crypto-the-zoo-staging"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.1.1",

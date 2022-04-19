@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
       }}
     >
       <div className="hidden sm:block m-auto sm:h-[500px] max-w-full justify-center">
-        <div className="h-6 mb-4 animate-fadeIn">
+        <div className="h-6 mb-4">
           <h1
             className={`text-inception-green text-xl font-inception m-auto text-center md:text-left lg:-ml-24 ${
               displayText ? "opacity-100" : "opacity-0"
@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
           </h1>
         </div>
         <img
-          className="w-full max-h-full animate-fadeIn"
+          className="w-full max-h-full"
           src="/images/banner_masked.png"
           alt=""
           onMouseOver={(e) => {
