@@ -30,7 +30,7 @@ const Parchment: React.FC = () => {
     {
       name: "Henry",
       title: "Corporate Development",
-      description: `Alumni of 2 of the "Big 4" firms, now leading the Finance & Strategy work at an entertainment startup that raised $85M in Series B recently`,
+      description: `Alumni of 2 of the "Big 4" firms, now leading the Finance & Strategy work at an entertainment startup that concluded Series B recently`,
       extraDescription: "",
       imgSrc: "sports_hippo.jpg",
     },
