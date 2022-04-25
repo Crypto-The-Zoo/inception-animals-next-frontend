@@ -3,6 +3,9 @@ import { useState } from "react"
 /* eslint-disable @next/next/no-img-element */
 const HomePage: React.FC = () => {
   const [displayText, setDisplayText] = useState<boolean>(false)
+  const [bannerSrc, setBannerSrc] = useState<string>(
+    "/images/banner_masked.png"
+  )
 
   return (
     <div
@@ -23,14 +26,18 @@ const HomePage: React.FC = () => {
         </div>
         <img
           className="w-full max-h-full"
-          src="/images/banner_masked.png"
+          src={bannerSrc}
           alt=""
           onMouseOver={(e) => {
-            e.currentTarget.src = "/images/banner.png"
+            if (bannerSrc !== "/images/banner.png") {
+              setBannerSrc("/images/banner.png")
+            }
             setDisplayText(true)
           }}
           onMouseOut={(e) => {
-            e.currentTarget.src = "/images/banner_masked.png"
+            if (bannerSrc !== "/images/banner_masked.png") {
+              setBannerSrc("/images/banner_masked.png")
+            }
             setDisplayText(false)
           }}
         />
