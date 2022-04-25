@@ -9,6 +9,7 @@ const Home: NextPage = () => {
     <div className="w-full max-h-screen">
       <div>
         <Head>
+          <title>Inception Animals</title>
           <meta property="og:title" content="Inception Animals" key="title" />
           <meta
             property="og:description"
