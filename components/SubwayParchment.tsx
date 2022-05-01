@@ -27,13 +27,13 @@ const Parchment: React.FC = () => {
         "Yan has 7 years of experience in various industries covering management consulting, operations, investment, and non-profit organizations after graduating from Johns Hopkins University with a master's degree in International economics focusing on energy, resource, and environment.",
       imgSrc: "koala_1.jpg",
     },
-    {
-      name: "Henry",
-      title: "Corporate Development",
-      description: `Alumni of 2 of the "Big 4" firms, now leading the Finance & Strategy work at an entertainment startup that concluded Series B recently`,
-      extraDescription: "",
-      imgSrc: "sports_hippo.jpg",
-    },
+    // {
+    //   name: "Henry",
+    //   title: "Corporate Development",
+    //   description: `Alumni of 2 of the "Big 4" firms, now leading the Finance & Strategy work at an entertainment startup that concluded Series B recently`,
+    //   extraDescription: "",
+    //   imgSrc: "sports_hippo.jpg",
+    // },
     {
       name: "Jin",
       title: "Illustrator",
@@ -114,7 +114,10 @@ const Parchment: React.FC = () => {
   const renderUniqueVibeText = () => {
     return (
       <div className="relative m-2 mt-6 font-inception lg:pr-72 text-xl">
-        <p className="text-inception-light-brown my-4">Inception Animals is to bring a unique vibe to the Flow ecosystem and build a long-term decentralized brand of the future.</p>
+        <p className="text-inception-light-brown my-4">
+          Inception Animals is to bring a unique vibe to the Flow ecosystem and
+          build a long-term decentralized brand of the future.
+        </p>
       </div>
     )
   }
