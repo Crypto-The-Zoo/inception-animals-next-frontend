@@ -138,10 +138,10 @@ const CityParchment: React.FC = () => {
           Ascos & Lucinia
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          the pride of Zion
+          [the pride of Zion
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          the land of inventions and hope
+          the land of inventions and hope]
         </h1>
         <br></br>
         {renderRegVideo()}

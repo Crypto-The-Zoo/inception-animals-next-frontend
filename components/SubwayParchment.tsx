@@ -144,10 +144,10 @@ const Parchment: React.FC = () => {
           subway
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          from point to point
+          [from point to point
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          a place to meetup
+          a place to meetup]
         </h1>
         <br></br>
         {renderRegVideo()}

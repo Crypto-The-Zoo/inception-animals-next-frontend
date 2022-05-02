@@ -15,6 +15,7 @@ module.exports = {
         "inception-light-brown": "#bb9772",
         "twitter-blue": "#1DA1F2",
         "discord-blue": "#5865F2",
+        "inception_blue": "#7eaeff",
       },
       fontFamily: {
         inception: ['"INCEPTION"', "cursive"],
@@ -27,6 +28,14 @@ module.exports = {
         "parchment-plain": "url('/images/parchment_plain.png')",
         "smoking-hippo": "url('/images/smoking_hippo.png')",
         "cyber-hippo": "url('/images/cyber_hippo.jpg')",
+        "bp-center": "url('/images/bp_center.png')",
+        "bp-tl": "url('/images/bp_tl.png')",
+        "bp-tr": "url('/images/bp_tr.png')",
+        "bp-bl": "url('/images/bp_bl.png')",
+        "bp-br": "url('/images/bp_br.png')",
+        "bp-left": "url('/images/bp_left.png')",
+        "bp-left-solid": "url('/images/bp_left_solid.png')",
+        "bp-right": "url('/images/bp_right.png')",
       },
       animation: {
         fadeIn: "fadeIn 2s",

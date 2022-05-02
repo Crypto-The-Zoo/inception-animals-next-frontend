@@ -20,8 +20,8 @@ const Navigation: React.FC = () => {
     { name: "HOME", link: "/", isOpen: true },
     { name: "SUBWAY", link: "/subway", isOpen: true },
     { name: "CITY", link: "/city", isOpen: true },
-    { name: "BLUEPRINT", link: "", isOpen: false },
     { name: "MARKETPLACE", link: "", isOpen: false },
+    { name: "BLUEPRINT", link: "/blueprint", isOpen: true },
   ]
 
   const externalNavLinks = [
