@@ -27,20 +27,20 @@ const Parchment: React.FC = () => {
         "Yan has 7 years of experience in various industries covering management consulting, operations, investment, and non-profit organizations after graduating from Johns Hopkins University with a master's degree in International economics focusing on energy, resource, and environment.",
       imgSrc: "koala_1.jpg",
     },
-    // {
-    //   name: "Henry",
-    //   title: "Corporate Development",
-    //   description: `Alumni of 2 of the "Big 4" firms, now leading the Finance & Strategy work at an entertainment startup that concluded Series B recently`,
-    //   extraDescription: "",
-    //   imgSrc: "sports_hippo.jpg",
-    // },
     {
-      name: "Jin",
-      title: "Illustrator",
-      description: `After completing her degree from Sheridan animation, Jin has worked a diverse range of globally well-known TV shows for established international TV companies and animation studios before joining the Inception Animals team.`,
+      name: "Henry",
+      title: "Corporate Development",
+      description: `Alumni of 2 of the "Big 4" firms, now leading the Finance & Strategy work at an entertainment startup that concluded Series B recently`,
       extraDescription: "",
-      imgSrc: "hare_4.jpg",
+      imgSrc: "sports_hippo.jpg",
     },
+    // {
+    //   name: "Jin",
+    //   title: "Illustrator",
+    //   description: `After completing her degree from Sheridan animation, Jin has worked a diverse range of globally well-known TV shows for established international TV companies and animation studios before joining the Inception Animals team.`,
+    //   extraDescription: "",
+    //   imgSrc: "hare_4.jpg",
+    // },
   ]
 
   const renderFoundingTeam = () => {
