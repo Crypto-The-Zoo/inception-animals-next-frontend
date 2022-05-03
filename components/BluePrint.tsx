@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
 const BluePrint: React.FC = () => {
-
   const renderTextWithBg = ({ content }: { content: string }) => {
     return (
       <div className="relative m-2 mt-6">
@@ -28,12 +27,12 @@ const BluePrint: React.FC = () => {
     )
   }
 
-  const renderGraphCenter = () => {
+  const renderBlueprintCenter = () => {
     return (
-      <div className="flex">
+      <div className="flex flex-col justify-center items-center absolute">
         <a
           href="#"
-          className="flex border-2 border-[#7eaeff] w-[22vw] h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white"
+          className="flex w-[22vw] h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-10"
         >
           <div className="text-center uppercase text-sm bg-inception-light-green rounded-md p-2">
             subway
@@ -47,7 +46,7 @@ const BluePrint: React.FC = () => {
     return (
       <a
         href="#"
-        className="grid absolute w-full h-full max-h-[80vh] items-center justify-center bg-bp-left bg-cover border-2 border-inception-light-green hover:border-inception-green"
+        className="grid absolute w-full h-full max-h-[80vh] items-center justify-center bg-bp-left bg-cover border-2 border-inception-light-green hover:border-inception-green hover:bg-bp-left-solid"
         style={{
           gridColumnStart: "1",
           gridColumnEnd: "2",
@@ -159,20 +158,24 @@ const BluePrint: React.FC = () => {
 
   const renderGraphLayout = () => {
     return (
-      <div
-        className="relative grid w-[80vw] h-[40vw] items-center justify-center gap-4"
-        style={{
-          gridAutoColumns: "1fr",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gridTemplateRows: "repeat(2, 1fr)",
-        }}
-      >
-        {renderBlueprintLeft()}
-        {renderBlueprintTopLeft()}
-        {renderBlueprintTopRight()}
-        {renderBlueprintBottomLeft()}
-        {renderBlueprintBottomRight()}
-        {renderBlueprintRight()}
+      <div className="flex relative items-center justify-center">
+        {renderBlueprintCenter()}
+
+        <div
+          className="relative grid w-[80vw] h-[40vw] items-center justify-center gap-4"
+          style={{
+            gridAutoColumns: "1fr",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateRows: "repeat(2, 1fr)",
+          }}
+        >
+          {renderBlueprintLeft()}
+          {renderBlueprintTopLeft()}
+          {renderBlueprintTopRight()}
+          {renderBlueprintBottomLeft()}
+          {renderBlueprintBottomRight()}
+          {renderBlueprintRight()}
+        </div>
       </div>
     )
   }
@@ -184,16 +187,14 @@ const BluePrint: React.FC = () => {
           blueprint
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          [A Universe Designed By The Community
+          [Designed By mad scientists and engineers
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          Fulfilled by mad scientists and engineers]
+          yours to discover]
         </h1>
         <br></br>
       </section>
-
-      {/* {renderGraphCenter()} */}
-      <section className="px-12 lg:px-24 flex flex-col">
+      <section className="px-12 lg:px-24 flex flex-col my-6">
         {renderGraphLayout()}
       </section>
 
