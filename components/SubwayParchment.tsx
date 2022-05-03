@@ -20,6 +20,13 @@ const Parchment: React.FC = () => {
       imgSrc: "cyber_hippo.jpg",
     },
     {
+      name: "Ellen",
+      title: "Artist",
+      description: `After completing her degree from Sheridan animation, Ellen has worked a diverse range of globally well-known TV shows (F is for family, Picwik pack, Saving me, etc.) for established international TV companies and animation studios before joining the Inception Animals team.`,
+      extraDescription: "",
+      imgSrc: "hare_4.jpg",
+    },
+    {
       name: "Yan",
       title: "Strategy & Operations",
       description: `Previously an experienced consultant at McKinsey & Company and the United Nations, currently a core member of Moody's Investors Service in Asia.`,
@@ -34,13 +41,6 @@ const Parchment: React.FC = () => {
       extraDescription: "",
       imgSrc: "sports_hippo.jpg",
     },
-    // {
-    //   name: "Jin",
-    //   title: "Illustrator",
-    //   description: `After completing her degree from Sheridan animation, Jin has worked a diverse range of globally well-known TV shows for established international TV companies and animation studios before joining the Inception Animals team.`,
-    //   extraDescription: "",
-    //   imgSrc: "hare_4.jpg",
-    // },
   ]
 
   const renderFoundingTeam = () => {
