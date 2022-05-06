@@ -7,12 +7,12 @@ const Banner: React.FC = () => {
           className="w-full max-h-full"
           src="/images/banner.png"
           alt=""
-          onMouseOver={(e) => {
-            e.currentTarget.src = "/images/banner.png"
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.src = "/images/banner_masked.png"
-          }}
+          // onMouseOver={(e) => {
+          //   e.currentTarget.src = "/images/banner.png"
+          // }}
+          // onMouseOut={(e) => {
+          //   e.currentTarget.src = "/images/banner_masked.png"
+          // }}
         />
 
         <h1 className="font-inception text-inception-gray -ml-20 relative z-20 text-md">

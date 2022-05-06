@@ -4,7 +4,7 @@ import { useState } from "react"
 const HomePage: React.FC = () => {
   const [displayText, setDisplayText] = useState<boolean>(false)
   const [bannerSrc, setBannerSrc] = useState<string>(
-    "/images/banner_masked.png"
+    "/images/banner.png"
   )
 
   return (
@@ -29,15 +29,15 @@ const HomePage: React.FC = () => {
           src={bannerSrc}
           alt=""
           onMouseOver={(e) => {
-            if (bannerSrc !== "/images/banner.png") {
-              setBannerSrc("/images/banner.png")
-            }
+            // if (bannerSrc !== "/images/banner.png") {
+            //   setBannerSrc("/images/banner.png")
+            // }
             setDisplayText(true)
           }}
           onMouseOut={(e) => {
-            if (bannerSrc !== "/images/banner_masked.png") {
-              setBannerSrc("/images/banner_masked.png")
-            }
+            // if (bannerSrc !== "/images/banner_masked.png") {
+            //   setBannerSrc("/images/banner_masked.png")
+            // }
             setDisplayText(false)
           }}
         />
