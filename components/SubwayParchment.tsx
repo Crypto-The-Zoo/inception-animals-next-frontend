@@ -74,7 +74,7 @@ const Parchment: React.FC = () => {
   const renderTextWithBg = ({ content }: { content: string }) => {
     return (
       <div className="relative m-2 mt-6">
-        <p className="text-inception-off-white relative z-10">{content}</p>
+        <p className="text-inception-off-white relative z-10 font-inception-ink">{content}</p>
         <img
           className="absolute -left-2 -top-1"
           src="/icons/green_box.svg"
@@ -139,8 +139,8 @@ const Parchment: React.FC = () => {
 
   return (
     <div className="mt-24 lg:mt-32 relative h-full pb-40">
-      <section className="font-arcane px-12 lg:px-24 flex flex-col">
-        <h1 className="uppercase font-inception text-2xl text-inception-light-brown">
+      <section className="font-inception-ink px-12 lg:px-24 flex flex-col">
+        <h1 className="uppercase font-inception-ink-italic text-2xl text-inception-light-brown">
           subway
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">

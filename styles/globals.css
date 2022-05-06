@@ -34,4 +34,14 @@ a {
     font-family: 'ARCANE';
     src: url('../assets/fonts/arcane.woff2') format('woff2');
   }
+
+  @font-face {
+    font-family: 'INCEPTION-INK';
+    src: url('../assets/fonts/inception_ink.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'INCEPTION-INK-ITALIC';
+    src: url('../assets/fonts/inception_ink_italic.woff2') format('woff2');
+  }
 }

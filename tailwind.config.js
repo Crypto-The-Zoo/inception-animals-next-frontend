@@ -13,10 +13,14 @@ module.exports = {
         "inception-red": "rgb(192, 53, 64)",
         "inception-brown": "#402d28",
         "inception-light-brown": "#bb9772",
+        "twitter-blue": "#1DA1F2",
+        "discord-blue": "#5865F2",
       },
       fontFamily: {
         inception: ['"INCEPTION"', "cursive"],
         arcane: ['"ARCANE"', "cursive"],
+        "inception-ink": ['"INCEPTION-INK"', "cursive"],
+        "inception-ink-italic": ['"INCEPTION-INK-ITALIC"', "cursive"],
       },
       backgroundImage: {
         parchment: "url('/images/parchment.png')",

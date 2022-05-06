@@ -26,20 +26,22 @@ const Navigation: React.FC = () => {
 
   const externalNavLinks = [
     {
-      name: <FontAwesomeIcon icon={faTwitter} className="w-4 h-4" />,
+      name: <FontAwesomeIcon icon={faTwitter} className="w-6 h-6" />,
       link: "https://twitter.com/Inceptionft",
       isOpen: true,
+      desc: "twitter",
     },
     {
-      name: <FontAwesomeIcon icon={faDiscord} className="w-4 h-4" />,
+      name: <FontAwesomeIcon icon={faDiscord} className="w-6 h-6" />,
       link: "https://discord.gg/zDbDHjTTvY",
       isOpen: true,
+      desc: "discord",
     },
-    {
-      name: <FontAwesomeIcon icon={faBookBookmark} className="w-4 h-4" />,
-      link: "https://alliu930410.gitbook.io/inception-animals",
-      isOpen: true,
-    },
+    // {
+    //   name: <FontAwesomeIcon icon={faBookBookmark} className="w-4 h-4" />,
+    //   link: "https://alliu930410.gitbook.io/inception-animals",
+    //   isOpen: true,
+    // },
   ]
 
   return (
@@ -55,7 +57,7 @@ const Navigation: React.FC = () => {
           </h2>
         </Link>
 
-        <section className="hidden md:flex justify-between items-center gap-4 text-sm">
+        <section className="hidden md:flex justify-between items-center gap-4 text-2xl">
           {navLinks.map((navLinkObj, index) => (
             <Link
               key={index}
@@ -63,10 +65,8 @@ const Navigation: React.FC = () => {
               passHref
             >
               <button
-                className={`text-inception-green font-inception font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-light-green backdrop-blur-sm rounded bg-opacity-60 ${
-                  pathname === navLinkObj.link
-                    ? "border-[1px] border-inception-green"
-                    : ""
+                className={`text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 ${
+                  pathname === navLinkObj.link ? "underline" : ""
                 }
                 ${
                   navLinkObj?.isOpen
@@ -87,7 +87,7 @@ const Navigation: React.FC = () => {
             >
               <a target="_blank" rel="noopener noreferrer">
                 <button
-                  className={`text-inception-green font-inception font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-light-green backdrop-blur-sm rounded bg-opacity-60 ${
+                  className={`text-inception-green font-inception font-extrabold transition-all duration-100 px-4 py-2 rounded ${
                     pathname === navLinkObj.link
                       ? "border-[1px] border-inception-green"
                       : ""
@@ -96,6 +96,11 @@ const Navigation: React.FC = () => {
                   navLinkObj?.isOpen
                     ? " hover:cursor-pointer"
                     : " hover:cursor-not-allowed opacity-50"
+                }
+                ${
+                  navLinkObj?.desc === 'twitter'
+                    ? " hover:text-twitter-blue"
+                    : " hover:text-discord-blue"
                 }
                 `}
                 >
@@ -124,7 +129,7 @@ const Navigation: React.FC = () => {
             showMenu ? "opacity-100" : "opacity-0 hidden"
           }`}
         >
-          <ul className="text-md w-full uppercase font-extrabold font-inception text-inception-green">
+          <ul className="text-md w-full uppercase font-extrabold font-inception-ink text-inception-green">
             {navLinks.map((navLinkObj, index) => (
               <div key={index}>
                 <li
@@ -171,16 +176,16 @@ const Navigation: React.FC = () => {
               >
                 <FontAwesomeIcon icon={faDiscord} className="w-6 h-6" />
               </a>
-              <a
+              {/* <a
                 href="https://alliu930410.gitbook.io/inception-animals"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FontAwesomeIcon icon={faBookBookmark} className="w-6 h-6" />
-              </a>
+              </a> */}
             </div>
           </ul>
-          <p className=" flex flex-col mt-6 opacity-80 text-left uppercase font-arcane text-2xs pb-4 px-4 text-inception-green">
+          <p className=" flex flex-col mt-6 opacity-80 text-left uppercase text-2xs pb-4 px-4 text-inception-green font-inception-ink">
             <span>© 2022 Inception Animals</span>
             <span>All Rights Reserved.</span>
 
