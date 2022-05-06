@@ -20,8 +20,8 @@ const Navigation: React.FC = () => {
     { name: "HOME", link: "/", isOpen: true },
     { name: "SUBWAY", link: "/subway", isOpen: true },
     { name: "CITY", link: "/city", isOpen: true },
-    { name: "MARKETPLACE", link: "", isOpen: false },
     { name: "BLUEPRINT", link: "", isOpen: false },
+    { name: "MARKETPLACE", link: "", isOpen: false },
   ]
 
   const externalNavLinks = [
@@ -55,7 +55,7 @@ const Navigation: React.FC = () => {
           </h2>
         </Link>
 
-        <section className="hidden md:flex justify-between items-center gap-4">
+        <section className="hidden md:flex justify-between items-center gap-4 text-sm">
           {navLinks.map((navLinkObj, index) => (
             <Link
               key={index}
