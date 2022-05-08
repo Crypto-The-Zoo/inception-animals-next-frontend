@@ -29,6 +29,7 @@ module.exports = {
         "smoking-hippo": "url('/images/smoking_hippo.png')",
         "cyber-hippo": "url('/images/cyber_hippo.jpg')",
         "bp-center": "url('/images/bp_center.png')",
+        "bp-center-solid": "url('/images/bp_center_solid.png')",
         "bp-tl": "url('/images/bp_tl.png')",
         "bp-tr": "url('/images/bp_tr.png')",
         "bp-bl": "url('/images/bp_bl.png')",

@@ -134,7 +134,7 @@ const CityParchment: React.FC = () => {
   return (
     <div className="mt-24 lg:mt-32 relative h-full pb-40">
       <section className="px-12 lg:px-24 flex flex-col font-inception-ink">
-        <h1 className="uppercase font-inception-ink-italic text-2xl text-inception-light-brown">
+        <h1 className="uppercase font-inception-ink text-2xl text-inception-light-brown">
           Ascos & Lucinia
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">

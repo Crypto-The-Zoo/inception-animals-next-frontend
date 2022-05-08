@@ -10,8 +10,9 @@ const BluePrint: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
   const [activeSession, setActiveSession] = useState<string>("subway")
 
-  const toggleShowModal = () => {
+  const toggleShowModal = (activeSession: string | null = null) => {
     setShowModal(!showModal)
+    if (activeSession) setActiveSession(activeSession)
   }
 
   const getContentFromSection = (section: string) => {
@@ -21,146 +22,59 @@ const BluePrint: React.FC = () => {
     }
   }
 
-  const renderRoadMapDescription = () => {
+  const bluePrints = [
+    { name: "subway", gridPos: [1, 2, 1, 3], backgroundImg: "bg-bp-left" },
+    {
+      name: "right placeholder",
+      gridPos: [4, 5, 1, 3],
+      backgroundImg: "bg-bp-right",
+    },
+    { name: "black market", gridPos: [2, 3, 1, 2], backgroundImg: "bg-bp-tl" },
+    { name: "the washroom", gridPos: [3, 4, 1, 2], backgroundImg: "bg-bp-tr" },
+    { name: "bar", gridPos: [2, 3, 2, 3], backgroundImg: "bg-bp-bl" },
+    { name: "corner store", gridPos: [3, 4, 2, 3], backgroundImg: "bg-bp-br" },
+  ]
+
+  const renderBluePrint = (bluePrintConfig: {
+    name: string
+    gridPos: number[]
+    backgroundImg: string
+  }) => {
     return (
-      <div className="relative m-2 mt-6 font-inception lg:pr-72 text-xl">
-        <p className="text-inception-light-brown my-4">
-          {`We are a team with legit engineers and designers who are passionate about building the next generation of NFTs in the crypto ecosystem.`}
-        </p>
-        <p className="text-inception-light-brown my-4">
-          {`That's why we've decided to make the whitepaper an engineering roadmap for the community.`}
-        </p>
-      </div>
+      <a
+        href="#"
+        className={`grid absolute w-full h-full max-h-[80vh] items-center justify-center ${bluePrintConfig.backgroundImg} bg-cover border-2 border-inception-light-green hover:border-inception-green hover:${bluePrintConfig.backgroundImg}-solid`}
+        style={{
+          gridColumnStart: bluePrintConfig?.gridPos[0],
+          gridColumnEnd: bluePrintConfig?.gridPos[1],
+          gridRowStart: bluePrintConfig?.gridPos[2],
+          gridRowEnd: bluePrintConfig?.gridPos[3],
+        }}
+        onClick={() => toggleShowModal(bluePrintConfig.name)}
+      >
+        <div
+          className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink"
+          onClick={() => toggleShowModal(bluePrintConfig.name)}
+        >
+          {bluePrintConfig?.name}
+        </div>
+      </a>
     )
   }
+
 
   const renderBlueprintCenter = () => {
     return (
-      <div className="flex flex-col justify-center items-center absolute">
+      <div className="flex flex-col justify-center items-center absolute z-40">
         <a
           href="#"
-          className="flex w-[22vw] h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-10"
+          className="flex w-[22vw] h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-40 hover:bg-bp-center-solid"
         >
-          <div className="text-center uppercase text-sm bg-inception-light-green rounded-md p-2">
-            subway
+          <div className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink">
+            Center Placeholder
           </div>
         </a>
       </div>
-    )
-  }
-
-  const renderBlueprintLeft = () => {
-    return (
-      <a
-        href="#"
-        className="grid absolute w-full h-full max-h-[80vh] items-center justify-center bg-bp-left bg-cover border-2 border-inception-light-green hover:border-inception-green hover:bg-bp-left-solid"
-        style={{
-          gridColumnStart: "1",
-          gridColumnEnd: "2",
-          gridRowStart: "1",
-          gridRowEnd: "3",
-        }}
-        onClick={toggleShowModal}
-      >
-        <div className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink">
-          subway
-        </div>
-      </a>
-    )
-  }
-
-  const renderBlueprintRight = () => {
-    return (
-      <a
-        href="#"
-        className="grid absolute w-full h-full max-h-[80vh] items-center justify-center bg-bp-right bg-cover border-2 border-inception-light-green hover:border-inception-green"
-        style={{
-          gridColumnStart: "4",
-          gridColumnEnd: "5",
-          gridRowStart: "1",
-          gridRowEnd: "3",
-        }}
-      >
-        <div className="text-center uppercase text-sm bg-inception-light-green rounded-md p-2 text-inception-green font-bold">
-          right placeholder
-        </div>
-      </a>
-    )
-  }
-
-  const renderBlueprintTopLeft = () => {
-    return (
-      <a
-        href="#"
-        className="grid absolute w-full h-full max-h-[40vh] items-center justify-center bg-bp-tl bg-cover border-2 border-inception-light-green hover:border-inception-green"
-        style={{
-          gridColumnStart: "2",
-          gridColumnEnd: "3",
-          gridRowStart: "1",
-          gridRowEnd: "2",
-        }}
-      >
-        <div className="text-center uppercase text-sm bg-inception-light-green rounded-md p-2 text-inception-green font-bold">
-          black market
-        </div>
-      </a>
-    )
-  }
-
-  const renderBlueprintTopRight = () => {
-    return (
-      <a
-        href="#"
-        className="grid absolute w-full h-full max-h-[40vh] items-center justify-center bg-bp-tr bg-cover border-2 border-inception-light-green hover:border-inception-green"
-        style={{
-          gridColumnStart: "3",
-          gridColumnEnd: "4",
-          gridRowStart: "1",
-          gridRowEnd: "2",
-        }}
-      >
-        <div className="text-center uppercase text-sm bg-inception-light-green rounded-md p-2 text-inception-green font-bold">
-          public toilet
-        </div>
-      </a>
-    )
-  }
-
-  const renderBlueprintBottomLeft = () => {
-    return (
-      <a
-        href="#"
-        className="grid absolute w-full h-full max-h-[40vh] items-center justify-center bg-bp-bl bg-cover border-2 border-inception-light-green hover:border-inception-green"
-        style={{
-          gridColumnStart: "2",
-          gridColumnEnd: "3",
-          gridRowStart: "2",
-          gridRowEnd: "3",
-        }}
-      >
-        <div className="text-center uppercase text-sm bg-inception-light-green rounded-md p-2 text-inception-green font-bold">
-          bar
-        </div>
-      </a>
-    )
-  }
-
-  const renderBlueprintBottomRight = () => {
-    return (
-      <a
-        href="#"
-        className="grid absolute w-full h-full max-h-[40vh] items-center justify-center bg-bp-br bg-cover border-2 border-inception-light-green hover:border-inception-green"
-        style={{
-          gridColumnStart: "3",
-          gridColumnEnd: "4",
-          gridRowStart: "2",
-          gridRowEnd: "3",
-        }}
-      >
-        <div className="text-center uppercase text-sm bg-inception-light-green rounded-md p-2 text-inception-green font-bold">
-          corner store
-        </div>
-      </a>
     )
   }
 
@@ -168,7 +82,6 @@ const BluePrint: React.FC = () => {
     return (
       <div className="flex absolute items-center justify-center">
         {renderBlueprintCenter()}
-
         <div
           className="relative grid w-[80vw] h-[40vw] items-center justify-center gap-4"
           style={{
@@ -177,12 +90,9 @@ const BluePrint: React.FC = () => {
             gridTemplateRows: "repeat(2, 1fr)",
           }}
         >
-          {renderBlueprintLeft()}
-          {renderBlueprintTopLeft()}
-          {renderBlueprintTopRight()}
-          {renderBlueprintBottomLeft()}
-          {renderBlueprintBottomRight()}
-          {renderBlueprintRight()}
+          {bluePrints.map((bluePrint, index) => {
+            return <>{renderBluePrint(bluePrint)}</>
+          })}
         </div>
       </div>
     )
@@ -196,7 +106,7 @@ const BluePrint: React.FC = () => {
           <div className="font-inception-ink text-lg">
             <div
               className="flex items-center bg-inception-red rounded-md p-2 gap-2 cursor-pointer"
-              onClick={toggleShowModal}
+              onClick={() => toggleShowModal()}
             >
               <div className="text-inception-off-white">back to blueprint</div>
               <FontAwesomeIcon
@@ -259,22 +169,14 @@ const BluePrint: React.FC = () => {
 
   return (
     <div className="mt-24 lg:mt-32 relative h-full pb-40 w-screen">
-      <section className="font-arcane px-12 lg:px-24 flex flex-col">
-        <h1 className="uppercase font-inception text-2xl text-inception-light-brown">
+      <section className="font-inception-ink px-12 lg:px-24 flex flex-col">
+        <h1 className="uppercase font-inception-ink text-2xl text-inception-light-brown">
           blueprint
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          [Designed By mad scientists and engineers
-        </h1>
-        <h1 className="uppercase text-4xl text-inception-brown">
-          yours to discover]
+          roadmap by the mad scientists
         </h1>
         <br></br>
-      </section>
-
-      <section className="font-arcane px-12 lg:px-24 flex flex-col">
-        {TextOnBanner({ content: "an engineering style roadmap" })}
-        {renderRoadMapDescription()}
       </section>
 
       <section className="px-12 lg:px-24 my-6 relative h-[40vw] max-h-[80vh] flex">
