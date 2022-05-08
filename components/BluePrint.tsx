@@ -1,17 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faWindowClose } from "@fortawesome/free-solid-svg-icons"
+import TextOnBanner from "./coreui/TextOnBanner"
+import Subway from "./Subway"
+import SubwayVideo from "./SubwayVideo"
 
 const BluePrint: React.FC = () => {
-  const renderTextWithBg = ({ content }: { content: string }) => {
-    return (
-      <div className="relative m-2 mt-6">
-        <p className="text-inception-off-white relative z-10">{content}</p>
-        <img
-          className="absolute -left-2 -top-1"
-          src="/icons/green_box.svg"
-          alt=""
-        ></img>
-      </div>
-    )
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const [activeSession, setActiveSession] = useState<string>("subway")
+
+  const toggleShowModal = () => {
+    setShowModal(!showModal)
+  }
+
+  const getContentFromSection = (section: string) => {
+    switch (section) {
+      default:
+        return { primary: <Subway />, secondary: <SubwayVideo /> }
+    }
   }
 
   const renderRoadMapDescription = () => {
@@ -53,9 +60,10 @@ const BluePrint: React.FC = () => {
           gridRowStart: "1",
           gridRowEnd: "3",
         }}
+        onClick={toggleShowModal}
       >
-        <div className="text-center uppercase text-sm bg-inception-light-green rounded-md p-2 text-inception-green font-bold">
-          left placeholder
+        <div className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink">
+          subway
         </div>
       </a>
     )
@@ -158,7 +166,7 @@ const BluePrint: React.FC = () => {
 
   const renderGraphLayout = () => {
     return (
-      <div className="flex relative items-center justify-center">
+      <div className="flex absolute items-center justify-center">
         {renderBlueprintCenter()}
 
         <div
@@ -180,6 +188,75 @@ const BluePrint: React.FC = () => {
     )
   }
 
+  const renderActiveSession = () => {
+    const renderTopPanel = () => {
+      return (
+        <div className="flex h-14 justify-between mt-4 border-b-2 border-inception-red">
+          <div className="font-inception-ink text-2xl">{activeSession}</div>
+          <div className="font-inception-ink text-lg">
+            <div
+              className="flex items-center bg-inception-red rounded-md p-2 gap-2 cursor-pointer"
+              onClick={toggleShowModal}
+            >
+              <div className="text-inception-off-white">back to blueprint</div>
+              <FontAwesomeIcon
+                icon={faWindowClose}
+                className="w-6 h-6 text-inception-off-white"
+              />
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    const renderBottomPanel = () => {
+      return (
+        <div
+          className="grid h-[88%]"
+          style={{
+            gridAutoColumns: "1fr",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateRows: "repeat(2, 1fr)",
+          }}
+        >
+          <div
+            className="overflow-auto my-4"
+            style={{
+              gridColumnStart: "1",
+              gridColumnEnd: "2",
+              gridRowStart: "1",
+              gridRowEnd: "3",
+            }}
+          >
+            {getContentFromSection(activeSession).primary}
+          </div>
+          <div
+            className="grid items-center justify-center"
+            style={{
+              gridColumnStart: "2",
+              gridColumnEnd: "3",
+              gridRowStart: "1",
+              gridRowEnd: "3",
+            }}
+          >
+            {getContentFromSection(activeSession).secondary}
+          </div>
+        </div>
+      )
+    }
+
+    return (
+      <div
+        className={`absolute w-[80vw] h-[40vw] items-center opacity-100 border-t-8 border-b-8 bg-inception-off-white bg-opacity-60 backdrop-blur-sm transition-all animate-fadeIn duration-75 z-40 border-inception-red ${
+          showModal ? "" : "hidden"
+        }`}
+      >
+        {renderTopPanel()}
+        {renderBottomPanel()}
+      </div>
+    )
+  }
+
   return (
     <div className="mt-24 lg:mt-32 relative h-full pb-40 w-screen">
       <section className="font-arcane px-12 lg:px-24 flex flex-col">
@@ -194,13 +271,15 @@ const BluePrint: React.FC = () => {
         </h1>
         <br></br>
       </section>
-      <section className="px-12 lg:px-24 flex flex-col my-6">
-        {renderGraphLayout()}
-      </section>
 
       <section className="font-arcane px-12 lg:px-24 flex flex-col">
-        {renderTextWithBg({ content: "an engineering style roadmap" })}
+        {TextOnBanner({ content: "an engineering style roadmap" })}
         {renderRoadMapDescription()}
+      </section>
+
+      <section className="px-12 lg:px-24 my-6 relative h-[40vw] max-h-[80vh] flex">
+        {renderGraphLayout()}
+        {renderActiveSession()}
       </section>
     </div>
   )
