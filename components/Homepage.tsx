@@ -3,9 +3,6 @@ import { useState } from "react"
 /* eslint-disable @next/next/no-img-element */
 const HomePage: React.FC = () => {
   const [displayText, setDisplayText] = useState<boolean>(false)
-  const [bannerSrc, setBannerSrc] = useState<string>(
-    "/images/banner.png"
-  )
 
   return (
     <div
@@ -21,26 +18,27 @@ const HomePage: React.FC = () => {
               displayText ? "opacity-100" : "opacity-0"
             }`}
           >
-            Yo stranger, welcome to Zion, have you heard of the World Trigger?
+            Nice to see ya strangers on the subway, to the black market?
           </h1>
         </div>
-        <img
-          className="w-full max-h-full"
-          src={bannerSrc}
-          alt=""
-          onMouseOver={(e) => {
-            // if (bannerSrc !== "/images/banner.png") {
-            //   setBannerSrc("/images/banner.png")
-            // }
-            setDisplayText(true)
-          }}
-          onMouseOut={(e) => {
-            // if (bannerSrc !== "/images/banner_masked.png") {
-            //   setBannerSrc("/images/banner_masked.png")
-            // }
-            setDisplayText(false)
-          }}
-        />
+        <div className="relative opacity-100 transform-all duration-200 z-10">
+          <img
+            className="w-[80vh] max-h-[80vh] fixed"
+            src={"/images/banner.png"}
+            alt=""
+          />
+          <img
+            className="w-[80vh] max-h-[80vh] relative hover:opacity-0 transform-all duration-200 z-40 "
+            src={"/images/banner_masked.png"}
+            alt=""
+            onMouseOver={(e) => {
+              setDisplayText(true)
+            }}
+            onMouseOut={(e) => {
+              setDisplayText(false)
+            }}
+          />
+        </div>
         <h1 className="font-inception text-inception-gray lg:-ml-20 relative z-20 text-md mt-4">
           A retro futuristic metaverse brand
         </h1>
