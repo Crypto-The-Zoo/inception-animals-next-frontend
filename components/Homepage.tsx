@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
         backgroundPosition: "50% 100%",
       }}
     >
-      <div className="hidden sm:block m-auto sm:h-[500px] max-w-full justify-center">
+      <div className="hidden sm:block m-auto sm:h-[500px] md:h-[60vh] max-w-full justify-center px-10">
         <div className="h-6 mb-4">
           <h1
             className={`text-inception-green text-xl font-inception m-auto text-center md:text-left lg:-ml-24 ${
@@ -23,12 +23,13 @@ const HomePage: React.FC = () => {
         </div>
         <div className="relative opacity-100 transform-all duration-200 z-10">
           <img
-            className="w-[80vh] max-h-[80vh] fixed"
+            className="w-[100vh] max-h-[80vh]"
             src={"/images/banner.png"}
             alt=""
           />
+
           <img
-            className="w-[80vh] max-h-[80vh] relative hover:opacity-0 transform-all duration-200 z-40 "
+            className="w-[100vh] max-h-[80vh] hover:opacity-0 transform-all duration-200 z-40 absolute left-0 top-0"
             src={"/images/banner_masked.png"}
             alt=""
             onMouseOver={(e) => {
