@@ -6,6 +6,7 @@ import TextOnBanner from "./coreui/TextOnBanner"
 import Subway from "./Subway"
 import SubwayVideo from "./SubwayVideo"
 import BlackMarket from "./BlackMarket"
+import TheStreet from "./TheStreet"
 
 const BluePrint: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -18,6 +19,11 @@ const BluePrint: React.FC = () => {
 
   const getContentFromSection = (section: string) => {
     switch (section) {
+      case "the street":
+        return {
+          primary: <TheStreet />,
+          secondary: "bg-bp-center",
+        }
       case "black market":
         return {
           primary: <BlackMarket />,
@@ -71,13 +77,16 @@ const BluePrint: React.FC = () => {
 
   const renderBlueprintCenter = () => {
     return (
-      <div className="flex flex-col justify-center items-center absolute z-40">
+      <div
+        className="flex flex-col justify-center items-center absolute z-40"
+        onClick={() => toggleShowModal("the street")}
+      >
         <a
           href="#"
           className="flex w-[22vw] h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-40 hover:bg-bp-center-solid"
         >
           <div className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink">
-            Center Placeholder
+            01. the street
           </div>
         </a>
       </div>
@@ -132,7 +141,7 @@ const BluePrint: React.FC = () => {
         if (typeof secondarySection === "string") {
           return (
             <div
-              className={`grid items-center justify-center bg-bp-tl bg-no-repeat w-full h-full bg-contain`}
+              className={`grid items-center justify-center ${secondarySection} bg-no-repeat w-full h-full bg-contain`}
               style={{
                 gridColumnStart: "2",
                 gridColumnEnd: "3",

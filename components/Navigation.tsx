@@ -20,7 +20,7 @@ const Navigation: React.FC = () => {
     { name: "HOME", link: "/", isOpen: true },
     { name: "BLUEPRINT", link: "/blueprint", isOpen: true },
     { name: "CITY", link: "/city", isOpen: true },
-    { name: "MARKETPLACE", link: "", isOpen: false },
+    { name: "BLACKMARKET", link: "", isOpen: false },
   ]
 
   const externalNavLinks = [
@@ -97,7 +97,7 @@ const Navigation: React.FC = () => {
                     : " hover:cursor-not-allowed opacity-50"
                 }
                 ${
-                  navLinkObj?.desc === 'twitter'
+                  navLinkObj?.desc === "twitter"
                     ? " hover:text-twitter-blue"
                     : " hover:text-discord-blue"
                 }
