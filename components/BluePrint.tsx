@@ -49,37 +49,43 @@ const BluePrint: React.FC = () => {
     {
       index: "00. ",
       name: "vision & value",
-      gridPos: [1, 2, 1, 3],
+      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+      gridCssSm: "col-start-1 col-end-2 row-start-1 row-end-2",
       backgroundImg: "bg-bp-left",
     },
     {
       index: "02. ",
       name: "inception avatar",
-      gridPos: [4, 5, 1, 3],
+      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-1 lg:row-end-3",
+      gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
       backgroundImg: "bg-bp-right",
     },
     {
       index: "03. ",
       name: "black market",
-      gridPos: [2, 3, 1, 2],
+      gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+      gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
       backgroundImg: "bg-bp-tl",
     },
     {
       index: "0x. ",
       name: "the bathroom",
-      gridPos: [3, 4, 1, 2],
+      gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
+      gridCssSm: "col-start-2 col-end-3 row-start-2 row-end-3",
       backgroundImg: "bg-bp-tr",
     },
     {
       index: "0x. ",
       name: "bar",
-      gridPos: [2, 3, 2, 3],
+      gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
+      gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
       backgroundImg: "bg-bp-bl",
     },
     {
       index: "0x. ",
       name: "corner store",
-      gridPos: [3, 4, 2, 3],
+      gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
+      gridCssSm: "col-start-2 col-end-3 row-start-3 row-end-4",
       backgroundImg: "bg-bp-br",
     },
   ]
@@ -87,19 +93,15 @@ const BluePrint: React.FC = () => {
   const renderBluePrint = (bluePrintConfig: {
     index: string
     name: string
-    gridPos: number[]
     backgroundImg: string
+    gridCss: string
+    gridCssSm: string
   }) => {
     return (
       <a
         href="#"
-        className={`grid absolute w-full h-full max-h-[80vh] items-center justify-center ${bluePrintConfig.backgroundImg} bg-cover border-2 border-inception-light-green hover:border-inception-green hover:${bluePrintConfig.backgroundImg}-solid`}
-        style={{
-          gridColumnStart: bluePrintConfig?.gridPos[0],
-          gridColumnEnd: bluePrintConfig?.gridPos[1],
-          gridRowStart: bluePrintConfig?.gridPos[2],
-          gridRowEnd: bluePrintConfig?.gridPos[3],
-        }}
+        className={`grid absolute w-full h-full max-h-[80vh] items-center justify-center ${bluePrintConfig.backgroundImg} bg-cover border-2 border-inception-light-green hover:border-inception-green
+        ${bluePrintConfig.gridCssSm} ${bluePrintConfig.gridCss}`}
         onClick={() => toggleShowModal(bluePrintConfig.name)}
       >
         <div
@@ -120,7 +122,7 @@ const BluePrint: React.FC = () => {
       >
         <a
           href="#"
-          className="flex w-[22vw] h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-40 hover:bg-bp-center-solid"
+          className="flex w-[44vw] h-[44vw] lg:w-[22vw] lg:h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-40 hover:bg-bp-center-solid"
         >
           <div className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink">
             01. community
@@ -134,14 +136,7 @@ const BluePrint: React.FC = () => {
     return (
       <div className="flex absolute items-center justify-center">
         {renderBlueprintCenter()}
-        <div
-          className="relative grid w-[80vw] h-[40vw] items-center justify-center gap-4"
-          style={{
-            gridAutoColumns: "1fr",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gridTemplateRows: "repeat(2, 1fr)",
-          }}
-        >
+        <div className="relative grid w-[80vw] h-[40vw] md:w-[90vw] md:h-[180vw] items-center justify-center gap-4 grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-2">
           {bluePrints.map((bluePrint, index) => {
             return <>{renderBluePrint(bluePrint)}</>
           })}
@@ -178,26 +173,12 @@ const BluePrint: React.FC = () => {
         if (typeof secondarySection === "string") {
           return (
             <div
-              className={`grid items-center justify-center ${secondarySection} bg-no-repeat w-full h-full bg-contain`}
-              style={{
-                gridColumnStart: "2",
-                gridColumnEnd: "3",
-                gridRowStart: "1",
-                gridRowEnd: "3",
-              }}
+              className={`grid items-center justify-center ${secondarySection} bg-no-repeat w-full h-full bg-contain col-start-2 col-end-3 row-start-1 row-end-3`}
             ></div>
           )
         } else {
           return (
-            <div
-              className="grid items-center justify-center"
-              style={{
-                gridColumnStart: "2",
-                gridColumnEnd: "3",
-                gridRowStart: "1",
-                gridRowEnd: "3",
-              }}
-            >
+            <div className="grid items-center justify-center col-start-2 col-end-3 row-start-1 row-end-3">
               {getContentFromSection(activeSession).secondary}
             </div>
           )
@@ -205,23 +186,8 @@ const BluePrint: React.FC = () => {
       }
 
       return (
-        <div
-          className="grid h-[88%]"
-          style={{
-            gridAutoColumns: "1fr",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gridTemplateRows: "repeat(2, 1fr)",
-          }}
-        >
-          <div
-            className="overflow-auto my-4"
-            style={{
-              gridColumnStart: "1",
-              gridColumnEnd: "2",
-              gridRowStart: "1",
-              gridRowEnd: "3",
-            }}
-          >
+        <div className="grid h-[88%] grid-cols-2 grid-rows-2">
+          <div className="overflow-auto my-4 col-start-1 col-end-2 row-start-1 row-end-3">
             {getContentFromSection(activeSession).primary}
           </div>
           {renderSecondaryContent()}

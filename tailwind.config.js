@@ -15,7 +15,7 @@ module.exports = {
         "inception-light-brown": "#bb9772",
         "twitter-blue": "#1DA1F2",
         "discord-blue": "#5865F2",
-        "inception_blue": "#7eaeff",
+        inception_blue: "#7eaeff",
       },
       fontFamily: {
         inception: ['"INCEPTION"', "cursive"],
