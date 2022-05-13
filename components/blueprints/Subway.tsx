@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import InceptionTextBlock from "./coreui/InceptionTextBlock"
-import TextOnBanner from "./coreui/TextOnBanner"
+import InceptionTextBlock from "../coreui/InceptionTextBlock"
+import TextOnBanner from "../coreui/TextOnBanner"
 
 const Subway: React.FC = () => {
   const renderRegVideo = () => {

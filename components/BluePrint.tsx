@@ -2,11 +2,11 @@
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons"
-import TextOnBanner from "./coreui/TextOnBanner"
-import Subway from "./Subway"
+import Subway from "./blueprints/Subway"
 import SubwayVideo from "./SubwayVideo"
-import BlackMarket from "./BlackMarket"
-import TheStreet from "./TheStreet"
+import BlackMarket from "./blueprints/BlackMarket"
+import TheStreet from "./blueprints/TheStreet"
+import Community from "./blueprints/Community"
 
 const BluePrint: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -19,7 +19,12 @@ const BluePrint: React.FC = () => {
 
   const getContentFromSection = (section: string) => {
     switch (section) {
-      case "the street":
+      case "community":
+        return {
+          primary: <Community />,
+          secondary: "bg-bp-center",
+        }
+      case "vision & value":
         return {
           primary: <TheStreet />,
           secondary: "bg-bp-center",
@@ -29,6 +34,11 @@ const BluePrint: React.FC = () => {
           primary: <BlackMarket />,
           secondary: "bg-bp-tl",
         }
+      case "corner store":
+        return {
+          primary: <BlackMarket />,
+          secondary: "bg-bp-tr",
+        }
 
       default:
         return { primary: <Subway />, secondary: <SubwayVideo /> }
@@ -36,19 +46,46 @@ const BluePrint: React.FC = () => {
   }
 
   const bluePrints = [
-    { name: "subway", gridPos: [1, 2, 1, 3], backgroundImg: "bg-bp-left" },
     {
-      name: "right placeholder",
+      index: "00. ",
+      name: "vision & value",
+      gridPos: [1, 2, 1, 3],
+      backgroundImg: "bg-bp-left",
+    },
+    {
+      index: "02. ",
+      name: "inception avatar",
       gridPos: [4, 5, 1, 3],
       backgroundImg: "bg-bp-right",
     },
-    { name: "black market", gridPos: [2, 3, 1, 2], backgroundImg: "bg-bp-tl" },
-    { name: "the washroom", gridPos: [3, 4, 1, 2], backgroundImg: "bg-bp-tr" },
-    { name: "bar", gridPos: [2, 3, 2, 3], backgroundImg: "bg-bp-bl" },
-    { name: "corner store", gridPos: [3, 4, 2, 3], backgroundImg: "bg-bp-br" },
+    {
+      index: "03. ",
+      name: "black market",
+      gridPos: [2, 3, 1, 2],
+      backgroundImg: "bg-bp-tl",
+    },
+    {
+      index: "0x. ",
+      name: "the bathroom",
+      gridPos: [3, 4, 1, 2],
+      backgroundImg: "bg-bp-tr",
+    },
+    {
+      index: "0x. ",
+      name: "bar",
+      gridPos: [2, 3, 2, 3],
+      backgroundImg: "bg-bp-bl",
+    },
+    {
+      index: "0x. ",
+      name: "corner store",
+      gridPos: [3, 4, 2, 3],
+      backgroundImg: "bg-bp-br",
+    },
   ]
 
   const renderBluePrint = (bluePrintConfig: {
+    index: string
     name: string
     gridPos: number[]
     backgroundImg: string
@@ -69,7 +106,7 @@ const BluePrint: React.FC = () => {
           className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink"
           onClick={() => toggleShowModal(bluePrintConfig.name)}
         >
-          {bluePrintConfig?.name}
+          {`${bluePrintConfig.index} ${bluePrintConfig?.name}`}
         </div>
       </a>
     )
@@ -79,14 +116,14 @@ const BluePrint: React.FC = () => {
     return (
       <div
         className="flex flex-col justify-center items-center absolute z-40"
-        onClick={() => toggleShowModal("the street")}
+        onClick={() => toggleShowModal("community")}
       >
         <a
           href="#"
           className="flex w-[22vw] h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-40 hover:bg-bp-center-solid"
         >
           <div className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink">
-            01. the street
+            01. community
           </div>
         </a>
       </div>
@@ -211,7 +248,7 @@ const BluePrint: React.FC = () => {
           blueprint
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          roadmap by the mad scientists
+          roadmap by the mad designers & engineers
         </h1>
         <br></br>
       </section>

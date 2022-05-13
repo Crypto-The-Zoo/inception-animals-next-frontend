@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import InceptionTextBlock from "./coreui/InceptionTextBlock"
-import TextOnBanner from "./coreui/TextOnBanner"
+import InceptionTextBlock from "../coreui/InceptionTextBlock"
+import TextOnBanner from "../coreui/TextOnBanner"
 
-const TheStreet: React.FC = () => {
+const CornerStore: React.FC = () => {
   const renderRegVideo = () => {
     return (
       <video className="w-screen" muted loop autoPlay={true}>
@@ -45,4 +45,4 @@ const TheStreet: React.FC = () => {
   )
 }
 
-export default TheStreet
+export default CornerStore
