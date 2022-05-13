@@ -5,6 +5,7 @@ import { faWindowClose } from "@fortawesome/free-solid-svg-icons"
 import TextOnBanner from "./coreui/TextOnBanner"
 import Subway from "./Subway"
 import SubwayVideo from "./SubwayVideo"
+import BlackMarket from "./BlackMarket"
 
 const BluePrint: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -17,6 +18,12 @@ const BluePrint: React.FC = () => {
 
   const getContentFromSection = (section: string) => {
     switch (section) {
+      case "black market":
+        return {
+          primary: <BlackMarket />,
+          secondary: "bg-bp-tl",
+        }
+
       default:
         return { primary: <Subway />, secondary: <SubwayVideo /> }
     }
@@ -61,7 +68,6 @@ const BluePrint: React.FC = () => {
       </a>
     )
   }
-
 
   const renderBlueprintCenter = () => {
     return (
@@ -120,6 +126,38 @@ const BluePrint: React.FC = () => {
     }
 
     const renderBottomPanel = () => {
+      const renderSecondaryContent = () => {
+        const secondarySection = getContentFromSection(activeSession).secondary
+
+        if (typeof secondarySection === "string") {
+          return (
+            <div
+              className={`grid items-center justify-center bg-bp-tl bg-no-repeat w-full h-full bg-contain`}
+              style={{
+                gridColumnStart: "2",
+                gridColumnEnd: "3",
+                gridRowStart: "1",
+                gridRowEnd: "3",
+              }}
+            ></div>
+          )
+        } else {
+          return (
+            <div
+              className="grid items-center justify-center"
+              style={{
+                gridColumnStart: "2",
+                gridColumnEnd: "3",
+                gridRowStart: "1",
+                gridRowEnd: "3",
+              }}
+            >
+              {getContentFromSection(activeSession).secondary}
+            </div>
+          )
+        }
+      }
+
       return (
         <div
           className="grid h-[88%]"
@@ -140,17 +178,7 @@ const BluePrint: React.FC = () => {
           >
             {getContentFromSection(activeSession).primary}
           </div>
-          <div
-            className="grid items-center justify-center"
-            style={{
-              gridColumnStart: "2",
-              gridColumnEnd: "3",
-              gridRowStart: "1",
-              gridRowEnd: "3",
-            }}
-          >
-            {getContentFromSection(activeSession).secondary}
-          </div>
+          {renderSecondaryContent()}
         </div>
       )
     }

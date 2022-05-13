@@ -14,7 +14,7 @@ const Subway: React.FC = () => {
 
   const renderLeadingText = () => {
     const contents: string[] = [
-      `A story-driven retro futuristic brand built by mad scientists and the community.`,
+      `A story-driven retro futuristic brand defined by the community, built by mad engineers and designers.`,
       `The universe is a corner of the internet where we choose the identity we never got a chance to obtain in reality and extend it to the blurring edge of the physical and digital worlds.`,
     ]
     return <InceptionTextBlock contents={contents} />
@@ -22,23 +22,23 @@ const Subway: React.FC = () => {
 
   const renderUniqueVibeText = () => {
     const contents: string[] = [
-      `A delightful, unique vibe on the Flow blockchain.`,
-      `NBA Topshot, Ballerz, Flunks - we love them. While Flow is populated the best of the best in sports and entertainment. We represent the mad scientists that spin the wheel with retro, futuristic, and mechanics.`,
+      `A fresh, delightful, unique vibe on web3.`,
+      `NBA Topshot, Ballerz, Flunks - we love them. While Flow is populated the best of the best in sports and entertainment. We represent the mad engineers and designers that spin the wheel with retro, futuristic, and mechanics.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
 
   const renderOwnedByCommunityText = () => {
     const contents: string[] = [
-      `While Inception Animals is an NFT project, all that matters is the community.`,
-      `The longevity of the mini-economics system is ensured by a revenue-sharing model for real estate owners who can claim ownership in the universe by owning metaverse lands - a portion of secondary royalty will be distributed to the landowners with a well-defined engineering system including a bonus for staking your Inception Avatars.`,
+      `While Inception Animals is a web3 brand, all that matters is the community.`,
+      `The longevity of the brand is carried by the economics system ensured by a community revenue-sharing model for real estate owners who can claim ownership in the universe by owning metaverse lands - a portion of secondary royalty will be distributed to the landowners with a well-defined engineering system including a bonus for staking your Inception Avatars.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
 
   const renderStoryDrivenText = () => {
     const contents: string[] = [
-      `A never-ending grudge between generations of merits, soldiers, and inventions going against each other in two once peaceful cities: Ascos and Lucinia.`,
+      `A Universe driven by a never-ending grudge between generations of merits, soldiers, and inventions going against each other in two once peaceful cities: Ascos and Lucinia.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
@@ -46,13 +46,17 @@ const Subway: React.FC = () => {
   return (
     <div className="relative h-full">
       <section className="font-inception-ink flex flex-col">
-        {TextOnBanner({ content: "inception animals is a culture brand" })}
+        {TextOnBanner({
+          content: "inception animals is a brand by the community",
+        })}
         {renderLeadingText()}
         {TextOnBanner({ content: "a unique vibe" })}
         {renderUniqueVibeText()}
         {TextOnBanner({ content: "story-driven" })}
         {renderStoryDrivenText()}
-        {TextOnBanner({ content: "owned by the community" })}
+        {TextOnBanner({
+          content: "economics for the community",
+        })}
         {renderOwnedByCommunityText()}
       </section>
     </div>
