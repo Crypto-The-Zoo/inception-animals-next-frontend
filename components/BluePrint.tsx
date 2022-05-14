@@ -136,7 +136,7 @@ const BluePrint: React.FC = () => {
     return (
       <div className="flex absolute items-center justify-center">
         {renderBlueprintCenter()}
-        <div className="relative grid w-[90vw] h-[180vw] lg:w-[80vw] lg:h-[40vw] items-center justify-center gap-4 grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-2">
+        <div className="relative grid w-[90vw] h-[180vw] lg:w-[80vw] lg:h-[40vw] lg:max-h-[80vh] items-center justify-center gap-4 grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-2">
           {bluePrints.map((bluePrint, index) => {
             return <>{renderBluePrint(bluePrint)}</>
           })}
