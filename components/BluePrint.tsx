@@ -148,7 +148,7 @@ const BluePrint: React.FC = () => {
   const renderActiveSession = () => {
     const renderTopPanel = () => {
       return (
-        <div className="flex h-14 justify-between mt-4 border-b-2 border-inception-red">
+        <div className="flex h-14 justify-between py-8 border-b-2 border-inception-red items-center">
           <div className="font-inception-ink text-2xl">{activeSession}</div>
           <div className="font-inception-ink text-lg">
             <div
@@ -187,17 +187,28 @@ const BluePrint: React.FC = () => {
 
       return (
         <div className="grid h-[88%] grid-cols-2 grid-rows-2">
-          <div className="overflow-auto my-4 col-start-1 col-end-2 row-start-1 row-end-3">
+          <div
+            className="overflow-auto my-4
+          col-start-1 col-end-3 row-start-1 row-end-3
+          md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-3"
+          >
             {getContentFromSection(activeSession).primary}
           </div>
-          {renderSecondaryContent()}
+          <div
+            className="
+          hidden
+          md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-3
+          "
+          >
+            {renderSecondaryContent()}
+          </div>
         </div>
       )
     }
 
     return (
       <div
-        className={`absolute w-[80vw] h-[40vw] items-center opacity-100 border-t-8 border-b-8 bg-inception-off-white bg-opacity-60 backdrop-blur-sm transition-all animate-fadeIn duration-75 z-40 border-inception-red ${
+        className={`absolute w-[90vw] h-[180vw] lg:w-[80vw] lg:h-[40vw] items-center opacity-100 border-t-8 border-b-8 bg-inception-off-white bg-opacity-60 backdrop-blur-sm transition-all animate-fadeIn duration-75 z-40 border-inception-red ${
           showModal ? "" : "hidden"
         }`}
       >
@@ -219,7 +230,7 @@ const BluePrint: React.FC = () => {
         <br></br>
       </section>
 
-      <section className="px-12 lg:px-24 my-6 relative h-[40vw] max-h-[80vh] flex">
+      <section className="px-4 lg:px-24 my-6 relative h-[40vw] max-h-[80vh] flex">
         {renderGraphLayout()}
         {renderActiveSession()}
       </section>

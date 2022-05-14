@@ -39,7 +39,7 @@ module.exports = {
         "bp-right": "url('/images/bp_right.png')",
       },
       animation: {
-        fadeIn: "fadeIn 2s",
+        fadeIn: "fadeIn 0.5s",
       },
       keyframes: {
         fadeIn: {
