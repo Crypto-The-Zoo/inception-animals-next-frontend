@@ -16,6 +16,7 @@ module.exports = {
         "twitter-blue": "#1DA1F2",
         "discord-blue": "#5865F2",
         inception_blue: "#7eaeff",
+        "inception-taro": "#825F6D",
       },
       fontFamily: {
         inception: ['"INCEPTION"', "cursive"],

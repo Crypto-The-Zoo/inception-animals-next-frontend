@@ -14,7 +14,7 @@ const BlackMarket: React.FC = () => {
 
   const renderLeadingText = () => {
     const contents: string[] = [
-      `The market on the grapevine, fully of widely accepted unspoken rules for identity traders.`,
+      `The market on the grapevine, full of widely accepted unspoken rules for identity traders.`,
       `The market is for true believers of the Inception universe to get together and enjoy the revenue shares generated from their real estate and identities`,
       `An innovative revenue-sharing model supervised and secured by the Flow blockchain and smart contracts to ensure a fair distribution of Inception Animals NFT holders. land owners, and staked NFT owners.`,
     ]

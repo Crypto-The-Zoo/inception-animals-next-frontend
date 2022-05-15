@@ -1,7 +1,8 @@
 html {
   height: 100%;
   background: #f4f2ea;
-},
+}
+,
 body {
   padding: 0;
   margin: 0;
@@ -26,22 +27,44 @@ a {
 
 @layer base {
   @font-face {
-    font-family: 'INCEPTION';
-    src: url('../assets/fonts/inception.woff2') format('woff2');
+    font-family: "INCEPTION";
+    src: url("../assets/fonts/inception.woff2") format("woff2");
   }
 
   @font-face {
-    font-family: 'ARCANE';
-    src: url('../assets/fonts/arcane.woff2') format('woff2');
+    font-family: "ARCANE";
+    src: url("../assets/fonts/arcane.woff2") format("woff2");
   }
 
   @font-face {
-    font-family: 'INCEPTION-INK';
-    src: url('../assets/fonts/inception_ink.woff2') format('woff2');
+    font-family: "INCEPTION-INK";
+    src: url("../assets/fonts/inception_ink.woff2") format("woff2");
   }
 
   @font-face {
-    font-family: 'INCEPTION-INK-ITALIC';
-    src: url('../assets/fonts/inception_ink_italic.woff2') format('woff2');
+    font-family: "INCEPTION-INK-ITALIC";
+    src: url("../assets/fonts/inception_ink_italic.woff2") format("woff2");
   }
+}
+
+.highlight-yellow {
+  background: linear-gradient(
+      104deg,
+      rgba(255, 226, 130, 0) 0.9%,
+      #ffde82 2.4%,
+      rgba(255, 211, 130, 0.5) 5.8%,
+      rgba(255, 215, 130, 0.1) 93%,
+      rgba(255, 215, 130, 0.7) 96%
+    ),
+    linear-gradient(
+      183deg,
+      rgba(255, 197, 130, 0),
+      rgba(255, 191, 107, 0.3) 7.9%,
+      rgba(255, 211, 130, 0) 15%
+    );
+  -webkit-box-decoration-break: clone;
+  margin: 0;
+  border-radius: 7.5px;
+  text-shadow: -2px 2px 1.8px rgb(255 215 130 / 70%), 1px -0.1px 2.3px #fff,
+    -8.1px -17.3px 20px #fff;
 }

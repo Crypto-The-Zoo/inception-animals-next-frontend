@@ -15,16 +15,16 @@ const TheStreet: React.FC = () => {
   const renderLeadingText = () => {
     const contents: string[] = [
       `Inception Animals is a culture brand, a unique vibe defined by the web3 community together with mad engineers and designers .`,
-      `We are parkourers, skaters, runners, and skydivers on web3. We discovered the new world of decentralization though the most dangerous but undervalued adventures. We truly believe the new era while the uncertain majority is still in doubt.`,
+      `We are parkourers, skaters, runners, and skydivers on web3. We discovered the new world of decentralization though the most dangerous however undervalued adventures. We truly believe the new era while the uncertain majority is still in doubt.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
 
   const renderValuesText = () => {
     const contents: string[] = [
-      `Our vision is to create a story-driven retro futuristic brand for the web3 community.`,
       `Every building block starts with the community and ends with the community.`,
-      `We prioritize the brand, starting from extremely high quality art to bridge the gap between IRL brand and web3 virtual identities.`,
+      `Offer high-quality art that brings industry standard and awareness to the NFT space. It’s easy to follow the flow (the trend, not the blockchain, we should always go with the FLOW), but it’s hard to be original yet having a high quality meeting an industry-recognized standard. We are lucky to have Rick and Morty artist to help us brand and pave the universe.`,
+      `Every decision and movement goes around the growth of the Flow eco-system, we’ve seen successful brands growing together with the eco-system they reside in from Etherum and Solana. Inception Animals will take steps in order to not only build the brand together with the Inception Animals fams but also to improve the diversity of the Flow eco-system as a long-term vision.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
