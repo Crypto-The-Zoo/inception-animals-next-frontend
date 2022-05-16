@@ -18,6 +18,10 @@ const InceptionTextBlock: React.FC<{
               "brings industry standard and awareness to the NFT space",
               "growth of the Flow eco-system",
               "identity traders",
+              "Land owners will receive a portion of the royalty",
+              "All Inception Avatar owners will enter a raffle",
+              "gifted back to the true fams",
+              "We are parkourers, skaters, runners, and skydivers of web3",
             ]}
             autoEscape={true}
             textToHighlight={content}

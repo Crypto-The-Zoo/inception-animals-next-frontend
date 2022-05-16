@@ -76,7 +76,7 @@ const BluePrint: React.FC = () => {
     },
     {
       index: "0x. ",
-      name: "bar",
+      name: "airdrop",
       gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
       gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
       backgroundImg: "bg-bp-bl",

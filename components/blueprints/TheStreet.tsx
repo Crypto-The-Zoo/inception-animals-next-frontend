@@ -15,7 +15,7 @@ const TheStreet: React.FC = () => {
   const renderLeadingText = () => {
     const contents: string[] = [
       `Inception Animals is a culture brand, a unique vibe defined by the web3 community together with mad engineers and designers .`,
-      `We are parkourers, skaters, runners, and skydivers on web3. We discovered the new world of decentralization though the most dangerous however undervalued adventures. We truly believe the new era while the uncertain majority is still in doubt.`,
+      `We are parkourers, skaters, runners, and skydivers of web3. We discovered the new world of decentralization though the most dangerous however undervalued adventures. We truly believe the new era while the uncertain majority is still in doubt.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
