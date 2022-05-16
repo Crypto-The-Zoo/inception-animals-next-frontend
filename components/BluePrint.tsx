@@ -24,7 +24,7 @@ const BluePrint: React.FC = () => {
           primary: <Community />,
           secondary: "bg-bp-center",
         }
-      case "vision & value":
+      case "on the street":
         return {
           primary: <TheStreet />,
           secondary: "bg-bp-center",
@@ -47,42 +47,42 @@ const BluePrint: React.FC = () => {
 
   const bluePrints = [
     {
-      index: "00. ",
-      name: "vision & value",
+      index: "meta. ",
+      name: "on the street",
       gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
       gridCssSm: "col-start-1 col-end-2 row-start-1 row-end-2",
       backgroundImg: "bg-bp-left",
     },
     {
-      index: "02. ",
-      name: "inception avatar",
+      index: "infra. ",
+      name: "words for nerds",
       gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-1 lg:row-end-3",
       gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
       backgroundImg: "bg-bp-right",
     },
     {
-      index: "03. ",
+      index: "02. ",
       name: "black market",
       gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
       gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
       backgroundImg: "bg-bp-tl",
     },
     {
-      index: "0x. ",
+      index: "04. ",
       name: "the bathroom",
       gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
       gridCssSm: "col-start-2 col-end-3 row-start-2 row-end-3",
       backgroundImg: "bg-bp-tr",
     },
     {
-      index: "0x. ",
+      index: "03. ",
       name: "airdrop",
       gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
       gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
       backgroundImg: "bg-bp-bl",
     },
     {
-      index: "0x. ",
+      index: "05. ",
       name: "corner store",
       gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
       gridCssSm: "col-start-2 col-end-3 row-start-3 row-end-4",
@@ -102,7 +102,11 @@ const BluePrint: React.FC = () => {
         href="#"
         className={`grid absolute w-full h-full max-h-[80vh] items-center justify-center ${bluePrintConfig.backgroundImg} bg-cover border-2 border-inception-light-green hover:border-inception-green
         ${bluePrintConfig.gridCssSm} ${bluePrintConfig.gridCss}`}
-        onClick={() => toggleShowModal(bluePrintConfig.name)}
+        onClick={(e) => {
+          e.preventDefault()
+          toggleShowModal(bluePrintConfig.name)
+          return false
+        }}
       >
         <div
           className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink"
@@ -118,11 +122,15 @@ const BluePrint: React.FC = () => {
     return (
       <div
         className="flex flex-col justify-center items-center absolute z-40"
-        onClick={() => toggleShowModal("community")}
+        onClick={(e) => {
+          e.preventDefault()
+          toggleShowModal("community")
+          return false
+        }}
       >
         <a
           href="#"
-          className="flex w-[44vw] h-[44vw] lg:w-[22vw] lg:h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-40 hover:bg-bp-center-solid"
+          className="flex w-[44vw] h-[44vw] lg:w-[22vw] lg:h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-40 rounded-full border-2 border-inception-taro"
         >
           <div className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink">
             01. community
