@@ -35,9 +35,10 @@ const FoundingTeam: React.FC = () => {
       imgSrc: "koala_1.jpg",
     },
     {
-      name: "Henry",
-      title: "Corporate Development",
-      description: `Alumni of 2 of the "Big 4" firms, now leading the Finance & Strategy work at an entertainment startup that concluded Series B recently`,
+      name: "BusterPackster",
+      title: "Marketing & Media Manager",
+      description:
+        "From the community, always posting the most innovative content on social media.",
       extraDescription: "",
       imgSrc: "sports_hippo.jpg",
     },

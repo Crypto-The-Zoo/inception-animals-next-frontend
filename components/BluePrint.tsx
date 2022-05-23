@@ -7,6 +7,9 @@ import SubwayVideo from "./SubwayVideo"
 import BlackMarket from "./blueprints/BlackMarket"
 import TheStreet from "./blueprints/TheStreet"
 import Community from "./blueprints/Community"
+import Airdrop from "./blueprints/Airdrop"
+import Teleport from "./blueprints/Teleport"
+import TheBathroom from "./blueprints/TheBathroom"
 
 const BluePrint: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -22,22 +25,37 @@ const BluePrint: React.FC = () => {
       case "community":
         return {
           primary: <Community />,
-          secondary: "bg-bp-center",
+          secondary: "/images/airdrop.png",
         }
       case "on the street":
         return {
           primary: <TheStreet />,
-          secondary: "bg-[#eceae1]",
+          secondary: "/images/skater.png",
         }
       case "black market":
         return {
           primary: <BlackMarket />,
-          secondary: "bg-bp-tl",
+          secondary: "/images/airdrop.png",
         }
       case "corner store":
         return {
           primary: <BlackMarket />,
-          secondary: "bg-bp-tr",
+          secondary: "/images/merch.png",
+        }
+      case "airdrop":
+        return {
+          primary: <Airdrop />,
+          secondary: "/images/airdrop.png",
+        }
+      case "teleport":
+        return {
+          primary: <Teleport />,
+          secondary: "/images/airdrop.png",
+        }
+      case "the bathroom":
+        return {
+          primary: <TheBathroom />,
+          secondary: "/images/airdrop.png",
         }
 
       default:
@@ -67,8 +85,8 @@ const BluePrint: React.FC = () => {
     {
       index: "01. ",
       name: "community",
-      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
-      gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
+      gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
+      gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
       imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
@@ -76,8 +94,8 @@ const BluePrint: React.FC = () => {
     {
       index: "02. ",
       name: "black market",
-      gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
-      gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
+      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-1 lg:row-end-2",
+      gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
       imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
@@ -94,8 +112,8 @@ const BluePrint: React.FC = () => {
     {
       index: "04. ",
       name: "the bathroom",
-      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-1 lg:row-end-2",
-      gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
+      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+      gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
       imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
@@ -210,9 +228,11 @@ const BluePrint: React.FC = () => {
 
         if (typeof secondarySection === "string") {
           return (
-            <div
-              className={`grid items-center justify-center ${secondarySection} bg-no-repeat w-full h-full bg-contain col-start-2 col-end-3 row-start-1 row-end-3`}
-            ></div>
+            <img
+              src={secondarySection}
+              alt=""
+              className="h-full object-cover"
+            ></img>
           )
         } else {
           return (
@@ -236,6 +256,7 @@ const BluePrint: React.FC = () => {
             className="
           hidden
           md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-3
+          items-center justify-center
           "
           >
             {renderSecondaryContent()}

@@ -2,7 +2,7 @@
 import InceptionTextBlock from "../coreui/InceptionTextBlock"
 import TextOnBanner from "../coreui/TextOnBanner"
 
-const TheBathroom: React.FC = () => {
+const Airdrop: React.FC = () => {
   const renderLeadingText = () => {
     const contents: string[] = [`To the Moon`]
     return <InceptionTextBlock contents={contents} />
@@ -20,4 +20,4 @@ const TheBathroom: React.FC = () => {
   )
 }
 
-export default TheBathroom
+export default Airdrop
