@@ -48,10 +48,6 @@ const BlackMarket: React.FC = () => {
           content: "royalty decided by community",
         })}
         {renderRoyaltyText()}
-        {TextOnBanner({
-          content: "anti paper-hands",
-        })}
-        {renderPaperhandText()}
       </section>
     </div>
   )
