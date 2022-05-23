@@ -21,9 +21,6 @@ const HomePage: React.FC = () => {
           >
             Nice to see ya strangers on the subway, to the black market?
           </h1>
-          <div className="absolute -top-36 -right-36 w-96">
-            <img src="/images/skater.png" alt=""></img>
-          </div>
         </div>
         <div className="relative opacity-100 transform-all duration-200 z-10">
           <img
@@ -44,9 +41,14 @@ const HomePage: React.FC = () => {
             }}
           />
         </div>
-        <h1 className="font-inception text-inception-gray lg:-ml-20 relative z-20 text-md mt-4">
-          A retro futuristic metaverse brand
-        </h1>
+        <div className="relative">
+          <h1 className="font-inception text-inception-gray lg:-ml-20 relative z-20 text-md mt-4">
+            A retro futuristic metaverse brand
+          </h1>
+          <div className="absolute bottom-16 left-4 w-96">
+            <img src="/images/skater.png" alt=""></img>
+          </div>
+        </div>
       </div>
       <div className="flex items-center gap-4 absolute bottom-3 left-3">
         <div className="flex flex-col text-right text-xs text-inception-gray font-inception">
