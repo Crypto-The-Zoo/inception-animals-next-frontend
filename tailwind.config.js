@@ -38,6 +38,9 @@ module.exports = {
         "bp-left": "url('/images/bp_left.png')",
         "bp-left-solid": "url('/images/bp_left_solid.png')",
         "bp-right": "url('/images/bp_right.png')",
+        skater: "url('/images/skater.png')",
+        airdrop: "url('/images/airdrop.png')",
+        merch: "url('/images/merch.png')",
       },
       animation: {
         fadeIn: "fadeIn 0.5s",

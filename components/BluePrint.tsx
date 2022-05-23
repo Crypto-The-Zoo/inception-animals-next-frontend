@@ -27,7 +27,7 @@ const BluePrint: React.FC = () => {
       case "on the street":
         return {
           primary: <TheStreet />,
-          secondary: "bg-bp-center",
+          secondary: "bg-[#eceae1]",
         }
       case "black market":
         return {
@@ -49,44 +49,65 @@ const BluePrint: React.FC = () => {
     {
       index: "meta. ",
       name: "on the street",
-      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+      gridCss: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-3",
       gridCssSm: "col-start-1 col-end-2 row-start-1 row-end-2",
-      backgroundImg: "bg-bp-left",
+      backgroundImg: "bg-[#eceae1]",
+      imgPath: "/images/skater.png",
+      imgPosCss: "lg:w-[30vw] lg:max-w-[60vh]",
     },
     {
       index: "infra. ",
-      name: "words for nerds",
-      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-1 lg:row-end-3",
+      name: "teleport",
+      gridCss: "lg:col-start-2 lg:col-end-5 lg:row-start-3 lg:row-end-4",
+      gridCssSm: "col-start-1 col-end-3 row-start-4 row-end-5",
+      backgroundImg: "bg-[#eceae1]",
+      imgPath: "/images/airdrop.png",
+      imgPosCss: " w-[45vw] max-w-[30vh] lg:w-[15vw] lg:max-w-[30vh]",
+    },
+    {
+      index: "01. ",
+      name: "community",
+      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
-      backgroundImg: "bg-bp-right",
+      backgroundImg: "bg-[#eceae1]",
+      imgPath: "/images/airdrop.png",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
     },
     {
       index: "02. ",
       name: "black market",
-      gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
-      gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
-      backgroundImg: "bg-bp-tl",
-    },
-    {
-      index: "04. ",
-      name: "the bathroom",
       gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
-      gridCssSm: "col-start-2 col-end-3 row-start-2 row-end-3",
-      backgroundImg: "bg-bp-tr",
+      gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
+      backgroundImg: "bg-[#eceae1]",
+      imgPath: "/images/airdrop.png",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
     },
     {
       index: "03. ",
       name: "airdrop",
-      gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
+      gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
+      gridCssSm: "col-start-2 col-end-3 row-start-2 row-end-3",
+      backgroundImg: "bg-[#eceae1]",
+      imgPath: "/images/airdrop.png",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
+    },
+    {
+      index: "04. ",
+      name: "the bathroom",
+      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-1 lg:row-end-2",
       gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
-      backgroundImg: "bg-bp-bl",
+      backgroundImg: "bg-[#eceae1]",
+      imgPath: "/images/airdrop.png",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
     },
     {
       index: "05. ",
       name: "corner store",
-      gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
+      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-2 lg:row-end-3",
       gridCssSm: "col-start-2 col-end-3 row-start-3 row-end-4",
-      backgroundImg: "bg-bp-br",
+      backgroundImg: "bg-[#eceae1]",
+      imgPath: "/images/merch.png",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
     },
   ]
 
@@ -96,6 +117,8 @@ const BluePrint: React.FC = () => {
     backgroundImg: string
     gridCss: string
     gridCssSm: string
+    imgPath: string
+    imgPosCss: string
   }) => {
     return (
       <a
@@ -109,42 +132,49 @@ const BluePrint: React.FC = () => {
         }}
       >
         <div
-          className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink"
+          className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink z-10 absolute left-1 top-1"
           onClick={() => toggleShowModal(bluePrintConfig.name)}
         >
           {`${bluePrintConfig.index} ${bluePrintConfig?.name}`}
+        </div>
+        <div className={`absolute -bottom-4 -right-4`}>
+          <img
+            src={bluePrintConfig.imgPath}
+            alt=""
+            className={`${bluePrintConfig.imgPosCss}`}
+          ></img>
         </div>
       </a>
     )
   }
 
-  const renderBlueprintCenter = () => {
-    return (
-      <div
-        className="flex flex-col justify-center items-center absolute z-40"
-        onClick={(e) => {
-          e.preventDefault()
-          toggleShowModal("community")
-          return false
-        }}
-      >
-        <a
-          href="#"
-          className="flex w-[44vw] h-[44vw] lg:w-[22vw] lg:h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-40 rounded-full border-2 border-inception-taro"
-        >
-          <div className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink">
-            01. community
-          </div>
-        </a>
-      </div>
-    )
-  }
+  // const renderBlueprintCenter = () => {
+  //   return (
+  //     <div
+  //       className="flex flex-col justify-center items-center absolute z-40"
+  //       onClick={(e) => {
+  //         e.preventDefault()
+  //         toggleShowModal("community")
+  //         return false
+  //       }}
+  //     >
+  //       <a
+  //         href="#"
+  //         className="flex w-[44vw] h-[44vw] lg:w-[22vw] lg:h-[22vw] absolute content-center bg-bp-center bg-contain bg-no-repeat items-center justify-center font-inception text-inception-off-white z-40 rounded-full border-2 border-inception-taro"
+  //       >
+  //         <div className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink">
+  //           01. community
+  //         </div>
+  //       </a>
+  //     </div>
+  //   )
+  // }
 
   const renderGraphLayout = () => {
     return (
       <div className="flex absolute items-center justify-center">
-        {renderBlueprintCenter()}
-        <div className="relative grid w-[90vw] h-[180vw] lg:w-[80vw] lg:h-[40vw] lg:max-h-[80vh] items-center justify-center gap-4 grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-2">
+        {/* {renderBlueprintCenter()} */}
+        <div className="relative grid w-[90vw] h-[180vw] lg:w-[80vw] lg:h-[40vw] lg:max-h-[80vh] items-center justify-center gap-4 grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-3">
           {bluePrints.map((bluePrint, index) => {
             return <>{renderBluePrint(bluePrint)}</>
           })}
