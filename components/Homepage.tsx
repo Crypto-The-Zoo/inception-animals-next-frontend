@@ -3,6 +3,7 @@ import { useState } from "react"
 /* eslint-disable @next/next/no-img-element */
 const HomePage: React.FC = () => {
   const [displayText, setDisplayText] = useState<boolean>(false)
+  const [bannerSrc, setBannerSrc] = useState<string>("/images/banner.png")
 
   return (
     <div
@@ -11,8 +12,8 @@ const HomePage: React.FC = () => {
         backgroundPosition: "50% 100%",
       }}
     >
-      <div className="hidden sm:block m-auto sm:h-[500px] md:h-[60vh] max-w-full justify-center px-10">
-        <div className="h-6 mb-4">
+      <div className="hidden sm:block m-auto sm:h-[500px] max-w-full justify-center">
+        <div className="h-6 mb-4 relative">
           <h1
             className={`text-inception-green text-xl font-inception m-auto text-center md:text-left lg:-ml-24 ${
               displayText ? "opacity-100" : "opacity-0"
@@ -20,6 +21,9 @@ const HomePage: React.FC = () => {
           >
             Nice to see ya strangers on the subway, to the black market?
           </h1>
+          <div className="absolute -top-36 -right-36 w-96">
+            <img src="/images/skater.png" alt=""></img>
+          </div>
         </div>
         <div className="relative opacity-100 transform-all duration-200 z-10">
           <img
@@ -46,7 +50,7 @@ const HomePage: React.FC = () => {
       </div>
       <div className="flex items-center gap-4 absolute bottom-3 left-3">
         <div className="flex flex-col text-right text-xs text-inception-gray font-inception">
-          <a>© 2022 Inception Animals</a>
+          <a>© 2022 Ube Studios Inc.</a>
           <a>All Rights Reserved.</a>
         </div>
 
