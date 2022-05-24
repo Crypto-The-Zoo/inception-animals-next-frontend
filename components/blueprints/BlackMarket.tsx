@@ -45,7 +45,7 @@ const BlackMarket: React.FC = () => {
         })}
         {renderLeadingText()}
         {TextOnBanner({
-          content: "royalty decided by community",
+          content: "stake to earn",
         })}
         {renderRoyaltyText()}
       </section>

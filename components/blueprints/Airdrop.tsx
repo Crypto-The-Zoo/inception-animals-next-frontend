@@ -4,7 +4,7 @@ import TextOnBanner from "../coreui/TextOnBanner"
 
 const Airdrop: React.FC = () => {
   const renderLeadingText = () => {
-    const contents: string[] = [`To the Moon`]
+    const contents: string[] = [`TODO`]
     return <InceptionTextBlock contents={contents} />
   }
 
@@ -12,7 +12,7 @@ const Airdrop: React.FC = () => {
     <div className="relative h-full">
       <section className="font-inception-ink flex flex-col">
         {TextOnBanner({
-          content: "to the moon",
+          content: "TODO",
         })}
         {renderLeadingText()}
       </section>

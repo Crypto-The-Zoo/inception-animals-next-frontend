@@ -16,10 +16,9 @@ const Community: React.FC = () => {
   const renderLeadingText = () => {
     const contents: string[] = [
       `A unique, delightful discord server where we do things differently.`,
-      `A corner where you can come and chill.`,
+      `A group of outcasts you can connect with to create unity and bonds.`,
       `No massive marketing, shills, and promotions.`,
       `Just good vibe chit chats and a lovely space to chat about arts, anime, sports, food, and games.`,
-      `A peaceful of land fully managed by the community.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }

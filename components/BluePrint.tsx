@@ -10,6 +10,7 @@ import Community from "./blueprints/Community"
 import Airdrop from "./blueprints/Airdrop"
 import Teleport from "./blueprints/Teleport"
 import TheBathroom from "./blueprints/TheBathroom"
+import CornerStore from "./blueprints/CornerStore"
 
 const BluePrint: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -27,7 +28,7 @@ const BluePrint: React.FC = () => {
           primary: <Community />,
           secondary: "/images/airdrop.png",
         }
-      case "on the street":
+      case "we are outcasts on the street":
         return {
           primary: <TheStreet />,
           secondary: "/images/skater.png",
@@ -39,7 +40,7 @@ const BluePrint: React.FC = () => {
         }
       case "corner store":
         return {
-          primary: <BlackMarket />,
+          primary: <CornerStore />,
           secondary: "/images/merch.png",
         }
       case "airdrop":
@@ -47,7 +48,7 @@ const BluePrint: React.FC = () => {
           primary: <Airdrop />,
           secondary: "/images/airdrop.png",
         }
-      case "teleport":
+      case "secret mission":
         return {
           primary: <Teleport />,
           secondary: "/images/airdrop.png",
@@ -66,7 +67,7 @@ const BluePrint: React.FC = () => {
   const bluePrints = [
     {
       index: "meta. ",
-      name: "on the street",
+      name: "we are outcasts on the street",
       gridCss: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-3",
       gridCssSm: "col-start-1 col-end-2 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
@@ -75,7 +76,7 @@ const BluePrint: React.FC = () => {
     },
     {
       index: "infra. ",
-      name: "teleport",
+      name: "secret mission",
       gridCss: "lg:col-start-2 lg:col-end-5 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-1 col-end-3 row-start-4 row-end-5",
       backgroundImg: "bg-[#eceae1]",
@@ -204,11 +205,11 @@ const BluePrint: React.FC = () => {
   const renderActiveSession = () => {
     const renderTopPanel = () => {
       return (
-        <div className="flex h-14 justify-between py-8 border-b-2 border-inception-red items-center">
+        <div className="flex h-14 justify-between py-8 border-b-2 border-inception-taro items-center">
           <div className="font-inception-ink text-2xl">{activeSession}</div>
           <div className="font-inception-ink text-lg">
             <div
-              className="flex items-center bg-inception-red rounded-md p-2 gap-2 cursor-pointer"
+              className="flex items-center bg-inception-taro rounded-md p-2 gap-2 cursor-pointer"
               onClick={() => toggleShowModal()}
             >
               <div className="text-inception-off-white">back to blueprint</div>
