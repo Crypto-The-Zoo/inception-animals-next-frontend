@@ -71,7 +71,7 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-1 col-end-2 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/skater.png",
-      imgPosCss: "lg:w-[30vw] lg:max-w-[60vh]",
+      imgPosCss: "lg:w-[35vw] lg:max-w-[80vh]",
     },
     {
       index: "infra. ",
@@ -289,7 +289,7 @@ const BluePrint: React.FC = () => {
         <br></br>
       </section>
 
-      <section className="px-4 lg:px-24 my-6 relative h-[40vw] max-h-[80vh] flex">
+      <section className="px-4 lg:px-24 my-6 relative h-[40vw] max-h-[80vh] flex lg:mt-24">
         {renderGraphLayout()}
         {renderActiveSession()}
       </section>
