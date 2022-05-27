@@ -17,7 +17,7 @@ const FoundingTeam: React.FC = () => {
       description: `Previous a management consultant at Big 4, now an engineer and emerging leader in developing and nurturing web3 projects. `,
       extraDescription:
         "Alfredoo brings experience from working at multiple international and major crypto companies while being a co-founder at both Flunks Inc. and Inception Animals.",
-      imgSrc: "cyber_hippo.jpg",
+      imgSrc: "smoking_hippo.jpg",
     },
     {
       name: "Ellen",
@@ -26,14 +26,14 @@ const FoundingTeam: React.FC = () => {
       extraDescription: "",
       imgSrc: "hare_4.jpg",
     },
-    {
-      name: "Yan",
-      title: "Strategy & Operations",
-      description: `Previously an experienced consultant at McKinsey & Company and the United Nations, currently a core member of Moody's Investors Service in Asia.`,
-      extraDescription:
-        "Yan has 7 years of experience in various industries covering management consulting, operations, investment, and non-profit organizations after graduating from Johns Hopkins University with a master's degree in International economics focusing on energy, resource, and environment.",
-      imgSrc: "koala_1.jpg",
-    },
+    // {
+    //   name: "Yan",
+    //   title: "Strategy & Operations",
+    //   description: `Previously an experienced consultant at McKinsey & Company and the United Nations, currently a core member of Moody's Investors Service in Asia.`,
+    //   extraDescription:
+    //     "Yan has 7 years of experience in various industries covering management consulting, operations, investment, and non-profit organizations after graduating from Johns Hopkins University with a master's degree in International economics focusing on energy, resource, and environment.",
+    //   imgSrc: "koala_1.jpg",
+    // },
     {
       name: "BusterPackster",
       title: "Marketing & Media Manager",

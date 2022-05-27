@@ -36,7 +36,7 @@ const BluePrint: React.FC = () => {
       case "black market":
         return {
           primary: <BlackMarket />,
-          secondary: "/images/airdrop.png",
+          secondary: "/images/wanted.png",
         }
       case "corner store":
         return {
@@ -81,7 +81,7 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-1 col-end-3 row-start-4 row-end-5",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
-      imgPosCss: " w-[45vw] max-w-[30vh] lg:w-[20vh] lg:max-w-[30vh]",
+      imgPosCss: " w-[45vw] max-w-[30vh] lg:w-[15vw] lg:max-w-[30vh]",
     },
     {
       index: "01. ",
@@ -100,7 +100,7 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/wanted.png",
-      imgPosCss: "lg:w-[20vh] lg:max-w-[30vh]",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
     },
     {
       index: "03. ",
@@ -109,7 +109,7 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-2 col-end-3 row-start-2 row-end-3",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
-      imgPosCss: "lg:w-[20vh] lg:max-w-[30vh]",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
     },
     {
       index: "04. ",
@@ -118,7 +118,7 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
-      imgPosCss: "lg:w-[20vh] lg:max-w-[30vh]",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
     },
     {
       index: "05. ",
@@ -234,7 +234,7 @@ const BluePrint: React.FC = () => {
             <img
               src={secondarySection}
               alt=""
-              className="h-full object-cover"
+              className="h-full object-cover m-auto"
             ></img>
           )
         } else {
