@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faBars,
@@ -14,7 +14,14 @@ const Navigation: React.FC = () => {
   const router = useRouter()
   const { pathname } = router
 
+  let [backgroundCss, setBackgroundCss] = useState("bg-inception-off-white")
   let [showMenu, setShowMenu] = useState<boolean>(false)
+
+  // useEffect(() => {
+  //   if (pathname === "/blueprint") {
+  //     setBackgroundCss("bg-inception-off-white")
+  //   }
+  // }, [])
 
   const navLinks = [
     { name: "HOME", link: "/", isOpen: true },
@@ -46,7 +53,9 @@ const Navigation: React.FC = () => {
 
   return (
     <main>
-      <header className="w-full flex justify-between items-center p-6 fixed top-0 z-50 left-2 right-2">
+      <header
+        className={`w-full flex justify-between items-center p-6 fixed top-0 z-50 ${backgroundCss}`}
+      >
         <Link href="/" passHref>
           <h2 className="w-28 cursor-pointer">
             <img

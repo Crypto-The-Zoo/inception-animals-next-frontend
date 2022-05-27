@@ -6,9 +6,9 @@ import BluePrint from "../components/BluePrint"
 import Footer from "../components/Footer"
 import Head from "next/head"
 
-const Home: NextPage = () => {
+const Blueprint: NextPage = () => {
   return (
-    <div className="w-full">
+    <div className="w-full  min-h-screen max-w-screen">
       <div>
         <Head>
           <title>Inception Animals</title>
@@ -35,4 +35,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Blueprint

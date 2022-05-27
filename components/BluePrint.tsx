@@ -26,9 +26,9 @@ const BluePrint: React.FC = () => {
       case "community":
         return {
           primary: <Community />,
-          secondary: "/images/airdrop.png",
+          secondary: "/images/pole.png",
         }
-      case "we are outcasts on the street":
+      case "outcasts on the street":
         return {
           primary: <TheStreet />,
           secondary: "/images/skater.png",
@@ -67,12 +67,12 @@ const BluePrint: React.FC = () => {
   const bluePrints = [
     {
       index: "meta. ",
-      name: "we are outcasts on the street",
+      name: "outcasts on the street",
       gridCss: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-3",
       gridCssSm: "col-start-1 col-end-2 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/skater.png",
-      imgPosCss: "lg:w-[35vw] lg:max-w-[80vh]",
+      imgPosCss: "lg:w-[35vw] lg:max-w-[50vh]",
     },
     {
       index: "infra. ",
@@ -81,16 +81,17 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-1 col-end-3 row-start-4 row-end-5",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
-      imgPosCss: " w-[45vw] max-w-[30vh] lg:w-[15vw] lg:max-w-[30vh]",
+      imgPosCss: " w-[45vw] max-w-[30vh] lg:w-[20vh] lg:max-w-[30vh]",
     },
     {
       index: "01. ",
       name: "community",
       gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
       gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
-      backgroundImg: "bg-[#eceae1]",
-      imgPath: "/images/airdrop.png",
-      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
+      backgroundImg:
+        "bg-[#eceae1] bg-pole bg-no-repeat bg-contain bp-right-bottom",
+      imgPath: "",
+      imgPosCss: "lg:w-[20vh] lg:max-w-[34vh]",
     },
     {
       index: "02. ",
@@ -98,8 +99,8 @@ const BluePrint: React.FC = () => {
       gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-1 lg:row-end-2",
       gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
       backgroundImg: "bg-[#eceae1]",
-      imgPath: "/images/airdrop.png",
-      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
+      imgPath: "/images/wanted.png",
+      imgPosCss: "lg:w-[20vh] lg:max-w-[30vh]",
     },
     {
       index: "03. ",
@@ -108,7 +109,7 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-2 col-end-3 row-start-2 row-end-3",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
-      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
+      imgPosCss: "lg:w-[20vh] lg:max-w-[30vh]",
     },
     {
       index: "04. ",
@@ -117,7 +118,7 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
-      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
+      imgPosCss: "lg:w-[20vh] lg:max-w-[30vh]",
     },
     {
       index: "05. ",
@@ -151,12 +152,12 @@ const BluePrint: React.FC = () => {
         }}
       >
         <div
-          className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink z-10 absolute left-1 top-1"
+          className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink z-10 absolute bottom-1 left-1"
           onClick={() => toggleShowModal(bluePrintConfig.name)}
         >
           {`${bluePrintConfig.index} ${bluePrintConfig?.name}`}
         </div>
-        <div className={`absolute -bottom-4 -right-4`}>
+        <div className={`absolute -bottom-0 -right-0`}>
           <img
             src={bluePrintConfig.imgPath}
             alt=""
@@ -191,13 +192,14 @@ const BluePrint: React.FC = () => {
 
   const renderGraphLayout = () => {
     return (
-      <div className="flex absolute items-center justify-center">
+      <div className="flex relative items-center justify-center m-auto">
         {/* {renderBlueprintCenter()} */}
-        <div className="relative grid w-[90vw] h-[180vw] lg:w-[80vw] lg:h-[40vw] lg:max-h-[80vh] items-center justify-center gap-4 grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-3">
+        <div className="relative grid w-[90vw] h-[180vw] lg:w-[95vw] lg:h-[50vw] lg:max-h-[70vh] max-w-[2048px] items-center justify-center gap-[2px] grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-3">
           {bluePrints.map((bluePrint, index) => {
             return <>{renderBluePrint(bluePrint)}</>
           })}
         </div>
+        {renderActiveSession()}
       </div>
     )
   }
@@ -268,7 +270,7 @@ const BluePrint: React.FC = () => {
 
     return (
       <div
-        className={`absolute w-[90vw] h-[180vw] lg:w-[80vw] lg:h-[40vw] items-center opacity-100 border-t-8 border-b-8 bg-inception-off-white bg-opacity-60 backdrop-blur-sm transition-all animate-fadeIn duration-75 z-40 border-inception-red ${
+        className={`absolute w-[90vw] h-[180vw] lg:w-[95vw] lg:h-[50vw] lg:max-h-[70vh] max-w-[2048px] items-center opacity-100 border-t-8 border-b-8 bg-inception-off-white bg-opacity-60 backdrop-blur-sm transition-all animate-fadeIn duration-75 z-40 border-inception-red ${
           showModal ? "" : "hidden"
         }`}
       >
@@ -279,8 +281,8 @@ const BluePrint: React.FC = () => {
   }
 
   return (
-    <div className="mt-24 lg:mt-32 relative h-full pb-40 w-screen">
-      <section className="font-inception-ink px-12 lg:px-24 flex flex-col">
+    <div className="mt-24 lg:pt-12 relative h-full pb-40">
+      <section className="font-inception-ink px-12 lg:px-4 flex flex-col">
         <h1 className="uppercase font-inception-ink text-2xl text-inception-light-brown">
           blueprint
         </h1>
@@ -290,10 +292,10 @@ const BluePrint: React.FC = () => {
         <br></br>
       </section>
 
-      <section className="px-4 lg:px-24 my-6 relative h-[40vw] max-h-[80vh] flex lg:mt-24">
+      <div className="px-4 my-6 relative h-[40vw] max-h-[80vh] flex lg:mt-4">
         {renderGraphLayout()}
-        {renderActiveSession()}
-      </section>
+        {/* {renderActiveSession()} */}
+      </div>
     </div>
   )
 }

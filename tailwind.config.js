@@ -41,6 +41,8 @@ module.exports = {
         skater: "url('/images/skater.png')",
         airdrop: "url('/images/airdrop.png')",
         merch: "url('/images/merch.png')",
+        pole: "url('/images/pole.png')",
+        wanted: "url('/images/wanted.png')",
       },
       animation: {
         fadeIn: "fadeIn 0.5s",
