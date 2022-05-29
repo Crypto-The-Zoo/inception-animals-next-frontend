@@ -11,6 +11,7 @@ import Airdrop from "./blueprints/Airdrop"
 import Teleport from "./blueprints/Teleport"
 import TheBathroom from "./blueprints/TheBathroom"
 import CornerStore from "./blueprints/CornerStore"
+import BluePrintBox from "./blueprints/BluePrintBox"
 
 const BluePrint: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -48,7 +49,7 @@ const BluePrint: React.FC = () => {
           primary: <Airdrop />,
           secondary: "/images/airdrop.png",
         }
-      case "secret mission":
+      case "the secret mission":
         return {
           primary: <Teleport />,
           secondary: "/images/airdrop.png",
@@ -76,7 +77,7 @@ const BluePrint: React.FC = () => {
     },
     {
       index: "infra. ",
-      name: "secret mission",
+      name: "the secret mission",
       gridCss: "lg:col-start-1 lg:col-end-4 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-1 col-end-3 row-start-4 row-end-5",
       backgroundImg: "bg-[#eceae1]",
@@ -141,30 +142,10 @@ const BluePrint: React.FC = () => {
     imgPosCss: string
   }) => {
     return (
-      <a
-        href="#"
-        className={`grid absolute w-full h-full max-h-[80vh] items-center justify-center ${bluePrintConfig.backgroundImg} bg-cover border-2
-        ${bluePrintConfig.gridCssSm} ${bluePrintConfig.gridCss}`}
-        onClick={(e) => {
-          e.preventDefault()
-          toggleShowModal(bluePrintConfig.name)
-          return false
-        }}
-      >
-        <div
-          className="text-center uppercase text-lg bg-inception-light-green rounded-md bg-opacity-80 p-2 text-inception-green font-bold font-inception-ink z-10 absolute bottom-1 left-1"
-          onClick={() => toggleShowModal(bluePrintConfig.name)}
-        >
-          {`${bluePrintConfig.index} ${bluePrintConfig?.name}`}
-        </div>
-        <div className={`absolute -bottom-0 -right-0`}>
-          <img
-            src={bluePrintConfig.imgPath}
-            alt=""
-            className={`${bluePrintConfig.imgPosCss}`}
-          ></img>
-        </div>
-      </a>
+      <BluePrintBox
+        bluePrintConfig={bluePrintConfig}
+        toggleShowModal={toggleShowModal}
+      />
     )
   }
 
