@@ -7,16 +7,16 @@ const FoundingTeam: React.FC = () => {
     {
       name: "A Friendly Yokai",
       title: "Co-founder & Artist",
-      description: `A Friendly Yokai is a core designer & artist working on well-known TV shows such as Rick and Morty, Star Trek Lower Decks, etc.`,
+      description: `A core designer & artist working on well-known TV shows such as Rick and Morty, Star Trek Lower Decks, etc.`,
       extraDescription: `While having a successful journey in her career in the entertainment and TV industry, she is graduated with an animation degree from Sheridan, famously known as the "Harvard of animation".`,
       imgSrc: "hare_1.jpg",
     },
     {
       name: "Alfredoo",
       title: "Co-founder & Engineer",
-      description: `Previous a management consultant at Big 4, now an engineer and emerging leader in developing and nurturing web3 projects. `,
+      description: `Engineer and emerging leader in developing and nurturing web3 projects. `,
       extraDescription:
-        "Alfredoo brings experience from working at multiple international and major crypto companies while being a co-founder at both Flunks Inc. and Inception Animals.",
+        "Alfredoo started his career as a management consultant at Deloitte. He brings experience from working at multiple international and major crypto companies while being a co-founder at both Flunks Inc. and Inception Animals.",
       imgSrc: "smoking_hippo.jpg",
     },
     {

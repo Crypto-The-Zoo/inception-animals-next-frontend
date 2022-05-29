@@ -68,7 +68,7 @@ const BluePrint: React.FC = () => {
     {
       index: "meta. ",
       name: "outcasts on the street",
-      gridCss: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-3",
+      gridCss: "lg:col-start-3 lg:col-end-5 lg:row-start-1 lg:row-end-3",
       gridCssSm: "col-start-1 col-end-2 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/skater.png",
@@ -77,7 +77,7 @@ const BluePrint: React.FC = () => {
     {
       index: "infra. ",
       name: "secret mission",
-      gridCss: "lg:col-start-2 lg:col-end-5 lg:row-start-3 lg:row-end-4",
+      gridCss: "lg:col-start-1 lg:col-end-4 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-1 col-end-3 row-start-4 row-end-5",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
@@ -86,7 +86,7 @@ const BluePrint: React.FC = () => {
     {
       index: "01. ",
       name: "community",
-      gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
+      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-2",
       gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
       backgroundImg:
         "bg-[#eceae1] bg-pole bg-no-repeat bg-contain bp-right-bottom",
@@ -96,7 +96,7 @@ const BluePrint: React.FC = () => {
     {
       index: "02. ",
       name: "black market",
-      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-1 lg:row-end-2",
+      gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
       gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/wanted.png",
@@ -105,7 +105,7 @@ const BluePrint: React.FC = () => {
     {
       index: "03. ",
       name: "airdrop",
-      gridCss: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
+      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-3",
       gridCssSm: "col-start-2 col-end-3 row-start-2 row-end-3",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
@@ -114,7 +114,7 @@ const BluePrint: React.FC = () => {
     {
       index: "04. ",
       name: "the bathroom",
-      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
@@ -123,7 +123,7 @@ const BluePrint: React.FC = () => {
     {
       index: "05. ",
       name: "corner store",
-      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-2 lg:row-end-3",
+      gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
       gridCssSm: "col-start-2 col-end-3 row-start-3 row-end-4",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/merch.png",
@@ -143,7 +143,7 @@ const BluePrint: React.FC = () => {
     return (
       <a
         href="#"
-        className={`grid absolute w-full h-full max-h-[80vh] items-center justify-center ${bluePrintConfig.backgroundImg} bg-cover border-2 border-inception-light-green hover:border-inception-green
+        className={`grid absolute w-full h-full max-h-[80vh] items-center justify-center ${bluePrintConfig.backgroundImg} bg-cover border-2
         ${bluePrintConfig.gridCssSm} ${bluePrintConfig.gridCss}`}
         onClick={(e) => {
           e.preventDefault()
@@ -152,7 +152,7 @@ const BluePrint: React.FC = () => {
         }}
       >
         <div
-          className="text-center uppercase text-lg bg-inception-light-green rounded-md p-2 text-inception-green font-bold font-inception-ink z-10 absolute bottom-1 left-1"
+          className="text-center uppercase text-lg bg-inception-light-green rounded-md bg-opacity-80 p-2 text-inception-green font-bold font-inception-ink z-10 absolute bottom-1 left-1"
           onClick={() => toggleShowModal(bluePrintConfig.name)}
         >
           {`${bluePrintConfig.index} ${bluePrintConfig?.name}`}
