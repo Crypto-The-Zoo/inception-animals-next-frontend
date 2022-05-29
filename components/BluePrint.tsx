@@ -72,7 +72,7 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-1 col-end-2 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/skater.png",
-      imgPosCss: "lg:w-[35vw] lg:max-w-[50vh]",
+      imgPosCss: "lg:w-[50vw] lg:max-w-[60vh]",
     },
     {
       index: "infra. ",
