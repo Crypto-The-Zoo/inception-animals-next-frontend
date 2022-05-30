@@ -5,8 +5,8 @@ import TextOnBanner from "../coreui/TextOnBanner"
 const Teleport: React.FC = () => {
   const renderLeadingText = () => {
     const contents: string[] = [
-      `Currently the only portal between multiple chains is web2 platforms like OpenSea & Twitter.`,
-      `Inception Animals explores the boundaries of the multi-chain connection in a web3 manner on this secret mission.`,
+      `Explores the boundaries of the multi-chain connection in a web3 manner on this secret mission.`,
+      `Build a web3 portal on top of the web2 platforms.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
@@ -22,7 +22,7 @@ const Teleport: React.FC = () => {
     <div className="relative h-full">
       <section className="font-inception-ink flex flex-col">
         {TextOnBanner({
-          content: "web3 approach for Flow to outreach",
+          content: "web3 approach for multi-chain",
         })}
         {renderLeadingText()}
         {TextOnBanner({
