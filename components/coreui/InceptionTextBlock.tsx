@@ -15,11 +15,20 @@ const InceptionTextBlock: React.FC<{
               "brings industry standard and awareness to the NFT space",
               "growth of the Flow eco-system",
               "identity traders",
-              "Land owners will receive a portion of the royalty",
+              "A majority of the royalty will go back to the community",
+              "Land owners will receive a portion of the royalty generated from the black market transactions",
+              "All Inception Avatar owners will be granted a raffle entry ",
               "All Inception Avatar owners will enter a raffle",
               "gifted back to the true fams",
               "We are parkourers, skaters, runners, and skydivers of web3",
-              "we may be alone, we may be outcast, there will always be others we can connect with to create unity and bonds",
+              "we might be alone, we might be outcasts",
+              "innovative revenue-sharing model",
+              "exclusive Inception Animals merch",
+              "airdrop collections",
+              "pass/allowlist",
+              "expand Flow to a broader eco-system",
+              "establish a multi-chain standard",
+              "scarcity for Genesis Inception Avatars and privileged benefits for its holders",
             ]}
             autoEscape={true}
             textToHighlight={content}

@@ -195,7 +195,7 @@ const Navigation: React.FC = () => {
             </div>
           </ul>
           <p className=" flex flex-col mt-6 opacity-80 text-left uppercase text-2xs pb-4 px-4 text-inception-green font-inception-ink">
-            <span>© 2022 Inception Animals</span>
+            <span>© 2022 Ube Studios Inc.</span>
             <span>All Rights Reserved.</span>
 
             <br />
@@ -208,7 +208,7 @@ const Navigation: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              End User License Agreement
+              [redacted] End User License Agreement
             </a>
             <br />
             <a
@@ -217,7 +217,7 @@ const Navigation: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Privacy Policy
+              [redacted] Privacy Policy
             </a>
           </p>
         </section>

@@ -5,13 +5,18 @@ import TextOnBanner from "../coreui/TextOnBanner"
 const CornerStore: React.FC = () => {
   const renderLeadingText = () => {
     const contents: string[] = [
-      `access to exclusive Inception Animals merch for Inception Animals avatar holders.`,
+      `Access to exclusive Inception Animals merch for Inception Animals NFT holders.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
 
   const renderSecondaryText = () => {
-    const contents: string[] = [``]
+    const contents: string[] = [`Redacted...`]
+    return <InceptionTextBlock contents={contents} />
+  }
+
+  const renderAnotherText = () => {
+    const contents: string[] = [`Redacted...`]
     return <InceptionTextBlock contents={contents} />
   }
 
@@ -23,9 +28,13 @@ const CornerStore: React.FC = () => {
         })}
         {renderLeadingText()}
         {TextOnBanner({
-          content: "redacted",
+          content: "collectibles",
         })}
         {renderSecondaryText()}
+        {TextOnBanner({
+          content: "hiring",
+        })}
+        {renderAnotherText()}
       </section>
     </div>
   )

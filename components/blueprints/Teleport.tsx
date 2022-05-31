@@ -13,7 +13,7 @@ const Teleport: React.FC = () => {
 
   const renderBrandText = () => {
     const contents: string[] = [
-      `Gauge public interest with the culture & brand.`,
+      `Establish a quality web3 cultural brand to bring Inception Animals to social awareness.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
@@ -26,7 +26,7 @@ const Teleport: React.FC = () => {
         })}
         {renderLeadingText()}
         {TextOnBanner({
-          content: "bring awareness with a niche brand",
+          content: "bring awareness with a quality brand",
         })}
         {renderBrandText()}
       </section>
