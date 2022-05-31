@@ -27,7 +27,7 @@ const BluePrint: React.FC = () => {
       case "community":
         return {
           primary: <Community />,
-          secondary: "/images/pole.png",
+          secondary: "/images/utility_pole.png",
         }
       case "outcasts on the street":
         return {
@@ -52,12 +52,12 @@ const BluePrint: React.FC = () => {
       case "the secret mission":
         return {
           primary: <Teleport />,
-          secondary: "/images/airdrop.png",
+          secondary: "/images/80s_laptop.png",
         }
       case "the bathroom":
         return {
           primary: <TheBathroom />,
-          secondary: "/images/airdrop.png",
+          secondary: "/images/toilet.png",
         }
 
       default:
@@ -81,7 +81,7 @@ const BluePrint: React.FC = () => {
       gridCss: "lg:col-start-1 lg:col-end-4 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-1 col-end-3 row-start-4 row-end-5",
       backgroundImg: "bg-[#eceae1]",
-      imgPath: "/images/airdrop.png",
+      imgPath: "/images/80s_laptop.png",
       imgPosCss: " w-[45vw] max-w-[30vh] lg:w-[15vw] lg:max-w-[30vh]",
     },
     {
@@ -118,7 +118,7 @@ const BluePrint: React.FC = () => {
       gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
-      imgPath: "/images/airdrop.png",
+      imgPath: "/images/toilet.png",
       imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
     },
     {
@@ -251,7 +251,7 @@ const BluePrint: React.FC = () => {
 
     return (
       <div
-        className={`absolute w-[90vw] h-[180vw] lg:w-[95vw] lg:h-[50vw] lg:max-h-[70vh] max-w-[2048px] items-center opacity-100 border-t-8 border-b-8 bg-inception-off-white bg-opacity-60 backdrop-blur-sm transition-all animate-fadeIn duration-75 z-40 border-inception-red ${
+        className={`absolute w-[90vw] h-[180vw] lg:w-[95vw] lg:h-[50vw] lg:max-h-[70vh] max-w-[2048px] items-center opacity-100 border-t-8 border-b-8 bg-inception-off-white bg-opacity-100 transition-all animate-fadeIn duration-75 z-40 border-inception-red ${
           showModal ? "" : "hidden"
         }`}
       >
