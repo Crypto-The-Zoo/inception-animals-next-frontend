@@ -35,10 +35,10 @@ const FoundingTeam: React.FC = () => {
     //   imgSrc: "koala_1.jpg",
     // },
     {
-      name: "BusterPackster",
+      name: "Definitely Not Josh",
       title: "Marketing & Media Manager",
       description:
-        "From the community, always posting the most innovative content on social media.",
+        "From the community, for the community. A regular guy from Scarborough, always posting the most innovative content on social media.",
       extraDescription: "",
       imgSrc: "sports_hippo.jpg",
     },

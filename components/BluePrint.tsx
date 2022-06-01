@@ -73,62 +73,61 @@ const BluePrint: React.FC = () => {
       gridCssSm: "col-start-1 col-end-2 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/skater.png",
-      imgPosCss: "lg:w-[50vw] lg:max-w-[60vh]",
+      imgPosCss: "lg:w-[45vw] lg:max-w-[70vh]",
     },
     {
       index: "infra. ",
       name: "the secret mission",
-      gridCss: "lg:col-start-1 lg:col-end-4 lg:row-start-3 lg:row-end-4",
+      gridCss: "lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-1 col-end-3 row-start-4 row-end-5",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/80s_laptop.png",
-      imgPosCss: " w-[45vw] max-w-[30vh] lg:w-[15vw] lg:max-w-[30vh]",
+      imgPosCss: "w-[50vw] max-w-[50vh] lg:w-[15vw] lg:max-w-[25vh]",
     },
     {
       index: "01. ",
       name: "community",
-      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-2",
+      gridCss: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-2",
       gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
-      backgroundImg:
-        "bg-[#eceae1] bg-pole bg-no-repeat bg-contain bp-right-bottom",
+      backgroundImg: "bg-[#eceae1] bg-pole bg-contain bg-no-repeat bg-center",
       imgPath: "",
-      imgPosCss: "lg:w-[20vh] lg:max-w-[34vh]",
+      imgPosCss: "",
     },
     {
       index: "02. ",
       name: "black market",
-      gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-3",
       gridCssSm: "col-start-1 col-end-2 row-start-3 row-end-4",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/wanted.png",
-      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[25vh]",
     },
     {
       index: "03. ",
       name: "airdrop",
-      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-3",
+      gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
       gridCssSm: "col-start-2 col-end-3 row-start-2 row-end-3",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/airdrop.png",
-      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[25vh]",
     },
     {
       index: "04. ",
       name: "the bathroom",
-      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-3 lg:row-end-4",
+      gridCss: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-2 col-end-3 row-start-1 row-end-2",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/toilet.png",
-      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[25vh]",
     },
     {
       index: "05. ",
       name: "corner store",
-      gridCss: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
+      gridCss: "lg:col-start-4 lg:col-end-5 lg:row-start-3 lg:row-end-4",
       gridCssSm: "col-start-2 col-end-3 row-start-3 row-end-4",
       backgroundImg: "bg-[#eceae1]",
       imgPath: "/images/merch.png",
-      imgPosCss: "lg:w-[15vw] lg:max-w-[30vh]",
+      imgPosCss: "lg:w-[15vw] lg:max-w-[25vh]",
     },
   ]
 
@@ -175,7 +174,7 @@ const BluePrint: React.FC = () => {
     return (
       <div className="flex relative items-center justify-center m-auto">
         {/* {renderBlueprintCenter()} */}
-        <div className="relative grid w-[90vw] h-[180vw] lg:w-[95vw] lg:h-[50vw] lg:max-h-[70vh] max-w-[2048px] items-center justify-center gap-[2px] grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-3">
+        <div className="relative grid w-[90vw] h-[180vw] lg:w-[95vw] lg:h-[50vw] lg:max-h-[70vh] max-w-[2048px] items-center justify-center gap-2 grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-3">
           {bluePrints.map((bluePrint, index) => {
             return <>{renderBluePrint(bluePrint)}</>
           })}

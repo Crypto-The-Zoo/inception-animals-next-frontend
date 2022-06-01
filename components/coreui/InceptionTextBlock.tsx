@@ -28,7 +28,10 @@ const InceptionTextBlock: React.FC<{
               "pass/allowlist",
               "expand Flow to a broader eco-system",
               "establish a multi-chain standard",
-              "scarcity for Genesis Inception Avatars and privileged benefits for its holders",
+              "scarcity for genesis Inception Avatars and privileged benefits for its holders",
+              "we may be alone, we may be outcasts",
+              "a peaceful mind",
+              ,
             ]}
             autoEscape={true}
             textToHighlight={content}
