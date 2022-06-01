@@ -14,7 +14,7 @@ const Navigation: React.FC = () => {
   const router = useRouter()
   const { pathname } = router
 
-  let [backgroundCss, setBackgroundCss] = useState("bg-inception-off-white")
+  // let [backgroundCss, setBackgroundCss] = useState("bg-inception-off-white")
   let [showMenu, setShowMenu] = useState<boolean>(false)
 
   // useEffect(() => {
@@ -54,7 +54,7 @@ const Navigation: React.FC = () => {
   return (
     <main>
       <header
-        className={`w-full flex justify-between items-center p-6 fixed top-0 z-50 ${backgroundCss}`}
+        className={`w-full flex justify-between items-center p-6 fixed top-0 z-50`}
       >
         <Link href="/" passHref>
           <h2 className="w-28 cursor-pointer">

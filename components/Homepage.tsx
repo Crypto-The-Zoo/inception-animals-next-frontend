@@ -45,9 +45,9 @@ const HomePage: React.FC = () => {
           <h1 className="font-inception text-inception-gray lg:-ml-20 relative z-20 text-md mt-4">
             A retro futuristic metaverse brand
           </h1>
-          <div className="absolute bottom-12 -left-6 w-96 z-50">
+          {/* <div className="absolute bottom-12 -left-6 w-96 z-50">
             <img src="/images/skater.png" alt=""></img>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="flex items-center gap-4 absolute bottom-3 left-3">
