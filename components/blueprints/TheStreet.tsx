@@ -24,7 +24,7 @@ const TheStreet: React.FC = () => {
   const renderValuesText = () => {
     const contents: string[] = [
       `Every building block starts with the community and ends with the community.`,
-      `Offer high-quality art that brings industry-standard and awareness to the NFT space. It’s easy to follow the flow (the trend, not the blockchain, we should always go with the FLOW), but it’s hard to be original yet have a quality that meets an industry-recognized standard. We are lucky to have Rick and Morty artist to help us brand and pave the universe.`,
+      `Offer high-quality art that brings industry-standard and awareness to the NFT space. It’s easy to follow the flow (the trend, not the blockchain, we should always go with the FLOW), but it’s hard to be original yet have a quality that meets an industry-recognized standard. We are lucky to have a Rick and Morty artist to help us brand and pave the universe.`,
       `Every decision and movement goes around the growth of the Flow eco-system, we’ve seen successful brands growing together with the eco-system they reside in from Ethereum and Solana. Inception Animals will take steps in order to not only build the brand together with the Inception Animals fams but also to improve the diversity of the Flow eco-system as a long-term vision.`,
     ]
     return <InceptionTextBlock contents={contents} />
