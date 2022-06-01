@@ -45,6 +45,12 @@ const Navigation: React.FC = () => {
       desc: "discord",
     },
     // {
+    //   name: <img className="w-5 h-5" src="/icons/opensea.svg" alt=""></img>,
+    //   link: "https://www.inceptionanimals.com",
+    //   isOpen: false,
+    //   desc: "opensea",
+    // },
+    // {
     //   name: <FontAwesomeIcon icon={faBookBookmark} className="w-4 h-4" />,
     //   link: "https://alliu930410.gitbook.io/inception-animals",
     //   isOpen: true,
