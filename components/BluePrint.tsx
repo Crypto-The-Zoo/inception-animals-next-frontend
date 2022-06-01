@@ -89,7 +89,8 @@ const BluePrint: React.FC = () => {
       name: "community",
       gridCss: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-2",
       gridCssSm: "col-start-1 col-end-2 row-start-2 row-end-3",
-      backgroundImg: "bg-[#eceae1] bg-pole bg-contain bg-no-repeat bg-center",
+      backgroundImg:
+        "bg-[#eceae1] bg-pole bg-cover bg-no-repeat bg-center lg:bg-right lg:bg-contain",
       imgPath: "",
       imgPosCss: "",
     },
