@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 
 import FounderProfile from "./coreui/FounderProfile"
+import InceptionTextBlock from "./coreui/InceptionTextBlock"
+import TextOnBanner from "./coreui/TextOnBanner"
 
 const Parchment: React.FC = () => {
   const teamMembers = [
@@ -71,44 +73,14 @@ const Parchment: React.FC = () => {
     )
   }
 
-  const renderTextWithBg = ({ content }: { content: string }) => {
-    return (
-      <div className="relative m-2 mt-6">
-        <p className="text-inception-off-white relative z-10 font-inception-ink">{content}</p>
-        <img
-          className="absolute -left-2 -top-1"
-          src="/icons/green_box.svg"
-          alt=""
-        ></img>
-      </div>
-    )
-  }
-
   const renderLeadingText = () => {
-    return (
-      <div className="relative m-2 mt-6 font-inception lg:pr-72 text-xl">
-        <p className="text-inception-light-brown my-4">
-          Inception Animals is a story-driven retrofuturistic metaverse brand
-          built on the Flow blockchain.
-        </p>
-        <p className="text-inception-light-brown my-4">
-          A collection of 3,333 avatars of various animals that give you a
-          unique identity to the universe driven by a never-ending grudge
-          between generations of merits, soldiers, and inventions going against
-          each other in two once peaceful cities: Ascos and Lucinia.
-        </p>
-        <p className="text-inception-light-brown my-4">
-          It starts with high-quality avatars from our beloved artists from
-          well-known TV shows such as Rick and Morty, Star Trek Lower Decks, F
-          is for family, etc. And much more that will be revealed over time.
-        </p>
-        <p className="text-inception-light-brown my-4">
-          The universe is a corner of the internet where we choose the identity
-          we never got a chance to obtain in reality and extend it to the
-          blurring edge of the physical and digital worlds.
-        </p>
-      </div>
-    )
+    const contents: string[] = [
+      `Inception Animals is a story-driven retrofuturistic metaverse brand built on the Flow blockchain.`,
+      `A collection of 3,333 avatars of various animals that give you a unique identity to the universe driven by a never-ending grudge between generations of merits, soldiers, and inventions going against each other in two once peaceful cities: Ascos and Lucinia.`,
+      `It starts with high-quality avatars from our beloved artists from well-known TV shows such as Rick and Morty, Star Trek Lower Decks, F is for family, etc. And much more that will be revealed over time.`,
+      `The universe is a corner of the internet where we choose the identity we never got a chance to obtain in reality and extend it to the blurring edge of the physical and digital worlds.`,
+    ]
+    return <InceptionTextBlock contents={contents} />
   }
 
   const renderUniqueVibeText = () => {
@@ -144,20 +116,20 @@ const Parchment: React.FC = () => {
           subway
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          from point to point
+          [place for the frustrated to meet up
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          a place to meetup
+          faded and revamped by underappreciated artists]
         </h1>
         <br></br>
         {renderRegVideo()}
-        {renderTextWithBg({ content: "inception animals is a culture brand" })}
+        {TextOnBanner({ content: "inception animals is a culture brand" })}
         {renderLeadingText()}
-        {renderTextWithBg({ content: "a unique vibe" })}
+        {TextOnBanner({ content: "a unique vibe" })}
         {renderUniqueVibeText()}
-        {renderTextWithBg({ content: "owned by the community" })}
+        {TextOnBanner({ content: "owned by the community" })}
         {renderOwnedByCommunityText()}
-        {renderTextWithBg({ content: "created by enthusiasts" })}
+        {TextOnBanner({ content: "created by enthusiasts" })}
         {renderTeamSection()}
         {renderFoundingTeam()}
       </section>

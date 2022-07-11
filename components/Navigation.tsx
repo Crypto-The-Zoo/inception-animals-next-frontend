@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faBars,
@@ -14,14 +14,21 @@ const Navigation: React.FC = () => {
   const router = useRouter()
   const { pathname } = router
 
+  // let [backgroundCss, setBackgroundCss] = useState("bg-inception-off-white")
   let [showMenu, setShowMenu] = useState<boolean>(false)
+
+  // useEffect(() => {
+  //   if (pathname === "/blueprint") {
+  //     setBackgroundCss("bg-inception-off-white")
+  //   }
+  // }, [])
 
   const navLinks = [
     { name: "HOME", link: "/", isOpen: true },
-    { name: "SUBWAY", link: "/subway", isOpen: true },
+    { name: "BLUEPRINT", link: "/blueprint", isOpen: true },
     { name: "CITY", link: "/city", isOpen: true },
-    { name: "BLUEPRINT", link: "", isOpen: false },
-    { name: "MARKETPLACE", link: "", isOpen: false },
+    { name: "BLACKMARKET", link: "", isOpen: false },
+    { name: "SECRET MISSION", link: "", isOpen: false },
   ]
 
   const externalNavLinks = [
@@ -38,6 +45,12 @@ const Navigation: React.FC = () => {
       desc: "discord",
     },
     // {
+    //   name: <img className="w-5 h-5" src="/icons/opensea.svg" alt=""></img>,
+    //   link: "https://www.inceptionanimals.com",
+    //   isOpen: false,
+    //   desc: "opensea",
+    // },
+    // {
     //   name: <FontAwesomeIcon icon={faBookBookmark} className="w-4 h-4" />,
     //   link: "https://alliu930410.gitbook.io/inception-animals",
     //   isOpen: true,
@@ -46,7 +59,9 @@ const Navigation: React.FC = () => {
 
   return (
     <main>
-      <header className="w-full flex justify-between items-center p-6 fixed top-0 z-50 left-2 right-2">
+      <header
+        className={`w-full flex justify-between items-center p-6 fixed top-0 z-50`}
+      >
         <Link href="/" passHref>
           <h2 className="w-28 cursor-pointer">
             <img
@@ -98,7 +113,7 @@ const Navigation: React.FC = () => {
                     : " hover:cursor-not-allowed opacity-50"
                 }
                 ${
-                  navLinkObj?.desc === 'twitter'
+                  navLinkObj?.desc === "twitter"
                     ? " hover:text-twitter-blue"
                     : " hover:text-discord-blue"
                 }
@@ -186,7 +201,7 @@ const Navigation: React.FC = () => {
             </div>
           </ul>
           <p className=" flex flex-col mt-6 opacity-80 text-left uppercase text-2xs pb-4 px-4 text-inception-green font-inception-ink">
-            <span>© 2022 Inception Animals</span>
+            <span>© 2022 Ube Studios Inc.</span>
             <span>All Rights Reserved.</span>
 
             <br />
@@ -199,7 +214,7 @@ const Navigation: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              End User License Agreement
+              [redacted] End User License Agreement
             </a>
             <br />
             <a
@@ -208,7 +223,7 @@ const Navigation: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Privacy Policy
+              [redacted] Privacy Policy
             </a>
           </p>
         </section>

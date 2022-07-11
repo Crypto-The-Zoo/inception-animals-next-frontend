@@ -4,19 +4,13 @@ const FounderProfile: React.FC<{
   name: string
   title: string
   description: string
-  extraDescription: string,
+  extraDescription: string
   imgSrc: string
 }> = ({ name, title, description, extraDescription, imgSrc }) => {
   return (
-    <div
-      className="relative items-center flex flex-col font-inception justify-around p-4 self-start w-full md:w-1/2 lg:w-1/4"
-    >
+    <div className="relative items-center flex flex-col font-inception justify-around p-4 self-start w-full md:w-1/2 lg:w-1/2">
       <div className="relative block">
-        <img
-          src={`images/${imgSrc}`}
-          alt=""
-          className="rounded-md hover:scale-110 transform duration-300"
-        />
+        <img src={`images/${imgSrc}`} alt="" className="rounded-md" />
       </div>
       <div className="flex flex-col">
         <a className="text-inception-brown mt-4 text-xl">{name}</a>

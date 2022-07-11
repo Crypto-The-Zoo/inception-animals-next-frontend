@@ -8,7 +8,7 @@ const DisplayButtonDouble: React.FC<{
   return (
     <div
       className={`z-50 rounded-sm shadow-sm h-full flex flex-col items-start justify-center duration-500 cursor-pointer px-4 py-2 ${
-        isActive ? "bg-inception-red" : "bg-inception-gray"
+        isActive ? "bg-inception-taro" : "bg-inception-gray"
       } text-white`}
       onClick={() => {
         setActiveSection(content)

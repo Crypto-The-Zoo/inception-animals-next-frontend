@@ -134,14 +134,14 @@ const CityParchment: React.FC = () => {
   return (
     <div className="mt-24 lg:mt-32 relative h-full pb-40">
       <section className="px-12 lg:px-24 flex flex-col font-inception-ink">
-        <h1 className="uppercase font-inception-ink-italic text-2xl text-inception-light-brown">
+        <h1 className="uppercase font-inception-ink text-2xl text-inception-light-brown">
           Ascos & Lucinia
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          the pride of Zion
+          [the pride of Zion
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          the land of inventions and hope
+          the land of inventions and hope]
         </h1>
         <br></br>
         {renderRegVideo()}

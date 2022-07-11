@@ -3,6 +3,7 @@ import { useState } from "react"
 /* eslint-disable @next/next/no-img-element */
 const HomePage: React.FC = () => {
   const [displayText, setDisplayText] = useState<boolean>(false)
+  const [bannerSrc, setBannerSrc] = useState<string>("/images/banner.png")
 
   return (
     <div
@@ -11,8 +12,8 @@ const HomePage: React.FC = () => {
         backgroundPosition: "50% 100%",
       }}
     >
-      <div className="hidden sm:block m-auto sm:h-[500px] md:h-[60vh] max-w-full justify-center px-10">
-        <div className="h-6 mb-4">
+      <div className="hidden sm:block m-auto sm:h-[500px] max-w-full justify-center">
+        <div className="h-6 mb-4 relative">
           <h1
             className={`text-inception-green text-xl font-inception m-auto text-center md:text-left lg:-ml-24 ${
               displayText ? "opacity-100" : "opacity-0"
@@ -40,13 +41,18 @@ const HomePage: React.FC = () => {
             }}
           />
         </div>
-        <h1 className="font-inception text-inception-gray lg:-ml-20 relative z-20 text-md mt-4">
-          A retro futuristic metaverse brand
-        </h1>
+        <div className="relative">
+          <h1 className="font-inception text-inception-gray lg:-ml-20 relative z-20 text-md mt-4">
+            A retro futuristic metaverse brand
+          </h1>
+          {/* <div className="absolute bottom-12 -left-6 w-96 z-50">
+            <img src="/images/skater.png" alt=""></img>
+          </div> */}
+        </div>
       </div>
       <div className="flex items-center gap-4 absolute bottom-3 left-3">
         <div className="flex flex-col text-right text-xs text-inception-gray font-inception">
-          <a>© 2022 Inception Animals</a>
+          <a>© 2022 Ube Studios Inc.</a>
           <a>All Rights Reserved.</a>
         </div>
 
