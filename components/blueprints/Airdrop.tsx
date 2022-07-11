@@ -18,6 +18,13 @@ const Airdrop: React.FC = () => {
     return <InceptionTextBlock contents={contents} />
   }
 
+  const renderCrystalText = () => {
+    const contents: string[] = [
+      `Random amount of Inception Crystals will be distributed to holders in perpetuity, which can be used to purchase items in the Inception Animals universe.`,
+    ]
+    return <InceptionTextBlock contents={contents} />
+  }
+
   return (
     <div className="relative h-full">
       <section className="font-inception-ink flex flex-col">
@@ -29,6 +36,10 @@ const Airdrop: React.FC = () => {
           content: "public free mint",
         })}
         {renderSecondaryText()}
+        {TextOnBanner({
+          content: "inception crystals",
+        })}
+        {renderCrystalText()}
       </section>
     </div>
   )

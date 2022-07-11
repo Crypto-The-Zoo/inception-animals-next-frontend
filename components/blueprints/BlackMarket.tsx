@@ -29,10 +29,9 @@ const BlackMarket: React.FC = () => {
     return <InceptionTextBlock contents={contents} />
   }
 
-  const renderPaperhandText = () => {
+  const renderInceptionBlackBoxText = () => {
     const contents: string[] = [
-      `The paperhands are not quite welcome to the market, tax laws are enforced for actions that blows the peaceful market.`,
-      `While the tax goes to collect the identities that have been undervalued - they are eventually gifted back to the true fams.`,
+      `Inception Black Boxes will be released periodically on the black market to exchange with Inception Crystals. NFTs, Flow's native token, privileged whitelists and many other goods can be found in them.`,
     ]
     return <InceptionTextBlock contents={contents} />
   }
@@ -48,6 +47,10 @@ const BlackMarket: React.FC = () => {
           content: "stake to earn",
         })}
         {renderRoyaltyText()}
+        {TextOnBanner({
+          content: "Inception BlackBox",
+        })}
+        {renderInceptionBlackBoxText()}
       </section>
     </div>
   )
