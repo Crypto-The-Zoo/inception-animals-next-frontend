@@ -31,6 +31,8 @@ const InceptionTextBlock: React.FC<{
               "scarcity for genesis Inception Avatars and privileged benefits for its holders",
               "we may be alone, we may be outcasts",
               "a peaceful mind",
+              "Terms of Service",
+              "End User License Agreement",
             ]}
             autoEscape={true}
             textToHighlight={content}
