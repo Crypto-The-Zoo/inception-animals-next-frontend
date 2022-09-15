@@ -2,14 +2,18 @@
 import type { NextPage } from "next"
 import Navigation from "../components/Navigation"
 import Head from "next/head"
-import { useState } from "react"
-import { ToastContainer, toast } from "react-toastify"
+import { useContext, useState } from "react"
+import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { WalletContext } from "../context/WalletContext"
+import ConnectWalletNav from "../components/ConnectWallet"
+import MintComponent from "../components/Mint"
 
 const Mint: NextPage = () => {
   const [quantity, setQuantity] = useState(1)
-  const [salePrice, setDalePrice] = useState(90)
   const [checkboxValue, setCheckboxValue] = useState(0)
+
+  const { walletAddr } = useContext(WalletContext)
 
   const updateQuantity = ({ method }: { method: string }) => {
     if (method === "increment" && quantity < 4) {
@@ -52,13 +56,13 @@ const Mint: NextPage = () => {
                 alt=""
                 className="w-6 h-6"
               ></img>
-              {`$${salePrice}.00`}
+              {"Free"}
             </div>
           </div>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
-          <div className="">Whitelist entries</div>
-          <div className="flex items-center gap-1">1</div>
+          <div className="">Your entries</div>
+          <div className="flex items-center gap-1">4</div>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 mx-2 gap-24">
           quantity
@@ -71,6 +75,7 @@ const Mint: NextPage = () => {
             <input
               className="w-1/4 bg-transparent border-l-2 border-r-2 disabled text-center"
               value={quantity}
+              readOnly
             ></input>
             <span className="mx-2 text-3xl">
               <button onClick={() => updateQuantity({ method: "increment" })}>
@@ -79,18 +84,11 @@ const Mint: NextPage = () => {
             </span>
           </div>
         </div>
-        <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 mx-2 gap-24">
-          <div>Total</div>
-          <div className="flex items-center gap-1">
-            <img src="/icons/dapper_icon.png" alt="" className="w-6 h-6"></img>
-            {`$${salePrice * quantity}.00`}
-          </div>
-        </div>
         <div className="flex items-center justify-end">
           <input
             id="link-checkbox"
             type="checkbox"
-            value={checkboxValue}
+            // value={checkboxValue}
             onChange={() => setCheckboxValue(checkboxValue === 0 ? 1 : 0)}
             className="w-4 h-4 border-inception-gray"
           ></input>
@@ -112,12 +110,7 @@ const Mint: NextPage = () => {
           </label>
         </div>
         <div className="flex items-center justify-center py-5 mx-2 gap-24">
-          <button
-            className="border-2 rounded-sm border-inception-taro"
-            onClick={handleOnclick}
-          >
-            Mint
-          </button>
+          {walletAddr ? <MintComponent /> : <ConnectWalletNav />}
         </div>
       </div>
     )
@@ -136,17 +129,6 @@ const Mint: NextPage = () => {
 
   return (
     <div className="w-full">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <div>
         <Head>
           <title>Inception Animals</title>

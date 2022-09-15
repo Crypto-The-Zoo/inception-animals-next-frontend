@@ -9,6 +9,7 @@ import {
   faBookBookmark,
 } from "@fortawesome/free-solid-svg-icons"
 import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import ConnectWalletNav from "./ConnectWallet"
 
 const Navigation: React.FC = () => {
   const router = useRouter()
@@ -24,8 +25,8 @@ const Navigation: React.FC = () => {
   // }, [])
 
   const navLinks = [
-    { name: "MINT", link: "/mint", isOpen: true },
     { name: "HOME", link: "/", isOpen: true },
+    { name: "MINT", link: "/mint", isOpen: true },
     { name: "BLUEPRINT", link: "/blueprint", isOpen: true },
     { name: "CITY", link: "/city", isOpen: true },
     { name: "BLACKMARKET", link: "", isOpen: false },
@@ -95,6 +96,7 @@ const Navigation: React.FC = () => {
               </button>
             </Link>
           ))}
+          <ConnectWalletNav />
           {externalNavLinks.map((navLinkObj, index) => (
             <Link
               key={index}
