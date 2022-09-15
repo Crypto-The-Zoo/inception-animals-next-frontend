@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link"
 import type { NextPage } from "next"
 import Navigation from "../components/Navigation"
 import Head from "next/head"
@@ -9,9 +10,17 @@ import { WalletContext } from "../context/WalletContext"
 import ConnectWalletNav from "../components/ConnectWallet"
 import MintComponent from "../components/Mint"
 
+const mintStages = [
+  { name: "pre mint", isActive: false, key: "preMint" },
+  { name: "public mint", isActive: false, key: "publicMint" },
+  { name: "tip mint", isActive: false, key: "tipMint" },
+]
+
 const Mint: NextPage = () => {
   const [quantity, setQuantity] = useState(1)
   const [checkboxValue, setCheckboxValue] = useState(0)
+  const [whitelistEntries, setWhitelistEntries] = useState(0)
+  const [currentMintStageKey, setCurrentMintStageKey] = useState("preMint")
 
   const { walletAddr } = useContext(WalletContext)
 
@@ -26,6 +35,31 @@ const Mint: NextPage = () => {
   const renderFormTop = () => {
     return (
       <div className="flex flex-col items-center text-center mb-7">
+        <div className="flex justify-between gap-2">
+          {mintStages.map((stage, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentMintStageKey(stage.key)}
+              className={`text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 ${
+                currentMintStageKey === stage.key
+                  ? "bg-inception-gray"
+                  : "bg-inception-off-white"
+              } backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green`}
+            >
+              {stage.name}
+            </button>
+          ))}
+
+          {/* // <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
+          //   Pre Mint
+          // </button>
+          // <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
+          //   Public Mint
+          // </button>
+          // <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
+          //   Tip Mint
+          // </button> */}
+        </div>
         <h2>2000</h2>
         <p className="uppercase">minted</p>
       </div>
@@ -62,7 +96,7 @@ const Mint: NextPage = () => {
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Your entries</div>
-          <div className="flex items-center gap-1">4</div>
+          <div className="flex items-center gap-1">{whitelistEntries || 0}</div>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 mx-2 gap-24">
           quantity
@@ -110,7 +144,16 @@ const Mint: NextPage = () => {
           </label>
         </div>
         <div className="flex items-center justify-center py-5 mx-2 gap-24">
-          {walletAddr ? <MintComponent /> : <ConnectWalletNav />}
+          {walletAddr ? (
+            <MintComponent
+              quantity={quantity}
+              setWhitelistEntries={(entries: number) =>
+                setWhitelistEntries(entries)
+              }
+            />
+          ) : (
+            <ConnectWalletNav />
+          )}
         </div>
       </div>
     )

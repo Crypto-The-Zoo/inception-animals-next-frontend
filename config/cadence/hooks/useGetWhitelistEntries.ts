@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { getWhitelistEntriesByAddress } from "../tx/tx-get-whitelist-entries"
 
 export default function useAccountStatus(address: string) {
-  const [entries, setEntries] = useState<Number>(null!)
+  const [entries, setEntries] = useState<number>(null!)
 
   const getWhitelistEntries = () => {
     getWhitelistEntriesByAddress({ address })

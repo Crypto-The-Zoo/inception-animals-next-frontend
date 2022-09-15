@@ -1,16 +1,26 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import useAccountStatus from "../config/cadence/hooks/useGetWhitelistEntries"
 import { WalletContext } from "../context/WalletContext"
 
 const MintComponent: React.FC<{
+  setWhitelistEntries: (entries: number) => void
   quantity: number
-}> = ({ quantity }: { quantity: number }) => {
+}> = ({
+  quantity,
+  setWhitelistEntries,
+}: {
+  setWhitelistEntries: (entries: number) => void
+  quantity: number
+}) => {
   const { walletAddr } = useContext(WalletContext)
 
-  const mint = () => {}
   const { entries } = useAccountStatus(walletAddr)
+  useEffect(() => {
+    console.log("--updating", entries)
+    setWhitelistEntries(entries)
+  }, [])
 
-  console.log(entries)
+  const mint = () => {}
 
   return (
     <button
