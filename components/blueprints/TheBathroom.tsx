@@ -11,6 +11,11 @@ const TheBathroom: React.FC = () => {
     return <InceptionTextBlock contents={contents} />
   }
 
+  const renderSecondaryText = () => {
+    const contents: string[] = [`"Looks like a lot of fun."`]
+    return <InceptionTextBlock contents={contents} />
+  }
+
   return (
     <div className="relative h-full">
       <section className="font-inception-ink flex flex-col">
@@ -18,6 +23,10 @@ const TheBathroom: React.FC = () => {
           content: "the public bathroom",
         })}
         {renderLeadingText()}
+        {TextOnBanner({
+          content: "Passerby",
+        })}
+        {renderSecondaryText()}
       </section>
     </div>
   )

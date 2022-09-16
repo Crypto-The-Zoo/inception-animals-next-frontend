@@ -1,3 +1,4 @@
+// @ts-ignore
 import { authenticate, unauthenticate, currentUser } from "@onflow/fcl"
 import { createContext, useCallback, useEffect, useState } from "react"
 

@@ -8,11 +8,7 @@ pub fun main(address: Address): UInt64 {
   return whitelistAccounts[address] ?? 0
 }`
 
-export async function getWhitelistEntriesByAddress({
-  address,
-}: {
-  address: string
-}) {
+export async function getWhitelistEntriesByAddress({ address }) {
   if (!address) return Promise.resolve(null)
   return fcl
     .send([fcl.script(CODE), fcl.args([fcl.arg(address, t.Address)])])
