@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import "react-toastify/dist/ReactToastify.css"
+import useContractMintStats from "../config/cadence/hooks/useContractMintStats"
 
 const mintStages = [
   { name: "pre mint", isActive: false, key: "preMint" },
-  { name: "tip mint", isActive: false, key: "tipMint" },
+  { name: "tip courtesy", isActive: false, key: "tipMint" },
   { name: "public mint", isActive: false, key: "publicMint" },
 ]
 
@@ -11,6 +12,8 @@ const MintNavigationButtons: React.FC<{
   mintStageKey: string
   setCurrentMintStageKey: (key: string) => void
 }> = ({ mintStageKey, setCurrentMintStageKey }) => {
+  const { totalMinted } = useContractMintStats()
+
   return (
     <div className="flex flex-col items-center text-center mb-7">
       <div className="flex justify-between gap-2">
@@ -30,7 +33,7 @@ const MintNavigationButtons: React.FC<{
           </button>
         ))}
       </div>
-      <h2>2000</h2>
+      <h2>{totalMinted}</h2>
       <p className="uppercase">minted</p>
     </div>
   )

@@ -8,6 +8,7 @@ import { WalletContext } from "../context/WalletContext"
 import ConnectWalletNav from "./ConnectWallet"
 // @ts-ignore
 import confetti from "canvas-confetti"
+import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 
 const PublicMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
@@ -15,6 +16,9 @@ const PublicMint: React.FC = () => {
 
   const [checkboxValue, setCheckboxValue] = useState(0)
   const [showSuccess, setShowSucces] = useState<boolean>(false)
+
+  const { tipMintedCount, whitelistEntries, publicMintedCount } =
+    useAccountMintStats()
 
   const onSuccess = () => {
     setShowSucces(true)
@@ -83,7 +87,11 @@ const PublicMint: React.FC = () => {
   })
 
   const updateQuantity = ({ method }: { method: string }) => {
-    if (method === "increment" && quantity < 5) {
+    if (
+      method === "increment" &&
+      quantity < 5 &&
+      tipMintedCount + quantity < 5
+    ) {
       setQuantity(quantity + 1)
     } else if (method === "decrement" && quantity > 0) {
       setQuantity(quantity - 1)
@@ -135,7 +143,14 @@ const PublicMint: React.FC = () => {
       <div className="flex flex-col">
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Total Supply</div>
-          <div className="">2,022</div>
+          <div className="">2,092</div>
+        </div>
+
+        <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2">
+          <div className="">Minted</div>
+          <div className="flex flex-col gap-1 items-end">
+            {`${tipMintedCount} / 5`}
+          </div>
         </div>
 
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 mx-2 gap-24">
@@ -158,6 +173,7 @@ const PublicMint: React.FC = () => {
             </span>
           </div>
         </div>
+
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2">
           <div className="">Total Tip</div>
           <div className="flex flex-col gap-1 items-end">

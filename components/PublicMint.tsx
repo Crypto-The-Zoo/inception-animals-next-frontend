@@ -8,19 +8,15 @@ import { WalletContext } from "../context/WalletContext"
 import ConnectWalletNav from "./ConnectWallet"
 // @ts-ignore
 import confetti from "canvas-confetti"
+import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 
 const PublicMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
-  const [quantity, setQuantity] = useState(1)
   const [checkboxValue, setCheckboxValue] = useState(0)
-  const [whitelistEntries, setWhitelistEntries] = useState(0)
   const [showSuccess, setShowSucces] = useState<boolean>(false)
 
-  useEffect(() => {
-    if (whitelistEntries !== 0) {
-      setQuantity(whitelistEntries)
-    }
-  }, [whitelistEntries])
+  const { tipMintedCount, whitelistEntries, publicMintedCount } =
+    useAccountMintStats()
 
   const onSuccess = () => {
     setShowSucces(true)
@@ -88,38 +84,8 @@ const PublicMint: React.FC = () => {
     navigateAway: onSuccess,
   })
 
-  const updateQuantity = ({ method }: { method: string }) => {
-    if (method === "increment" && quantity < 4) {
-      toastError({
-        type: toast.TYPE.ERROR,
-        render: "Only 1 per outcast is allowed",
-        autoClose: 3000,
-        isLoading: false,
-      })
-    } else if (method === "decrement" && quantity > 0) {
-      toastError({
-        type: toast.TYPE.ERROR,
-        render: "Only 1 per outcast is allowed",
-        autoClose: 3000,
-        isLoading: false,
-      })
-    }
-  }
-
   const handleMint = () => {
     if (checkboxValue === 0) {
-      toastError({
-        type: toast.TYPE.ERROR,
-        render: "Please accept the terms and conditions",
-        autoClose: 3000,
-        isLoading: false,
-      })
-      return
-    }
-
-    // TODO: grey out when user has minted
-
-    if (quantity !== 1) {
       toastError({
         type: toast.TYPE.ERROR,
         render: "Please accept the terms and conditions",
@@ -148,7 +114,7 @@ const PublicMint: React.FC = () => {
       <div className="flex flex-col">
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Total Supply</div>
-          <div className="">2,022</div>
+          <div className="">2,920</div>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2">
           <div className="">Mint Price</div>
@@ -164,29 +130,12 @@ const PublicMint: React.FC = () => {
           </div>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
-          <div className="">Your entries</div>
-          <div className="flex items-center gap-1">{whitelistEntries || 0}</div>
-        </div>
-        <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 mx-2 gap-24">
-          quantity
-          <div className="flex justify-end">
-            <span className="mx-2 text-3xl">
-              <button onClick={() => updateQuantity({ method: "decrement" })}>
-                &#x2212;
-              </button>
-            </span>
-            <input
-              className="w-1/4 bg-transparent border-l-2 border-r-2 disabled text-center"
-              value={quantity}
-              readOnly
-            ></input>
-            <span className="mx-2 text-3xl">
-              <button onClick={() => updateQuantity({ method: "increment" })}>
-                +
-              </button>
-            </span>
+          <div className="">You Minted</div>
+          <div className="flex items-center gap-1">
+            {publicMintedCount || 0}
           </div>
         </div>
+
         <div className="flex items-center justify-end">
           <input
             id="link-checkbox"

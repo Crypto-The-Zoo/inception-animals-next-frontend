@@ -8,13 +8,16 @@ import ConnectWalletNav from "./ConnectWallet"
 // @ts-ignore
 import confetti from "canvas-confetti"
 import Link from "next/link"
+import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 
 const PrivateMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
   const [quantity, setQuantity] = useState(1)
   const [checkboxValue, setCheckboxValue] = useState(0)
-  const [whitelistEntries, setWhitelistEntries] = useState(0)
   const [showSuccess, setShowSucces] = useState<boolean>(false)
+
+  const { tipMintedCount, whitelistEntries, publicMintedCount } =
+    useAccountMintStats()
 
   const mainToast = useRef(null)
   const errorToast = useRef(null)
@@ -33,7 +36,7 @@ const PrivateMint: React.FC = () => {
           <h3 className="text-inception-green text-center text-xs lg:text-2xl font-bold tracking-widest opacity-90">
             Congratulations you successfully minted Inception Animals!
           </h3>
-          <Link href="/my-inception-station">
+          <Link href={`/users/${walletAddr}`}>
             <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
               My Inception Animals
             </button>
@@ -139,7 +142,7 @@ const PrivateMint: React.FC = () => {
       <div className="flex flex-col">
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Total Supply</div>
-          <div className="">2,022</div>
+          <div className="">2,920</div>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2">
           <div className="">Mint Price</div>
@@ -155,7 +158,7 @@ const PrivateMint: React.FC = () => {
           </div>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
-          <div className="">Your entries</div>
+          <div className="">Available entries</div>
           <div className="flex items-center gap-1">{whitelistEntries || 0}</div>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 mx-2 gap-24">
