@@ -31,7 +31,9 @@ const ConnectWalletNav: React.FC = () => {
 const LoggedInMenu = (props: any) => {
   const { walletAddr } = props
   return (
-    <Link passHref href={`/users/${walletAddr}`}>
+    // TODO: add wallet view
+    // <Link passHref href={`/users/${walletAddr}`}>
+    <Link passHref href={"#"}>
       <div className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
         {truncateAddr(walletAddr)}
       </div>

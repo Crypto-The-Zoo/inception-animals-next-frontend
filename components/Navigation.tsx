@@ -213,11 +213,11 @@ const Navigation: React.FC = () => {
             <br />
             <a
               className="underline text-xs text-inception-gray"
-              // href="https://storage.googleapis.com/flunks_public/documents/flunks-eula.pdf"
+              href="https://storage.googleapis.com/inception_public/documents/Inception_Animals_EULA.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
-              [redacted] End User License Agreement
+              End User License Agreement
             </a>
             <br />
             <a
