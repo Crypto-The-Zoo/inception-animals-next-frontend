@@ -1,16 +1,80 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import useMintPrivate from "../config/cadence/hooks/useMintPrivate"
 import { WalletContext } from "../context/WalletContext"
 import ConnectWalletNav from "./ConnectWallet"
+// @ts-ignore
+import confetti from "canvas-confetti"
+import Link from "next/link"
 
 const PrivateMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
   const [quantity, setQuantity] = useState(1)
   const [checkboxValue, setCheckboxValue] = useState(0)
   const [whitelistEntries, setWhitelistEntries] = useState(0)
+  const [showSuccess, setShowSucces] = useState<boolean>(false)
+
+  const mainToast = useRef(null)
+  const errorToast = useRef(null)
+
+  const onSuccess = () => {
+    setShowSucces(true)
+    confetti()
+  }
+
+  const renderSuccessMessage = () => {
+    return (
+      <>
+        <div
+          className={`flex flex-col gap-6 sm:self-start mt-12 md:mt-24 lg:mt-0`}
+        >
+          <h3 className="text-inception-green text-center text-xs lg:text-2xl font-bold tracking-widest opacity-90">
+            Congratulations you successfully minted Inception Animals!
+          </h3>
+          <Link href="/my-inception-station">
+            <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
+              My Inception Animals
+            </button>
+          </Link>
+        </div>
+      </>
+    )
+  }
+
+  const initToastError = (payload: any) => {
+    if (!errorToast?.current) {
+      // @ts-ignore
+      errorToast.current = toast.dark(payload.render, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+        isLoading: false,
+      })
+    }
+  }
+
+  const updateToastError = (payload: any) => {
+    // @ts-ignore
+    return toast.update(errorToast.current, { ...payload })
+  }
+
+  const toastError = (payload: any) => {
+    initToastError(payload)
+    updateToastError(payload)
+  }
+
+  const initToast = () =>
+    // @ts-ignore
+    (mainToast.current = toast.dark("Awaiting approval..", {
+      position: toast.POSITION.TOP_CENTER,
+      isLoading: true,
+    }))
+
+  const updateToast = (update: any) => {
+    // @ts-ignore
+    toast.update(mainToast.current, { ...update })
+  }
 
   useEffect(() => {
     if (whitelistEntries !== 0) {
@@ -19,9 +83,9 @@ const PrivateMint: React.FC = () => {
   }, [whitelistEntries])
 
   const [privateMintState, mintPrivate, privateMintTxStatus] = useMintPrivate({
-    updateToast: () => {},
-    initToast: () => {},
-    navigateAway: () => {},
+    updateToast: updateToast,
+    initToast: initToast,
+    navigateAway: onSuccess,
   })
 
   const updateQuantity = ({ method }: { method: string }) => {
@@ -34,12 +98,23 @@ const PrivateMint: React.FC = () => {
 
   const handleMint = () => {
     if (checkboxValue === 0) {
-      toast.error("Please accept the terms and conditions")
+      // toast.error("Please accept the terms and conditions")
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Please accept the terms and conditions",
+        autoClose: 3000,
+        isLoading: false,
+      })
       return
     }
 
     if (whitelistEntries < quantity) {
-      toast.error("You don't have enough remaining whitelist entries")
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "You don't have enough remaining whitelist entries",
+        autoClose: 3000,
+        isLoading: false,
+      })
       return
     }
 
@@ -138,7 +213,11 @@ const PrivateMint: React.FC = () => {
   }
 
   const renderMintPanel = () => {
-    return <div>{renderFormBottom()}</div>
+    return !showSuccess ? (
+      <div>{renderFormBottom()}</div>
+    ) : (
+      <div>{renderSuccessMessage()}</div>
+    )
   }
 
   return <div className="w-full">{renderMintPanel()}</div>

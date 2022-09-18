@@ -22,7 +22,7 @@ export default function useMintPrivate(props) {
       { numberOfTokens },
       {
         onStart() {
-          // initToast()
+          initToast()
           setTxStatus(0)
         },
         onUpdate(t) {
@@ -31,38 +31,37 @@ export default function useMintPrivate(props) {
         async onSuccess(txData) {
           dispatch({ type: SUCCESS })
           navigateAway()
-          // updateToast({
-          //   type: toast.TYPE.SUCCESS,
-          //   render: "Transaction Complete 🎉!",
-          //   autoClose: 3000,
-          //   isLoading: false,
-          // })
+          updateToast({
+            type: toast.TYPE.SUCCESS,
+            render: "Transaction Complete 🎉!",
+            autoClose: 3000,
+            isLoading: false,
+          })
         },
         async onError(e) {
           if (
             e === "Declined: Externally Halted" ||
             e === "Declined: Declined"
           ) {
-            // updateToast({
-            //   type: toast.TYPE.ERROR,
-            //   render: "Transaction cancelled 🙃",
-            //   autoClose: 3000,
-            //   isLoading: false,
-            // })
+            updateToast({
+              type: toast.TYPE.ERROR,
+              render: "Transaction cancelled 🙃",
+              autoClose: 3000,
+              isLoading: false,
+            })
           } else {
-            // updateToast({
-            //   type: toast.TYPE.ERROR,
-            //   render: "Something went wrong 🙃",
-            //   autoClose: 3000,
-            //   isLoading: false,
-            // })
+            updateToast({
+              type: toast.TYPE.ERROR,
+              render: "Something went wrong 🙃",
+              autoClose: 3000,
+              isLoading: false,
+            })
           }
         },
         onComplete() {
           setTxStatus(null)
         },
       }
-      // updateToast
     )
   }
 

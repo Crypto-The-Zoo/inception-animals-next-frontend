@@ -1,24 +1,89 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect, useState } from "react"
+import Link from "next/link"
+import { useContext, useEffect, useRef, useState } from "react"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import useTipMint from "../config/cadence/hooks/useTipMint"
 import { WalletContext } from "../context/WalletContext"
 import ConnectWalletNav from "./ConnectWallet"
+// @ts-ignore
+import confetti from "canvas-confetti"
 
 const PublicMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
   const [quantity, setQuantity] = useState(1)
+
   const [checkboxValue, setCheckboxValue] = useState(0)
+  const [showSuccess, setShowSucces] = useState<boolean>(false)
+
+  const onSuccess = () => {
+    setShowSucces(true)
+    confetti()
+  }
+
+  const renderSuccessMessage = () => {
+    return (
+      <>
+        <div
+          className={`flex flex-col gap-6 sm:self-start mt-12 md:mt-24 lg:mt-0`}
+        >
+          <h3 className="text-inception-green text-center text-xs lg:text-2xl font-bold tracking-widest opacity-90">
+            Congratulations you successfully minted Inception Animals!
+          </h3>
+          <Link href="/my-inception-station">
+            <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
+              My Inception Animals
+            </button>
+          </Link>
+        </div>
+      </>
+    )
+  }
+
+  const mainToast = useRef(null)
+  const errorToast = useRef(null)
+
+  const initToastError = (payload: any) => {
+    if (!errorToast?.current) {
+      // @ts-ignore
+      errorToast.current = toast.dark(payload.render, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+        isLoading: false,
+      })
+    }
+  }
+
+  const updateToastError = (payload: any) => {
+    // @ts-ignore
+    return toast.update(errorToast.current, { ...payload })
+  }
+
+  const toastError = (payload: any) => {
+    initToastError(payload)
+    updateToastError(payload)
+  }
+
+  const initToast = () =>
+    // @ts-ignore
+    (mainToast.current = toast.dark("Awaiting approval..", {
+      position: toast.POSITION.TOP_CENTER,
+      isLoading: true,
+    }))
+
+  const updateToast = (update: any) => {
+    // @ts-ignore
+    toast.update(mainToast.current, { ...update })
+  }
 
   const [state, tipMint, txStatus] = useTipMint({
-    updateToast: () => {},
-    initToast: () => {},
-    navigateAway: () => {},
+    updateToast: updateToast,
+    initToast: initToast,
+    navigateAway: onSuccess,
   })
 
   const updateQuantity = ({ method }: { method: string }) => {
-    if (method === "increment" && quantity < 10) {
+    if (method === "increment" && quantity < 5) {
       setQuantity(quantity + 1)
     } else if (method === "decrement" && quantity > 0) {
       setQuantity(quantity - 1)
@@ -27,14 +92,24 @@ const PublicMint: React.FC = () => {
 
   const handleMint = () => {
     if (checkboxValue === 0) {
-      toast.error("Please accept the terms and conditions")
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Please accept the terms and conditions",
+        autoClose: 3000,
+        isLoading: false,
+      })
       return
     }
 
     // TODO: grey out when user has minted
 
-    if (quantity > 10 || quantity < 1) {
-      toast.error("You can mint at most 10 in 1 transaction!")
+    if (quantity > 5 || quantity < 1) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "You can mint at most 10 in 1 transaction!",
+        autoClose: 3000,
+        isLoading: false,
+      })
       return
     }
 
@@ -62,19 +137,6 @@ const PublicMint: React.FC = () => {
           <div className="">Total Supply</div>
           <div className="">2,022</div>
         </div>
-        <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2">
-          <div className="">Mint Price</div>
-          <div className="flex flex-col gap-1 items-end">
-            <div className="flex items-center gap-1">
-              <img
-                src="/icons/dapper_icon.png"
-                alt=""
-                className="w-6 h-6"
-              ></img>
-              {"$20.00"}
-            </div>
-          </div>
-        </div>
 
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 mx-2 gap-24">
           quantity
@@ -94,6 +156,19 @@ const PublicMint: React.FC = () => {
                 +
               </button>
             </span>
+          </div>
+        </div>
+        <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2">
+          <div className="">Total Tip</div>
+          <div className="flex flex-col gap-1 items-end">
+            <div className="flex items-center gap-1">
+              <img
+                src="/icons/dapper_icon.png"
+                alt=""
+                className="w-6 h-6"
+              ></img>
+              {`$${20 * quantity}`}
+            </div>
           </div>
         </div>
         <div className="flex items-center justify-end">
@@ -129,7 +204,11 @@ const PublicMint: React.FC = () => {
   }
 
   const renderMintPanel = () => {
-    return <div>{renderFormBottom()}</div>
+    return !showSuccess ? (
+      <div>{renderFormBottom()}</div>
+    ) : (
+      <div>{renderSuccessMessage()}</div>
+    )
   }
 
   return <div className="w-full">{renderMintPanel()}</div>

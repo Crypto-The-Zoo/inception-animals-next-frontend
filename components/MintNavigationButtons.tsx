@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useState } from "react"
 import "react-toastify/dist/ReactToastify.css"
-import { WalletContext } from "../context/WalletContext"
 
 const mintStages = [
   { name: "pre mint", isActive: false, key: "preMint" },
