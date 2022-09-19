@@ -118,15 +118,17 @@ const PrivateMint: React.FC = () => {
   }
 
   const handleMint = () => {
-    if (new Date(liveUnixTime * 1000) > new Date()) {
-      toastError({
-        type: toast.TYPE.ERROR,
-        render: "Mint not started!",
-        autoClose: 3000,
-        isLoading: false,
-      })
-      return
-    }
+    console.log(walletAddr)
+
+    // if (new Date(liveUnixTime * 1000) > new Date()) {
+    //   toastError({
+    //     type: toast.TYPE.ERROR,
+    //     render: "Mint not started!",
+    //     autoClose: 3000,
+    //     isLoading: false,
+    //   })
+    //   return
+    // }
 
     if (checkboxValue === 0) {
       // toast.error("Please accept the terms and conditions")
@@ -169,9 +171,11 @@ const PrivateMint: React.FC = () => {
         className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
         onClick={handleMint}
       >
-        <Countdown date={new Date(liveUnixTime * 1000)}>
-          <h3>{new Date(expireUnixTime) < new Date() ? "Closed" : "Mint"}</h3>
-        </Countdown>
+        {/* <Countdown date={new Date(liveUnixTime * 1000)}> */}
+        <h3>
+          {new Date(expireUnixTime * 1000) < new Date() ? "Closed" : "Mint"}
+        </h3>
+        {/* </Countdown> */}
       </button>
     )
   }

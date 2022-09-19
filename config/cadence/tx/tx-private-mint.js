@@ -7,6 +7,7 @@ import NonFungibleToken from 0x631e88ae7f1d7c20
 import MetadataViews from 0x631e88ae7f1d7c20
 import InceptionAvatar from 0x3cc47434d5867b24
 import InceptionMinter from 0x3cc47434d5867b24
+import InceptionBlackBox from 0x3cc47434d5867b24
 
 transaction(setID: UInt64, numberOfTokens: UInt64) {
     let buyerInceptionAvatarCollection: &{InceptionAvatar.InceptionAvatarCollectionPublic}
@@ -17,10 +18,17 @@ transaction(setID: UInt64, numberOfTokens: UInt64) {
 
       // Initialize the buyer's InceptionAvatar collection if it is not already initialized
       if buyer.borrow<&InceptionAvatar.Collection>(from: InceptionAvatar.CollectionStoragePath) == nil {
-            let collection <- InceptionAvatar.createEmptyCollection()
-            buyer.save(<-collection, to: InceptionAvatar.CollectionStoragePath)
-            buyer.link<&InceptionAvatar.Collection{NonFungibleToken.CollectionPublic, InceptionAvatar.InceptionAvatarCollectionPublic}>(InceptionAvatar.CollectionPublicPath, target: InceptionAvatar.CollectionStoragePath)
-        }
+        let collection <- InceptionAvatar.createEmptyCollection()
+        buyer.save(<-collection, to: InceptionAvatar.CollectionStoragePath)
+        buyer.link<&InceptionAvatar.Collection{NonFungibleToken.CollectionPublic, InceptionAvatar.InceptionAvatarCollectionPublic, MetadataViews.ResolverCollection}>(InceptionAvatar.CollectionPublicPath, target: InceptionAvatar.CollectionStoragePath)
+      }
+
+      // if account does not already have InceptionBlackBox
+      if buyer.borrow<&InceptionBlackBox.Collection>(from: InceptionBlackBox.CollectionStoragePath) == nil {
+        let collection <- InceptionBlackBox.createEmptyCollection()
+        buyer.save(<-collection, to: InceptionBlackBox.CollectionStoragePath)
+        buyer.link<&InceptionBlackBox.Collection{NonFungibleToken.CollectionPublic, InceptionBlackBox.InceptionBlackBoxCollectionPublic, MetadataViews.ResolverCollection}>(InceptionBlackBox.CollectionPublicPath, target: InceptionBlackBox.CollectionStoragePath)
+      }
 
       self.buyerInceptionAvatarCollection = buyer
         .getCapability<&{InceptionAvatar.InceptionAvatarCollectionPublic}>(InceptionAvatar.CollectionPublicPath)
