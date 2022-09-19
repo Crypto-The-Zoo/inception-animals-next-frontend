@@ -35,7 +35,7 @@ transaction(setID: UInt64, numberOfTokens: UInt64) {
 }`
 
 // prettier-ignore
-export function mintPrivate({numberOfTokens}, opts = {}) {
+export function mintPrivate({numberOfTokens}, opts = {}, updateToast) {
   invariant(numberOfTokens != null, "-- numberOfTokens required")
 
   return tx(
@@ -48,6 +48,7 @@ export function mintPrivate({numberOfTokens}, opts = {}) {
       authorizations: [fcl.authz],
       limit: 1000,
     },
-    opts
+    opts,
+    updateToast
   )
 }

@@ -11,7 +11,7 @@ import {
 } from "../reducers/requestReducer"
 
 export default function useMintPrivate(props) {
-  // const { updateToast, initToast, onSuccess: navigateAway } = props
+  const { updateToast, initToast, onSuccess: navigateAway } = props
   const [state, dispatch] = useReducer(requestReducer, initialState)
   const [txStatus, setTxStatus] = useState(null)
 
@@ -61,7 +61,8 @@ export default function useMintPrivate(props) {
         onComplete() {
           setTxStatus(null)
         },
-      }
+      },
+      updateToast
     )
   }
 

@@ -10,6 +10,8 @@ import ConnectWalletNav from "./ConnectWallet"
 import confetti from "canvas-confetti"
 import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 
+import { useRouter } from "next/router"
+
 const PublicMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
   const [checkboxValue, setCheckboxValue] = useState(0)
@@ -17,6 +19,8 @@ const PublicMint: React.FC = () => {
 
   const { tipMintedCount, whitelistEntries, publicMintedCount } =
     useAccountMintStats()
+
+  const router = useRouter()
 
   const onSuccess = () => {
     setShowSucces(true)
@@ -27,21 +31,32 @@ const PublicMint: React.FC = () => {
     return (
       <>
         <div
-          className={`flex flex-col gap-6 sm:self-start mt-12 md:mt-24 lg:mt-0`}
+          className={`flex flex-col items-center gap-6 sm:self-start mt-12 md:mt-24 lg:mt-0`}
         >
-          <h3 className="text-inception-green text-center text-xs lg:text-2xl font-bold tracking-widest opacity-90">
-            Congratulations you successfully minted Inception Animals!
+          <h3 className="text-inception-green text-center text-sm lg:text-2xl font-bold tracking-widest opacity-90">
+            Congratulations you successfully minted Inception Avatars!
           </h3>
-          <Link href="/my-inception-station">
+          <a
+            href="http://accounts.meetdapper.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
-              My Inception Animals
+              Check In Dapper Wallet
             </button>
-          </Link>
+          </a>
+          <div>
+            <button
+              className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
+              onClick={() => router.reload()}
+            >
+              Mint More
+            </button>
+          </div>
         </div>
       </>
     )
   }
-
   const mainToast = useRef(null)
   const errorToast = useRef(null)
 
@@ -81,7 +96,7 @@ const PublicMint: React.FC = () => {
   const [state, mintPublic, txStatus] = useMintPublic({
     updateToast: updateToast,
     initToast: initToast,
-    navigateAway: onSuccess,
+    onSuccess,
   })
 
   const handleMint = () => {
@@ -89,6 +104,16 @@ const PublicMint: React.FC = () => {
       toastError({
         type: toast.TYPE.ERROR,
         render: "Please accept the terms and conditions",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
+    if (publicMintedCount >= 1) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "You have minted already!",
         autoClose: 3000,
         isLoading: false,
       })

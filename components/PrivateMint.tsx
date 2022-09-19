@@ -7,14 +7,16 @@ import { WalletContext } from "../context/WalletContext"
 import ConnectWalletNav from "./ConnectWallet"
 // @ts-ignore
 import confetti from "canvas-confetti"
-import Link from "next/link"
 import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
+import { useRouter } from "next/router"
 
 const PrivateMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
   const [quantity, setQuantity] = useState(1)
   const [checkboxValue, setCheckboxValue] = useState(0)
   const [showSuccess, setShowSucces] = useState<boolean>(false)
+
+  const router = useRouter()
 
   const { tipMintedCount, whitelistEntries, publicMintedCount } =
     useAccountMintStats()
@@ -31,16 +33,28 @@ const PrivateMint: React.FC = () => {
     return (
       <>
         <div
-          className={`flex flex-col gap-6 sm:self-start mt-12 md:mt-24 lg:mt-0`}
+          className={`flex flex-col items-center gap-6 sm:self-start mt-12 md:mt-24 lg:mt-0`}
         >
-          <h3 className="text-inception-green text-center text-xs lg:text-2xl font-bold tracking-widest opacity-90">
-            Congratulations you successfully minted Inception Animals!
+          <h3 className="text-inception-green text-center text-sm lg:text-2xl font-bold tracking-widest opacity-90">
+            Congratulations you successfully minted Inception Avatars!
           </h3>
-          <Link href={`/users/${walletAddr}`}>
+          <a
+            href="http://accounts.meetdapper.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
-              My Inception Animals
+              Check In Dapper Wallet
             </button>
-          </Link>
+          </a>
+          <div>
+            <button
+              className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
+              onClick={() => router.reload()}
+            >
+              Mint More
+            </button>
+          </div>
         </div>
       </>
     )
@@ -88,7 +102,7 @@ const PrivateMint: React.FC = () => {
   const [privateMintState, mintPrivate, privateMintTxStatus] = useMintPrivate({
     updateToast: updateToast,
     initToast: initToast,
-    navigateAway: onSuccess,
+    onSuccess,
   })
 
   const updateQuantity = ({ method }: { method: string }) => {
@@ -119,6 +133,15 @@ const PrivateMint: React.FC = () => {
         isLoading: false,
       })
       return
+    }
+
+    if (quantity > 4 || quantity < 1) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Please enter a valid quantity",
+        autoClose: 3000,
+        isLoading: false,
+      })
     }
 
     return mintPrivate({

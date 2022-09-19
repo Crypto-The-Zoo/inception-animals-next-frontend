@@ -68,7 +68,8 @@ export default function useTipMint(props) {
         onComplete() {
           setTxStatus(null)
         },
-      }
+      },
+      updateToast
     )
   }
 

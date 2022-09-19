@@ -64,7 +64,7 @@ transaction(merchantAccount: Address, setID: UInt64, expectedPrice: UFix64, numb
  `
 
 // prettier-ignore
-export function tipMint({expectedPrice, numberOfTokens}, opts = {}) {
+export function tipMint({expectedPrice, numberOfTokens}, opts = {}, updateToast) {
   invariant(expectedPrice != null, "-- expectedPrice required")
   invariant(numberOfTokens != null, "-- numberOfTokens required")
 
@@ -84,6 +84,7 @@ export function tipMint({expectedPrice, numberOfTokens}, opts = {}) {
       authorizations: [dapperAuthz, fcl.authz],
       limit: 1000,
     },
-    opts
+    opts,
+    updateToast
   )
 }

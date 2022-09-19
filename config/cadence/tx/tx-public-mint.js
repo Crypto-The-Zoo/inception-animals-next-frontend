@@ -34,7 +34,7 @@ transaction(setID: UInt64) {
 }`
 
 // prettier-ignore
-export function mintPublic(opts = {}) {
+export function mintPublic(opts = {}, updateToast) {
   return tx(
     {
       cadence: TRANSACTION,
@@ -44,6 +44,7 @@ export function mintPublic(opts = {}) {
       authorizations: [fcl.authz],
       limit: 1000,
     },
-    opts
+    opts,
+    updateToast
   )
 }

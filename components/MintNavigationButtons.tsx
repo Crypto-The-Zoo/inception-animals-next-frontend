@@ -23,7 +23,7 @@ const MintNavigationButtons: React.FC<{
             onClick={() => {
               setCurrentMintStageKey(stage.key)
             }}
-            className={`font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 ${
+            className={`font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 text-sm md:text-2xl ${
               mintStageKey === stage.key
                 ? "bg-inception-taro text-inception-off-white"
                 : "bg-inception-off-white text-inception-green"
