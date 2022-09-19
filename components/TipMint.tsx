@@ -172,7 +172,8 @@ const PublicMint: React.FC = () => {
     if (checkboxValue === 0) {
       toastError({
         type: toast.TYPE.ERROR,
-        render: "Please accept the terms and conditions",
+        render:
+          "Please read accept the Privacy Policy and End User License Agreement",
         autoClose: 3000,
         isLoading: false,
       })
@@ -219,7 +220,8 @@ const PublicMint: React.FC = () => {
     if (checkboxValue === 0) {
       toastError({
         type: toast.TYPE.ERROR,
-        render: "Please accept the terms and conditions",
+        render:
+          "Please read accept the Privacy Policy and End User License Agreement",
         autoClose: 3000,
         isLoading: false,
       })
@@ -354,10 +356,12 @@ const PublicMint: React.FC = () => {
           <label htmlFor="link-checkbox" className="ml-2 text-sm font-medium">
             I agree with the{" "}
             <a
-              href="#"
+              href="https://storage.googleapis.com/inception_public/documents/IA_private_policy.pdf"
+              target={"_blank"}
+              rel="noreferrer"
               className="px-2 rounded-md highlight-yellow font-bold hover:underline"
             >
-              terms and conditions
+              Privacy Policy
             </a>{" "}
             and{" "}
             <a

@@ -31,7 +31,7 @@ const InceptionTextBlock: React.FC<{
               "scarcity for genesis Inception Avatars and privileged benefits for its holders",
               "we may be alone, we may be outcasts",
               "a peaceful mind",
-              "Terms of Service",
+              "Privacy Policy",
               "End User License Agreement",
               "Shissh!! Maybe it opens up one day!",
               "Inception BlackBox",

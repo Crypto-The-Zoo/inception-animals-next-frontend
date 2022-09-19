@@ -24,7 +24,7 @@ const MyInceptionNfts: NextPage = () => {
     return (
       <div className="flex flex-col h-1/2 my-36 relative justify-center items-center font-inception-ink text-2xl text-inception-taro z-40 overflow-auto">
         <div className="bg-inception-off-white backdrop-blur-sm bg-opacity-60 rounded-md relative max-w-4xl max-h-xl border-2 border-red-600 p-14 z-50 flex flex-wrap text-sm justify-center items-center gap-12">
-          {(InceptionAvatars || []).map((avatar, index) => {
+          {(InceptionAvatars || []).map((avatar: any, index: any) => {
             return (
               <div className="flex flex-col text-center" key={index}>
                 <img
@@ -38,7 +38,7 @@ const MyInceptionNfts: NextPage = () => {
               </div>
             )
           })}
-          {(InceptionBlackBoxes || []).map((box, index) => {
+          {(InceptionBlackBoxes || []).map((box: any, index: any) => {
             return (
               <div className="flex flex-col text-center" key={index}>
                 <img

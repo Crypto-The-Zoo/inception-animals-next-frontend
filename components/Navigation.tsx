@@ -222,11 +222,11 @@ const Navigation: React.FC = () => {
             <br />
             <a
               className="underline text-xs text-inception-gray"
-              // href="https://www.termsfeed.com/live/b4b56390-02a7-463e-85c1-2ff9c47fd8d6"
+              href="https://storage.googleapis.com/inception_public/documents/IA_private_policy.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
-              [redacted] Privacy Policy
+              Privacy Policy
             </a>
           </p>
         </section>
