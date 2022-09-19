@@ -459,11 +459,11 @@ export default function useAccountMintStats() {
   const getMintInfoPerAccount = () => {
     if (!walletAddr) return
 
-    if (new Date(1663635600 * 1000) > new Date()) {
-      // @ts-ignore
-      setWhitelistEntries(walletToEntries[walletAddr] || 0)
-      return
-    }
+    // if (new Date(1663635600 * 1000) > new Date()) {
+    //   // @ts-ignore
+    //   setWhitelistEntries(walletToEntries[walletAddr] || 0)
+    //   return
+    // }
 
     getAccountMintInfo({ address: walletAddr })
       .then((res: any) => {
