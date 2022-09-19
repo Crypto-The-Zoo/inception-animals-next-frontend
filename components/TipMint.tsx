@@ -188,15 +188,15 @@ const PublicMint: React.FC = () => {
   }
 
   const handleTipMintFlow = () => {
-    // if (new Date(liveUnixTime * 1000) > new Date()) {
-    //   toastError({
-    //     type: toast.TYPE.ERROR,
-    //     render: "Mint not started!",
-    //     autoClose: 3000,
-    //     isLoading: false,
-    //   })
-    //   return
-    // }
+    if (new Date(liveUnixTime * 1000) > new Date()) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Mint not started!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
 
     if (checkboxValue === 0) {
       toastError({
