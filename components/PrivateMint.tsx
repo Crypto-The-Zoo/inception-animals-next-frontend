@@ -10,12 +10,14 @@ import confetti from "canvas-confetti"
 import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 import { useRouter } from "next/router"
 import Countdown from "react-countdown"
+import useContractMintStats from "../config/cadence/hooks/useContractMintStats"
 
 const PrivateMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
   const [quantity, setQuantity] = useState(1)
   const [checkboxValue, setCheckboxValue] = useState(0)
   const [showSuccess, setShowSucces] = useState<boolean>(false)
+  const { totalMinted } = useContractMintStats()
 
   const liveUnixTime = 1663635600
   const expireUnixTime = 1663678800
@@ -42,6 +44,14 @@ const PrivateMint: React.FC = () => {
           <h3 className="text-inception-green text-center text-sm lg:text-2xl font-bold tracking-widest opacity-90">
             Congratulations you successfully minted Inception Avatars!
           </h3>
+          <div className="flex items-center gap-4 flex-wrap">
+            <img
+              src="https://storage.googleapis.com/inception_public/inception-avatar/pre_reveal.jpeg"
+              alt=""
+              className="w-24 h-24"
+            ></img>
+            <h1>X {quantity}</h1>
+          </div>
           <a
             href="http://accounts.meetdapper.com/"
             target="_blank"
@@ -118,17 +128,15 @@ const PrivateMint: React.FC = () => {
   }
 
   const handleMint = () => {
-    console.log(walletAddr)
-
-    // if (new Date(liveUnixTime * 1000) > new Date()) {
-    //   toastError({
-    //     type: toast.TYPE.ERROR,
-    //     render: "Mint not started!",
-    //     autoClose: 3000,
-    //     isLoading: false,
-    //   })
-    //   return
-    // }
+    if (new Date(liveUnixTime * 1000) > new Date()) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Mint not started!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
 
     if (checkboxValue === 0) {
       // toast.error("Please accept the terms and conditions")
@@ -171,11 +179,11 @@ const PrivateMint: React.FC = () => {
         className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
         onClick={handleMint}
       >
-        {/* <Countdown date={new Date(liveUnixTime * 1000)}> */}
-        <h3>
-          {new Date(expireUnixTime * 1000) < new Date() ? "Closed" : "Mint"}
-        </h3>
-        {/* </Countdown> */}
+        <Countdown date={new Date(liveUnixTime * 1000)}>
+          <h3>
+            {new Date(expireUnixTime * 1000) < new Date() ? "Closed" : "Mint"}
+          </h3>
+        </Countdown>
       </button>
     )
   }
@@ -183,6 +191,10 @@ const PrivateMint: React.FC = () => {
   const renderFormBottom = () => {
     return (
       <div className="flex flex-col">
+        <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
+          <p className="uppercase">minted</p>
+          <h2>{new Date(1663635600 * 1000) > new Date() ? 0 : totalMinted}</h2>
+        </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Total Supply</div>
           <div className="">2,920</div>

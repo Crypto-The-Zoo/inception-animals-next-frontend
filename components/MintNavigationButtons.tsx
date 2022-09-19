@@ -12,8 +12,6 @@ const MintNavigationButtons: React.FC<{
   mintStageKey: string
   setCurrentMintStageKey: (key: string) => void
 }> = ({ mintStageKey, setCurrentMintStageKey }) => {
-  const { totalMinted } = useContractMintStats()
-
   return (
     <div className="flex flex-col items-center text-center mb-7">
       <div className="flex justify-between gap-2">
@@ -33,8 +31,6 @@ const MintNavigationButtons: React.FC<{
           </button>
         ))}
       </div>
-      <h2>{new Date(1663635600 * 1000) > new Date() ? 0 : totalMinted}</h2>
-      <p className="uppercase">minted</p>
     </div>
   )
 }

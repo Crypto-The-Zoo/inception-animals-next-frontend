@@ -11,6 +11,7 @@ import confetti from "canvas-confetti"
 import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 import { useRouter } from "next/router"
 import Countdown from "react-countdown"
+import useContractMintStats from "../config/cadence/hooks/useContractMintStats"
 
 const PublicMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
@@ -18,6 +19,8 @@ const PublicMint: React.FC = () => {
 
   const [checkboxValue, setCheckboxValue] = useState(0)
   const [showSuccess, setShowSucces] = useState<boolean>(false)
+
+  const { totalMinted } = useContractMintStats()
 
   const router = useRouter()
 
@@ -40,6 +43,20 @@ const PublicMint: React.FC = () => {
           <h3 className="text-inception-green text-center text-sm lg:text-2xl font-bold tracking-widest opacity-90">
             Congratulations you successfully minted Inception Avatars!
           </h3>
+          <div className="flex items-center gap-4 flex-wrap">
+            <img
+              src="https://storage.googleapis.com/inception_public/inception-avatar/pre_reveal.jpeg"
+              alt=""
+              className="w-24 h-24"
+            ></img>
+            <h1>X {quantity}</h1>
+            <img
+              src="https://storage.googleapis.com/inception_public/inception-avatar/blackbox.png"
+              alt=""
+              className="w-24 h-24"
+            ></img>
+            <h1>X {quantity}</h1>
+          </div>
           <a
             href="http://accounts.meetdapper.com/"
             target="_blank"
@@ -179,6 +196,10 @@ const PublicMint: React.FC = () => {
   const renderFormBottom = () => {
     return (
       <div className="flex flex-col">
+        <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
+          <p className="uppercase">minted</p>
+          <h2>{new Date(1663635600 * 1000) > new Date() ? 0 : totalMinted}</h2>
+        </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Total Supply</div>
           <div className="">2,920</div>
