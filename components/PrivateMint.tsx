@@ -9,6 +9,7 @@ import ConnectWalletNav from "./ConnectWallet"
 import confetti from "canvas-confetti"
 import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 import { useRouter } from "next/router"
+import Countdown from "react-countdown"
 
 const PrivateMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
@@ -155,7 +156,9 @@ const PrivateMint: React.FC = () => {
         className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
         onClick={handleMint}
       >
-        Mint!
+        <Countdown date={new Date(1663635600 * 1000)}>
+          <h3>Mint</h3>
+        </Countdown>
       </button>
     )
   }

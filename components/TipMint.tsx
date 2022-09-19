@@ -10,6 +10,7 @@ import ConnectWalletNav from "./ConnectWallet"
 import confetti from "canvas-confetti"
 import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 import { useRouter } from "next/router"
+import Countdown from "react-countdown"
 
 const PublicMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
@@ -157,7 +158,9 @@ const PublicMint: React.FC = () => {
         className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
         onClick={handleMint}
       >
-        Mint!
+        <Countdown date={new Date(1663678800 * 1000)}>
+          <h3>Mint</h3>
+        </Countdown>
       </button>
     )
   }
@@ -167,7 +170,7 @@ const PublicMint: React.FC = () => {
       <div className="flex flex-col">
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Total Supply</div>
-          <div className="">2,092</div>
+          <div className="">2,920</div>
         </div>
 
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2">

@@ -33,7 +33,7 @@ const MintNavigationButtons: React.FC<{
           </button>
         ))}
       </div>
-      <h2>{totalMinted}</h2>
+      <h2>{new Date(1663635600 * 1000) > new Date() ? 0 : totalMinted}</h2>
       <p className="uppercase">minted</p>
     </div>
   )
