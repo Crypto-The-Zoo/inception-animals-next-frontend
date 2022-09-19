@@ -26,13 +26,26 @@ const PublicMint: React.FC = () => {
   const router = useRouter()
 
   const liveUnixTime = 1663678800
+  const publicUnixTime = 1663689600
 
-  const { tipMintedCount, whitelistEntries, publicMintedCount } =
+  const { tipMintedCount, accountNfts, whitelistEntries, publicMintedCount } =
     useAccountMintStats()
 
   const onSuccess = () => {
     setShowSucces(true)
     confetti()
+  }
+
+  const mintAvailableUnixTime = () => {
+    if (
+      Object.keys(accountNfts).length === 0 ||
+      whitelistEntries === 0 ||
+      !whitelistEntries
+    ) {
+      return publicUnixTime
+    } else {
+      return liveUnixTime
+    }
   }
 
   const renderSuccessMessage = () => {
@@ -67,6 +80,11 @@ const PublicMint: React.FC = () => {
               Check In Dapper Wallet
             </button>
           </a>
+          <Link passHref href={"my-inception-nfts"}>
+            <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
+              Check in my inception Station
+            </button>
+          </Link>
           <div>
             <button
               className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
@@ -241,7 +259,7 @@ const PublicMint: React.FC = () => {
           className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
           onClick={handleMint}
         >
-          <Countdown date={new Date(1663678800 * 1000)}>
+          <Countdown date={new Date(1000 * mintAvailableUnixTime())}>
             <div className="flex gap-2">
               <h3>Tip Mint with</h3>
               <img
@@ -256,7 +274,7 @@ const PublicMint: React.FC = () => {
           className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
           onClick={handleTipMintFlow}
         >
-          <Countdown date={new Date(1663678800 * 1000)}>
+          <Countdown date={new Date(1000 * mintAvailableUnixTime())}>
             <div className="flex gap-2">
               <h3>Tip mint with</h3>
               <img src="/icons/flow_icon.png" alt="" className="w-6 h-6"></img>

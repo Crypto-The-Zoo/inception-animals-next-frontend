@@ -11,6 +11,7 @@ import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 import { useRouter } from "next/router"
 import Countdown from "react-countdown"
 import useContractMintStats from "../config/cadence/hooks/useContractMintStats"
+import Link from "next/link"
 
 const PrivateMint: React.FC = () => {
   const { walletAddr } = useContext(WalletContext)
@@ -52,15 +53,16 @@ const PrivateMint: React.FC = () => {
             ></img>
             <h1>X {quantity}</h1>
           </div>
-          <a
-            href="http://accounts.meetdapper.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="http://accounts.meetdapper.com/" rel="noopener noreferrer">
             <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
               Check In Dapper Wallet
             </button>
           </a>
+          <Link passHref href={"my-inception-nfts"}>
+            <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
+              Check in my inception Station
+            </button>
+          </Link>
           <div>
             <button
               className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
