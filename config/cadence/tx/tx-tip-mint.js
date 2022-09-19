@@ -70,8 +70,6 @@ export function tipMint({expectedPrice, numberOfTokens}, opts = {}, updateToast)
 
   const dapperAuthz = fcl.authz
 
-  console.log(TRANSACTION)
-
   return tx(
     {
       cadence: TRANSACTION,

@@ -8,7 +8,6 @@ export default function useContractMintStats() {
     getContractMintInfo()
       .then((res: any) => {
         if (res) {
-          console.log("--res", res)
           setTotalMinted(res.totalMinted)
         }
       })

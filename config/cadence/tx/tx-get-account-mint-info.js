@@ -14,8 +14,6 @@ pub fun main(address: Address): {String: UInt64} {
 export async function getAccountMintInfo({ address }) {
   if (!address) return Promise.resolve(null)
 
-  console.log(CODE)
-
   return fcl
     .send([fcl.script(CODE), fcl.args([fcl.arg(address, t.Address)])])
     .then(fcl.decode)

@@ -17,6 +17,9 @@ const PrivateMint: React.FC = () => {
   const [checkboxValue, setCheckboxValue] = useState(0)
   const [showSuccess, setShowSucces] = useState<boolean>(false)
 
+  const liveUnixTime = 1663635600
+  const expireUnixTime = 1663678800
+
   const router = useRouter()
 
   const { tipMintedCount, whitelistEntries, publicMintedCount } =
@@ -115,6 +118,16 @@ const PrivateMint: React.FC = () => {
   }
 
   const handleMint = () => {
+    if (new Date(liveUnixTime * 1000) > new Date()) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Mint not started!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
     if (checkboxValue === 0) {
       // toast.error("Please accept the terms and conditions")
       toastError({
@@ -156,8 +169,8 @@ const PrivateMint: React.FC = () => {
         className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
         onClick={handleMint}
       >
-        <Countdown date={new Date(1663635600 * 1000)}>
-          <h3>Mint</h3>
+        <Countdown date={new Date(liveUnixTime * 1000)}>
+          <h3>{new Date(expireUnixTime) < new Date() ? "Closed" : "Mint"}</h3>
         </Countdown>
       </button>
     )

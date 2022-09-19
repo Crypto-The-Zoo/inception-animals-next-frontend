@@ -21,11 +21,12 @@ const PublicMint: React.FC = () => {
 
   const router = useRouter()
 
+  const liveUnixTime = 1663678800
+
   const { tipMintedCount, whitelistEntries, publicMintedCount } =
     useAccountMintStats()
 
   const onSuccess = () => {
-    console.log("on success!")
     setShowSucces(true)
     confetti()
   }
@@ -116,6 +117,16 @@ const PublicMint: React.FC = () => {
   }
 
   const handleMint = () => {
+    if (new Date(liveUnixTime * 1000) > new Date()) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Mint not started!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
     if (checkboxValue === 0) {
       toastError({
         type: toast.TYPE.ERROR,
