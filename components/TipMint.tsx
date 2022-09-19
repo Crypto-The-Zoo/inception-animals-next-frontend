@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import useTipMint from "../config/cadence/hooks/useTipMint"
+import useTipMintFlow from "../config/cadence/hooks/useTipMintFlow"
 import { WalletContext } from "../context/WalletContext"
 import ConnectWalletNav from "./ConnectWallet"
 // @ts-ignore
@@ -121,6 +122,12 @@ const PublicMint: React.FC = () => {
     onSuccess,
   })
 
+  const [flowTipMintState, tipMintFlow, flowTipMintTxStatus] = useTipMintFlow({
+    updateToast: updateToast,
+    initToast: initToast,
+    onSuccess,
+  })
+
   const updateQuantity = ({ method }: { method: string }) => {
     if (
       method === "increment" &&
@@ -180,16 +187,83 @@ const PublicMint: React.FC = () => {
     })
   }
 
+  const handleTipMintFlow = () => {
+    // if (new Date(liveUnixTime * 1000) > new Date()) {
+    //   toastError({
+    //     type: toast.TYPE.ERROR,
+    //     render: "Mint not started!",
+    //     autoClose: 3000,
+    //     isLoading: false,
+    //   })
+    //   return
+    // }
+
+    if (checkboxValue === 0) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Please accept the terms and conditions",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
+    if (quantity > 5 || quantity < 1) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "You can mint at most 10 in 1 transaction!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
+    if (tipMintedCount + quantity > 5) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "You've reached the limit for tipping entries!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
+    return tipMintFlow({
+      numberOfTokens: quantity,
+      expectedPrice: (12 * quantity).toFixed(2).toString(),
+    })
+  }
+
   const renderMintButton = () => {
     return (
-      <button
-        className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
-        onClick={handleMint}
-      >
-        <Countdown date={new Date(1663678800 * 1000)}>
-          <h3>Mint</h3>
-        </Countdown>
-      </button>
+      <div className="flex items-center flex-row">
+        <button
+          className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
+          onClick={handleMint}
+        >
+          <Countdown date={new Date(1663678800 * 1000)}>
+            <div className="flex gap-2">
+              <h3>Tip Mint with</h3>
+              <img
+                src="/icons/dapper_icon.png"
+                alt=""
+                className="w-6 h-6"
+              ></img>
+            </div>
+          </Countdown>
+        </button>
+        <button
+          className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green"
+          onClick={handleTipMintFlow}
+        >
+          <Countdown date={new Date(1663678800 * 1000)}>
+            <div className="flex gap-2">
+              <h3>Tip mint with</h3>
+              <img src="/icons/flow_icon.png" alt="" className="w-6 h-6"></img>
+            </div>
+          </Countdown>
+        </button>
+      </div>
     )
   }
 
@@ -235,7 +309,7 @@ const PublicMint: React.FC = () => {
 
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2">
           <div className="">Total Tip</div>
-          <div className="flex flex-col gap-1 items-end">
+          <div className="flex flex-row gap-1 items-end">
             <div className="flex items-center gap-1">
               <img
                 src="/icons/dapper_icon.png"
@@ -243,6 +317,11 @@ const PublicMint: React.FC = () => {
                 className="w-6 h-6"
               ></img>
               {`$${20 * quantity}`}
+            </div>
+            <h1>|</h1>
+            <div className="flex items-center gap-1">
+              <img src="/icons/flow_icon.png" alt="" className="w-6 h-6"></img>
+              {`$${12 * quantity}`}
             </div>
           </div>
         </div>
