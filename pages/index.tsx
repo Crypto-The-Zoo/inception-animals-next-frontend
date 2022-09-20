@@ -1,6 +1,5 @@
 import type { NextPage } from "next"
 import Navigation from "../components/Navigation"
-import Footer from "../components/Footer"
 import HomePage from "../components/Homepage"
 import Head from "next/head"
 

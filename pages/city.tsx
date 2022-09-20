@@ -1,10 +1,9 @@
 import type { NextPage } from "next"
 import Navigation from "../components/Navigation"
 import CityParchment from "../components/CityParchment"
-import Footer from "../components/Footer"
 import Head from "next/head"
 
-const Home: NextPage = () => {
+const City: NextPage = () => {
   return (
     <div className="w-full">
       <div>
@@ -31,4 +30,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default City

@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/cadence/tx/tx-tip-mint.js", "config/cadence/tx/tx-public-mint.js", "config/cadence/tx/tx-private-mint.js", "config/cadence/hooks/useMintPrivate.js", "config/cadence/tx.jsx", "config/cadence/tx/tx-get-account-mint-info.js", "config/FclConfig.js", "utils/toast.js", "components/ToastHelper.jsx"],
   "exclude": ["node_modules"]
 }
