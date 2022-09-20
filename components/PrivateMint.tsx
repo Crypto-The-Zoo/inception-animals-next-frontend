@@ -20,8 +20,8 @@ const PrivateMint: React.FC = () => {
   const [showSuccess, setShowSucces] = useState<boolean>(false)
   const { totalMinted } = useContractMintStats()
 
-  const liveUnixTime = 1663635600
-  const expireUnixTime = 1663678800
+  const liveUnixTime = 1663722000
+  const expireUnixTime = 1663797600
 
   const router = useRouter()
 
