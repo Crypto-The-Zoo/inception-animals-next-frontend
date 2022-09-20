@@ -155,7 +155,7 @@ const PublicMint: React.FC = () => {
   }
 
   const handleMint = () => {
-    if (new Date(liveUnixTime * 1000) > new Date()) {
+    if (new Date(mintAvailableUnixTime() * 1000) > new Date()) {
       toastError({
         type: toast.TYPE.ERROR,
         render: "Mint not started!",
@@ -203,7 +203,7 @@ const PublicMint: React.FC = () => {
   }
 
   const handleTipMintFlow = () => {
-    if (new Date(liveUnixTime * 1000) > new Date()) {
+    if (new Date(mintAvailableUnixTime() * 1000) > new Date()) {
       toastError({
         type: toast.TYPE.ERROR,
         render: "Mint not started!",
