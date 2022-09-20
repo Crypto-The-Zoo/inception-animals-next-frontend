@@ -53,7 +53,11 @@ const PrivateMint: React.FC = () => {
             ></img>
             <h1>X {quantity}</h1>
           </div>
-          <a href="http://accounts.meetdapper.com/" rel="noopener noreferrer">
+          <a
+            href="http://accounts.meetdapper.com/inventory"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
               Check In Dapper Wallet
             </button>

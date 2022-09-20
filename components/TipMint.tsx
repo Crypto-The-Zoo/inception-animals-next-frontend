@@ -68,7 +68,7 @@ const PublicMint: React.FC = () => {
             <h1>X {quantity}</h1>
           </div>
           <a
-            href="http://accounts.meetdapper.com/"
+            href="http://accounts.meetdapper.com/inventory"
             target="_blank"
             rel="noopener noreferrer"
           >
