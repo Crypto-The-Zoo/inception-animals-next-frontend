@@ -5,7 +5,6 @@ import { getAccountNfts } from "../tx/tx-get-account-nfts"
 
 export default function useAccountMintStats() {
   const { walletAddr } = useContext(WalletContext)
-
   const [tipMintedCount, setTipMintedCount] = useState(0)
   const [whitelistEntries, setWhitelistEntries] = useState(0)
   const [publicMintedCount, setPublicMintedCount] = useState(0)
