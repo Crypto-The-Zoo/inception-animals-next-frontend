@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import type { NextPage } from "next";
-import Navigation from "../components/Navigation";
-import Head from "next/head";
-import "react-toastify/dist/ReactToastify.css";
-import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats";
-import Countdown from "react-countdown";
-import Link from "next/link";
+import type { NextPage } from "next"
+import Navigation from "../components/Navigation"
+import Head from "next/head"
+import "react-toastify/dist/ReactToastify.css"
+import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
+import Countdown from "react-countdown"
+import Link from "next/link"
 
 const MyInceptionNfts: NextPage = () => {
-  const { accountNfts } = useAccountMintStats();
+  const { accountNfts } = useAccountMintStats()
   // @ts-ignore
-  const { InceptionAvatars, InceptionBlackBoxes } = accountNfts;
+  const { InceptionAvatars, InceptionBlackBoxes } = accountNfts
 
   const renderNfts = () => {
     if (Object.keys(accountNfts).length === 0) {
@@ -19,7 +19,11 @@ const MyInceptionNfts: NextPage = () => {
           <div className="text-center rounded-md relative max-w-2xl p-14 z-50 flex flex-wrap justify-center items-center gap-12">
             <h3>Seems like we need to get you a new identity...</h3>
           </div>
-          <img src="/images/skater.png" alt="skater" className="absolute bottom-0 right-0 opacity-40" />
+          <img
+            src="/images/skater.png"
+            alt="skater"
+            className="absolute bottom-0 right-0 opacity-40"
+          />
           {/* eslint-disable-next-line @next/next/link-passhref */}
           <Link href="/mint">
             <button className="text-6xl font-bold z-50 px-8 py-4 bg-inception-light-green rounded-xl">
@@ -27,7 +31,7 @@ const MyInceptionNfts: NextPage = () => {
             </button>
           </Link>
         </div>
-      );
+      )
     }
 
     return (
@@ -70,13 +74,13 @@ const MyInceptionNfts: NextPage = () => {
                     <div className="bg-inception-blue px-2 py-1 rounded-lg min-w-[75px]">
                       <Countdown
                         className="font-inception-ink-italic text-md"
-                        date={new Date("2022-10-10T01:00:00Z")}
+                        date={new Date("2022-10-19T01:00:00Z")}
                       />
                     </div>
                   </div>
                 </div>
               </div>
-            );
+            )
           })}
           {(InceptionBlackBoxes || []).map((box: any, index: any) => {
             return (
@@ -100,7 +104,7 @@ const MyInceptionNfts: NextPage = () => {
                   </div>
                 </div>
               </div>
-            );
+            )
 
             return (
               <div className="flex flex-col text-center" key={index}>
@@ -113,11 +117,11 @@ const MyInceptionNfts: NextPage = () => {
                   box?.serialNumber
                 )}`}</h3>
               </div>
-            );
+            )
           })}
         </div>
       </div>
-    );
+    )
 
     return (
       <div className="flex flex-col h-1/2 my-36 relative justify-center items-center font-inception-ink text-2xl text-inception-taro z-40 overflow-auto">
@@ -134,7 +138,7 @@ const MyInceptionNfts: NextPage = () => {
                   avatar?.serialNumber
                 )}`}</h3>
               </div>
-            );
+            )
           })}
           {(InceptionBlackBoxes || []).map((box: any, index: any) => {
             return (
@@ -148,12 +152,12 @@ const MyInceptionNfts: NextPage = () => {
                   box?.serialNumber
                 )}`}</h3>
               </div>
-            );
+            )
           })}
         </div>
       </div>
-    );
-  };
+    )
+  }
 
   return (
     <div className="w-full">
@@ -178,7 +182,7 @@ const MyInceptionNfts: NextPage = () => {
       <Navigation />
       {renderNfts()}
     </div>
-  );
-};
+  )
+}
 
-export default MyInceptionNfts;
+export default MyInceptionNfts
