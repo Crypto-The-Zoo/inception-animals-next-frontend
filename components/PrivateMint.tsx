@@ -199,7 +199,7 @@ const PrivateMint: React.FC = () => {
       <div className="flex flex-col">
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <p className="uppercase">minted</p>
-          <h2>{new Date(1663635600 * 1000) > new Date() ? 0 : totalMinted}</h2>
+          <h2>{totalMinted >= 2920 ? "Sold Out" : totalMinted}</h2>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Total Supply</div>
