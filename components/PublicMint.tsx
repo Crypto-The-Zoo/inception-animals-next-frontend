@@ -19,7 +19,7 @@ const PublicMint: React.FC = () => {
   const [showSuccess, setShowSucces] = useState<boolean>(false)
   const { totalMinted } = useContractMintStats()
 
-  const liveUnixTime = 1663808400
+  const liveUnixTime = 1663797600
 
   const { tipMintedCount, whitelistEntries, publicMintedCount } =
     useAccountMintStats()

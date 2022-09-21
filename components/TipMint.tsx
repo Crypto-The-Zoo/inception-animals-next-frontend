@@ -25,8 +25,8 @@ const PublicMint: React.FC = () => {
 
   const router = useRouter()
 
-  const liveUnixTime = 1663797600
-  const publicUnixTime = 1663808400
+  const liveUnixTime = 1663786800
+  const publicUnixTime = 1663797600
 
   const { tipMintedCount, accountNfts, whitelistEntries, publicMintedCount } =
     useAccountMintStats()
