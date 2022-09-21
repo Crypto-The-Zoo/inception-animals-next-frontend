@@ -274,7 +274,7 @@ const PublicMint: React.FC = () => {
         >
           <Countdown date={new Date(1000 * mintAvailableUnixTime())}>
             <div className="flex gap-2">
-              <h3>Tip mint with</h3>
+              <h3>Tip with</h3>
               <img src="/icons/flow_icon.png" alt="" className="w-6 h-6"></img>
             </div>
           </Countdown>
@@ -337,7 +337,7 @@ const PublicMint: React.FC = () => {
             <h1>|</h1>
             <div className="flex items-center gap-1">
               <img src="/icons/flow_icon.png" alt="" className="w-6 h-6"></img>
-              {`$${12 * quantity}`}
+              {`${12 * quantity}`}
             </div>
           </div>
         </div>
