@@ -14,7 +14,6 @@ import ConnectWalletNav from "./ConnectWallet"
 const Navigation: React.FC = () => {
   const router = useRouter()
   const { pathname } = router
-
   // let [backgroundCss, setBackgroundCss] = useState("bg-inception-off-white")
   let [showMenu, setShowMenu] = useState<boolean>(false)
 
@@ -26,7 +25,6 @@ const Navigation: React.FC = () => {
 
   const navLinks = [
     { name: "HOME", link: "/", isOpen: true },
-    { name: "MINT", link: "/mint", isOpen: true },
     { name: "BLUEPRINT", link: "/blueprint", isOpen: true },
     { name: "CITY", link: "/city", isOpen: true },
     { name: "BLACKMARKET", link: "", isOpen: false },

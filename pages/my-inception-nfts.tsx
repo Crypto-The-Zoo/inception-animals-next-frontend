@@ -5,12 +5,89 @@ import Head from "next/head"
 import "react-toastify/dist/ReactToastify.css"
 import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
 import Countdown from "react-countdown"
+import useInitializeAccount from "../config/cadence/hooks/useInitializeAccount"
+import { useRef, useState } from "react"
+import { toast } from "react-toastify"
+// @ts-ignore
+import confetti from "canvas-confetti"
+import { useRouter } from "next/router"
 import Link from "next/link"
 
 const MyInceptionNfts: NextPage = () => {
   const { accountNfts } = useAccountMintStats()
+  console.log(typeof accountNfts)
+
   // @ts-ignore
   const { InceptionAvatars, InceptionBlackBoxes } = accountNfts
+  const [showSuccess, setShowSucces] = useState<boolean>(false)
+
+  const mainToast = useRef(null)
+  const errorToast = useRef(null)
+
+  const router = useRouter()
+
+  const onSuccess = () => {
+    setShowSucces(true)
+    confetti()
+  }
+
+  const initToastError = (payload: any) => {
+    if (!errorToast?.current) {
+      // @ts-ignore
+      errorToast.current = toast.dark(payload.render, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+        isLoading: false,
+      })
+    }
+  }
+
+  const updateToastError = (payload: any) => {
+    // @ts-ignore
+    return toast.update(errorToast.current, { ...payload })
+  }
+
+  const toastError = (payload: any) => {
+    initToastError(payload)
+    updateToastError(payload)
+  }
+
+  const initToast = () =>
+    // @ts-ignore
+    (mainToast.current = toast.dark("Awaiting approval..", {
+      position: toast.POSITION.TOP_CENTER,
+      isLoading: true,
+    }))
+
+  const updateToast = (update: any) => {
+    // @ts-ignore
+    toast.update(mainToast.current, { ...update })
+  }
+
+  const [txState, initializeAccount, txStatus] = useInitializeAccount({
+    updateToast: updateToast,
+    initToast: initToast,
+    onSuccess,
+  })
+
+  const renderSuccessMessage = () => {
+    return (
+      <div className="flex flex-col h-screen relative justify-center items-center m-auto font-inception-ink text-2xl text-inception-taro z-40">
+        <div className="bg-inception-off-white backdrop-blur-sm bg-opacity-60 rounded-md relative max-w-2xl border-2 border-red-600 p-14 z-50 flex flex-col justify-center gap-4">
+          <h3 className="text-inception-green text-center text-sm lg:text-2xl font-bold tracking-widest opacity-90">
+            Congratulations you are officially an outcast!
+          </h3>
+
+          <button
+            className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green m-auto"
+            onClick={() => router.reload()}
+          >
+            {"Let's go!"}
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   const renderNfts = () => {
     if (Object.keys(accountNfts).length === 0) {
@@ -24,12 +101,33 @@ const MyInceptionNfts: NextPage = () => {
             alt="skater"
             className="absolute bottom-0 right-0 opacity-40"
           />
+          <button
+            className="text-6xl font-bold z-50 px-8 py-4 bg-inception-light-green rounded-xl"
+            onClick={initializeAccount}
+          >
+            Become an outcast
+          </button>
+        </div>
+      )
+    }
+
+    if ("InceptionAvatars" in accountNfts) {
+      return (
+        <div className="flex flex-col h-screen relative justify-center items-center m-auto font-inception-ink text-2xl text-inception-taro z-40">
+          <div className="text-center rounded-md relative max-w-2xl p-14 z-50 flex flex-wrap justify-center items-center gap-12">
+            <h3>Seems like we need to get you a new identity...</h3>
+          </div>
+          <img
+            src="/images/skater.png"
+            alt="skater"
+            className="absolute bottom-0 right-0 opacity-40"
+          />
           {/* eslint-disable-next-line @next/next/link-passhref */}
-          <Link href="/mint">
-            <button className="text-6xl font-bold z-50 px-8 py-4 bg-inception-light-green rounded-xl">
-              Mint
-            </button>
-          </Link>
+          {/* <Link href="/marketplace"> */}
+          <button className="text-6xl font-bold z-50 px-8 py-4 bg-inception-light-green rounded-xl">
+            You gotta wait until the black market opens...
+          </button>
+          {/* </Link> */}
         </div>
       )
     }
@@ -105,54 +203,6 @@ const MyInceptionNfts: NextPage = () => {
                 </div>
               </div>
             )
-
-            return (
-              <div className="flex flex-col text-center" key={index}>
-                <img
-                  src={box.MetadataViewsDisplay.thumbnail.url}
-                  className="w-32 h-32 rounded-md hover:scale-110 duration-300"
-                  alt=""
-                ></img>
-                <h3>{`Inception Black Box #${JSON.stringify(
-                  box?.serialNumber
-                )}`}</h3>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    )
-
-    return (
-      <div className="flex flex-col h-1/2 my-36 relative justify-center items-center font-inception-ink text-2xl text-inception-taro z-40 overflow-auto">
-        <div className="bg-inception-off-white backdrop-blur-sm bg-opacity-60 rounded-md relative max-w-4xl max-h-xl border-2 border-red-600 p-14 z-50 flex flex-wrap text-sm justify-center items-center gap-12">
-          {(InceptionAvatars || []).map((avatar: any, index: any) => {
-            return (
-              <div className="flex flex-col text-center" key={index}>
-                <img
-                  src={avatar.MetadataViewsDisplay.thumbnail.url}
-                  className="w-32 h-32 rounded-md hover:scale-110 duration-300"
-                  alt=""
-                ></img>
-                <h3>{`Inception Avatar #${JSON.stringify(
-                  avatar?.serialNumber
-                )}`}</h3>
-              </div>
-            )
-          })}
-          {(InceptionBlackBoxes || []).map((box: any, index: any) => {
-            return (
-              <div className="flex flex-col text-center" key={index}>
-                <img
-                  src={box.MetadataViewsDisplay.thumbnail.url}
-                  className="w-32 h-32 rounded-md hover:scale-110 duration-300"
-                  alt=""
-                ></img>
-                <h3>{`Inception Black Box #${JSON.stringify(
-                  box?.serialNumber
-                )}`}</h3>
-              </div>
-            )
           })}
         </div>
       </div>
@@ -180,7 +230,7 @@ const MyInceptionNfts: NextPage = () => {
         </Head>
       </div>
       <Navigation />
-      {renderNfts()}
+      {!showSuccess ? renderNfts() : renderSuccessMessage()}
     </div>
   )
 }
