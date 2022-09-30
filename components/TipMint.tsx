@@ -155,6 +155,16 @@ const PublicMint: React.FC = () => {
   }
 
   const handleMint = () => {
+    if (totalMinted >= 2920) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Sold Out!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
     if (new Date(mintAvailableUnixTime() * 1000) > new Date()) {
       toastError({
         type: toast.TYPE.ERROR,

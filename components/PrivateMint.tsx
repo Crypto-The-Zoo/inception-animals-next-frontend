@@ -134,10 +134,30 @@ const PrivateMint: React.FC = () => {
   }
 
   const handleMint = () => {
+    if (totalMinted >= 2920) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Sold Out!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
     if (new Date(liveUnixTime * 1000) > new Date()) {
       toastError({
         type: toast.TYPE.ERROR,
         render: "Mint not started!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
+    if (new Date(expireUnixTime * 1000) < new Date()) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Mint Closed!",
         autoClose: 3000,
         isLoading: false,
       })
