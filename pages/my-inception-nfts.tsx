@@ -111,26 +111,26 @@ const MyInceptionNfts: NextPage = () => {
       )
     }
 
-    if ("InceptionAvatars" in accountNfts) {
-      return (
-        <div className="flex flex-col h-screen relative justify-center items-center m-auto font-inception-ink text-2xl text-inception-taro z-40">
-          <div className="text-center rounded-md relative max-w-2xl p-14 z-50 flex flex-wrap justify-center items-center gap-12">
-            <h3>Seems like we need to get you a new identity...</h3>
-          </div>
-          <img
-            src="/images/skater.png"
-            alt="skater"
-            className="absolute bottom-0 right-0 opacity-40"
-          />
-          {/* eslint-disable-next-line @next/next/link-passhref */}
-          {/* <Link href="/marketplace"> */}
-          <button className="text-6xl font-bold z-50 px-8 py-4 bg-inception-light-green rounded-xl">
-            You gotta wait until the black market opens...
-          </button>
-          {/* </Link> */}
-        </div>
-      )
-    }
+    // if ("InceptionAvatars" in accountNfts) {
+    //   return (
+    //     <div className="flex flex-col h-screen relative justify-center items-center m-auto font-inception-ink text-2xl text-inception-taro z-40">
+    //       <div className="text-center rounded-md relative max-w-2xl p-14 z-50 flex flex-wrap justify-center items-center gap-12">
+    //         <h3>Seems like we need to get you a new identity...</h3>
+    //       </div>
+    //       <img
+    //         src="/images/skater.png"
+    //         alt="skater"
+    //         className="absolute bottom-0 right-0 opacity-40"
+    //       />
+    //       {/* eslint-disable-next-line @next/next/link-passhref */}
+    //       {/* <Link href="/marketplace"> */}
+    //       <button className="text-6xl font-bold z-50 px-8 py-4 bg-inception-light-green rounded-xl">
+    //         You gotta wait until the black market opens...
+    //       </button>
+    //       {/* </Link> */}
+    //     </div>
+    //   )
+    // }
 
     return (
       <div className="h-full w-full my-36 px-6bg-inception-off-white">

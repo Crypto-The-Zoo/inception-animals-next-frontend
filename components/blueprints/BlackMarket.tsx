@@ -20,6 +20,15 @@ const BlackMarket: React.FC = () => {
     return <InceptionTextBlock contents={contents} />
   }
 
+  const renderSecondaryText = () => {
+    const contents: string[] = [
+      `"THE HIPPO HUNT IS ON!"`,
+      `"Where?"`,
+      `"THE BLACKMARKET, YOU GOTTA HURRY!"`,
+    ]
+    return <InceptionTextBlock contents={contents} />
+  }
+
   return (
     <div className="relative h-full">
       <section className="font-inception-ink flex flex-col">
@@ -27,6 +36,10 @@ const BlackMarket: React.FC = () => {
           content: "On the grapevine",
         })}
         {renderLeadingText()}
+        {TextOnBanner({
+          content: "The Hippo Hunt",
+        })}
+        {renderSecondaryText()}
       </section>
     </div>
   )

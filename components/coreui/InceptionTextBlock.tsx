@@ -37,6 +37,8 @@ const InceptionTextBlock: React.FC<{
               "Inception BlackBox",
               "it's a top secret.",
               "until tomorrow",
+              "The Hippo Hunt",
+              "THE BLACKMARKET",
             ]}
             autoEscape={true}
             textToHighlight={content}

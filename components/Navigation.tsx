@@ -27,7 +27,11 @@ const Navigation: React.FC = () => {
     { name: "HOME", link: "/", isOpen: true },
     { name: "BLUEPRINT", link: "/blueprint", isOpen: true },
     { name: "CITY", link: "/city", isOpen: true },
-    { name: "BLACKMARKET", link: "", isOpen: false },
+    {
+      name: "BLACKMARKET",
+      link: "https://zeero.art/collection/inception-animals?",
+      isOpen: true,
+    },
     { name: "SECRET MISSION", link: "", isOpen: false },
   ]
 
