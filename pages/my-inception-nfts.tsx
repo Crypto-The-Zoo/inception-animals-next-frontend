@@ -1,35 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
-import type { NextPage } from "next"
-import Navigation from "../components/Navigation"
-import Head from "next/head"
-import "react-toastify/dist/ReactToastify.css"
-import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats"
-import Countdown from "react-countdown"
-import useInitializeAccount from "../config/cadence/hooks/useInitializeAccount"
-import { useRef, useState } from "react"
-import { toast } from "react-toastify"
+import type { NextPage } from "next";
+import Navigation from "../components/Navigation";
+import Head from "next/head";
+import "react-toastify/dist/ReactToastify.css";
+import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats";
+import Countdown from "react-countdown";
+import useInitializeAccount from "../config/cadence/hooks/useInitializeAccount";
+import { useRef, useState } from "react";
+import { toast } from "react-toastify";
 // @ts-ignore
-import confetti from "canvas-confetti"
-import { useRouter } from "next/router"
-import Link from "next/link"
+import confetti from "canvas-confetti";
+import { useRouter } from "next/router";
+import CountdownTimer from "../components/CountdownTimer";
 
 const MyInceptionNfts: NextPage = () => {
-  const { accountNfts } = useAccountMintStats()
-  console.log(typeof accountNfts)
+  const { accountNfts } = useAccountMintStats();
 
   // @ts-ignore
-  const { InceptionAvatars, InceptionBlackBoxes } = accountNfts
-  const [showSuccess, setShowSucces] = useState<boolean>(false)
+  const { InceptionAvatars, InceptionBlackBoxes } = accountNfts;
+  const [showSuccess, setShowSucces] = useState<boolean>(false);
 
-  const mainToast = useRef(null)
-  const errorToast = useRef(null)
+  const mainToast = useRef(null);
+  const errorToast = useRef(null);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const onSuccess = () => {
-    setShowSucces(true)
-    confetti()
-  }
+    setShowSucces(true);
+    confetti();
+  };
 
   const initToastError = (payload: any) => {
     if (!errorToast?.current) {
@@ -38,37 +37,37 @@ const MyInceptionNfts: NextPage = () => {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
         isLoading: false,
-      })
+      });
     }
-  }
+  };
 
   const updateToastError = (payload: any) => {
     // @ts-ignore
-    return toast.update(errorToast.current, { ...payload })
-  }
+    return toast.update(errorToast.current, { ...payload });
+  };
 
   const toastError = (payload: any) => {
-    initToastError(payload)
-    updateToastError(payload)
-  }
+    initToastError(payload);
+    updateToastError(payload);
+  };
 
   const initToast = () =>
     // @ts-ignore
     (mainToast.current = toast.dark("Awaiting approval..", {
       position: toast.POSITION.TOP_CENTER,
       isLoading: true,
-    }))
+    }));
 
   const updateToast = (update: any) => {
     // @ts-ignore
-    toast.update(mainToast.current, { ...update })
-  }
+    toast.update(mainToast.current, { ...update });
+  };
 
   const [txState, initializeAccount, txStatus] = useInitializeAccount({
     updateToast: updateToast,
     initToast: initToast,
     onSuccess,
-  })
+  });
 
   const renderSuccessMessage = () => {
     return (
@@ -86,8 +85,8 @@ const MyInceptionNfts: NextPage = () => {
           </button>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   const renderNfts = () => {
     if (Object.keys(accountNfts).length === 0) {
@@ -108,7 +107,7 @@ const MyInceptionNfts: NextPage = () => {
             Become an outcast
           </button>
         </div>
-      )
+      );
     }
 
     // if ("InceptionAvatars" in accountNfts) {
@@ -164,21 +163,9 @@ const MyInceptionNfts: NextPage = () => {
                   <h3 className="font-inception-ink font-bold text-2xl">{`Inception Avatar #${JSON.stringify(
                     avatar?.serialNumber
                   )}`}</h3>
-
-                  <div className="flex w-full items-center justify-between">
-                    <span className="font-inception-ink text-lg">
-                      Reveals In
-                    </span>
-                    <div className="bg-inception-blue px-2 py-1 rounded-lg min-w-[75px]">
-                      <Countdown
-                        className="font-inception-ink-italic text-md"
-                        date={new Date("2022-10-19T01:00:00Z")}
-                      />
-                    </div>
-                  </div>
                 </div>
               </div>
-            )
+            );
           })}
           {(InceptionBlackBoxes || []).map((box: any, index: any) => {
             return (
@@ -195,19 +182,18 @@ const MyInceptionNfts: NextPage = () => {
                   <h3 className="font-inception-ink font-bold text-2xl">{`Inception Black Box #${JSON.stringify(
                     box?.serialNumber
                   )}`}</h3>
-                  <div className="gap-2 bg-inception-red px-2 py-1 rounded-lg min-w-[75px]">
-                    <h3 className="font-inception-ink-italic text-md">
-                      TOP SECRET 🤫
-                    </h3>
+
+                  <div className="flex w-full items-center justify-between">
+                    <CountdownTimer />
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className="w-full">
@@ -232,7 +218,7 @@ const MyInceptionNfts: NextPage = () => {
       <Navigation />
       {!showSuccess ? renderNfts() : renderSuccessMessage()}
     </div>
-  )
-}
+  );
+};
 
-export default MyInceptionNfts
+export default MyInceptionNfts;
