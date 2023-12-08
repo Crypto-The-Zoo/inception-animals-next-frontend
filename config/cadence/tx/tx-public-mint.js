@@ -1,6 +1,6 @@
-import * as fcl from "@onflow/fcl"
-import { invariant } from "@onflow/util-invariant"
-import { tx } from "../helper/tx"
+import * as fcl from "@onflow/fcl";
+import { invariant } from "@onflow/util-invariant";
+import { tx } from "../helper/tx";
 
 const TRANSACTION =
   process.env.NEXT_PUBLIC_NET_TYPE === "mainnet"
@@ -81,7 +81,7 @@ transaction(setID: UInt64) {
       // mint private sale InceptionAvatar to buyer's account
       InceptionMinter.publicFreeMint(buyer: self.buyerAddress, setID: setID)
     }
-}`
+}`;
 
 // prettier-ignore
 export function mintPublic(opts = {}, updateToast) {

@@ -12,9 +12,11 @@ import { toast } from "react-toastify";
 import confetti from "canvas-confetti";
 import { useRouter } from "next/router";
 import CountdownTimer from "../components/CountdownTimer";
+import useClaimCrystal from "../config/cadence/hooks/useClaimCrystal";
 
 const MyInceptionNfts: NextPage = () => {
   const { accountNfts } = useAccountMintStats();
+  const [countdownComplete, setCountdownComplete] = useState<boolean>(false);
 
   // @ts-ignore
   const { InceptionAvatars, InceptionBlackBoxes } = accountNfts;
@@ -63,7 +65,13 @@ const MyInceptionNfts: NextPage = () => {
     toast.update(mainToast.current, { ...update });
   };
 
-  const [txState, initializeAccount, txStatus] = useInitializeAccount({
+  const [txState, initializeAccount, _] = useInitializeAccount({
+    updateToast: updateToast,
+    initToast: initToast,
+    onSuccess,
+  });
+
+  const [state, claimCrystal, __] = useClaimCrystal({
     updateToast: updateToast,
     initToast: initToast,
     onSuccess,
@@ -185,9 +193,25 @@ const MyInceptionNfts: NextPage = () => {
                   )}`}</h3>
 
                   <div className="flex w-full items-center justify-between">
-                    <CountdownTimer
-                      nextCountdownDateInSeconds={box.nextClaimTimeInSeconds}
-                    />
+                    {!countdownComplete && (
+                      <CountdownTimer
+                        nextClaimTimeInSeconds={box.nextClaimTimeInSeconds}
+                        countdownComplete={countdownComplete}
+                        setCountdownComplete={setCountdownComplete}
+                      />
+                    )}
+                    {countdownComplete && (
+                      <div className="flex w-full items-center justify-between">
+                        <div className="bg-inception-taro px-2 py-1 rounded-lg min-w-[75px]">
+                          <button
+                            onClick={claimCrystal({ tokenId: box.id })}
+                            className="font-inception-ink-italic text-md"
+                          >
+                            Claim
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
