@@ -2,7 +2,11 @@ import React from "react";
 import { DateTime } from "luxon";
 import Countdown from "react-countdown";
 
-const CountdownTimer: React.FC = () => {
+interface CountdownProps {
+  countdownDate: Date;
+}
+
+const CountdownTimer: React.FC<CountdownProps> = ({ countdownDate }) => {
   // Get the current date and time in EST
   const now = DateTime.now().setZone("America/New_York");
 
@@ -10,7 +14,9 @@ const CountdownTimer: React.FC = () => {
   const startOfWeek = now.startOf("week");
 
   // Set the countdown date to the following Saturday at 12:00 AM EST
-  const countdownDate = startOfWeek.plus({ days: 6 }).toJSDate();
+  const displayCountDownDate = countdownDate
+    ? countdownDate
+    : startOfWeek.plus({ days: 6 }).toJSDate();
 
   return (
     <div className="flex w-full items-center justify-between">
@@ -18,7 +24,7 @@ const CountdownTimer: React.FC = () => {
       <div className="bg-inception-blue px-2 py-1 rounded-lg min-w-[75px]">
         <Countdown
           className="font-inception-ink-italic text-md"
-          date={countdownDate}
+          date={displayCountDownDate}
         />
       </div>
     </div>
