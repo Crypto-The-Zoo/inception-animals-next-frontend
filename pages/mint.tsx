@@ -59,7 +59,7 @@ const Mint: NextPage = () => {
         </Head>
       </div>
       <Navigation />
-      {renderMintPanel()}
+      <div className="mt-48 md:mt-auto">{renderMintPanel()}</div>
     </div>
   )
 }

@@ -53,7 +53,11 @@ const PrivateMint: React.FC = () => {
             ></img>
             <h1>X {quantity}</h1>
           </div>
-          <a href="http://accounts.meetdapper.com/" rel="noopener noreferrer">
+          <a
+            href="http://accounts.meetdapper.com/inventory"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green">
               Check In Dapper Wallet
             </button>
@@ -130,10 +134,30 @@ const PrivateMint: React.FC = () => {
   }
 
   const handleMint = () => {
+    if (totalMinted >= 2920) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Sold Out!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
     if (new Date(liveUnixTime * 1000) > new Date()) {
       toastError({
         type: toast.TYPE.ERROR,
         render: "Mint not started!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
+    if (new Date(expireUnixTime * 1000) < new Date()) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Mint Closed!",
         autoClose: 3000,
         isLoading: false,
       })
@@ -195,7 +219,7 @@ const PrivateMint: React.FC = () => {
       <div className="flex flex-col">
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <p className="uppercase">minted</p>
-          <h2>{new Date(1663635600 * 1000) > new Date() ? 0 : totalMinted}</h2>
+          <h2>{totalMinted >= 2920 ? "Sold Out" : totalMinted}</h2>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Total Supply</div>

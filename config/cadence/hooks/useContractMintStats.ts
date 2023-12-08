@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import { getContractMintInfo } from "../tx/tx-get-contract-mint-info"
 
 export default function useContractMintStats() {
-  const [totalMinted, setTotalMinted] = useState(2092)
+  const [totalMinted, setTotalMinted] = useState(2919)
 
   const getMintInfoPerContract = () => {
     if (new Date(1663722000 * 1000) > new Date()) {

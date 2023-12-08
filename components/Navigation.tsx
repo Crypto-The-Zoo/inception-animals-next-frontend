@@ -14,7 +14,6 @@ import ConnectWalletNav from "./ConnectWallet"
 const Navigation: React.FC = () => {
   const router = useRouter()
   const { pathname } = router
-
   // let [backgroundCss, setBackgroundCss] = useState("bg-inception-off-white")
   let [showMenu, setShowMenu] = useState<boolean>(false)
 
@@ -26,10 +25,13 @@ const Navigation: React.FC = () => {
 
   const navLinks = [
     { name: "HOME", link: "/", isOpen: true },
-    { name: "MINT", link: "/mint", isOpen: true },
     { name: "BLUEPRINT", link: "/blueprint", isOpen: true },
     { name: "CITY", link: "/city", isOpen: true },
-    { name: "BLACKMARKET", link: "", isOpen: false },
+    {
+      name: "BLACKMARKET",
+      link: "https://zeero.art/collection/inception-animals?",
+      isOpen: true,
+    },
     { name: "SECRET MISSION", link: "", isOpen: false },
   ]
 
@@ -179,6 +181,7 @@ const Navigation: React.FC = () => {
                 </li>
               </div>
             ))}
+            <ConnectWalletNav />
             <div className="flex items-center justify-start gap-4 p-4">
               <a
                 href="https://twitter.com/Inceptionft"

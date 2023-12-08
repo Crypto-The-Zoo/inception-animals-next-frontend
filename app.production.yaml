@@ -1,5 +1,4 @@
 env: standard
-instance_class: F4
 runtime: nodejs14
 service: default
 handlers:

@@ -25,8 +25,8 @@ const PublicMint: React.FC = () => {
 
   const router = useRouter()
 
-  const liveUnixTime = 1663797600
-  const publicUnixTime = 1663808400
+  const liveUnixTime = 1663786800
+  const publicUnixTime = 1663797600
 
   const { tipMintedCount, accountNfts, whitelistEntries, publicMintedCount } =
     useAccountMintStats()
@@ -68,7 +68,7 @@ const PublicMint: React.FC = () => {
             <h1>X {quantity}</h1>
           </div>
           <a
-            href="http://accounts.meetdapper.com/"
+            href="http://accounts.meetdapper.com/inventory"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -155,6 +155,16 @@ const PublicMint: React.FC = () => {
   }
 
   const handleMint = () => {
+    if (totalMinted >= 2920) {
+      toastError({
+        type: toast.TYPE.ERROR,
+        render: "Sold Out!",
+        autoClose: 3000,
+        isLoading: false,
+      })
+      return
+    }
+
     if (new Date(mintAvailableUnixTime() * 1000) > new Date()) {
       toastError({
         type: toast.TYPE.ERROR,
@@ -274,7 +284,7 @@ const PublicMint: React.FC = () => {
         >
           <Countdown date={new Date(1000 * mintAvailableUnixTime())}>
             <div className="flex gap-2">
-              <h3>Tip mint with</h3>
+              <h3>Tip with</h3>
               <img src="/icons/flow_icon.png" alt="" className="w-6 h-6"></img>
             </div>
           </Countdown>
@@ -288,7 +298,7 @@ const PublicMint: React.FC = () => {
       <div className="flex flex-col">
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <p className="uppercase">minted</p>
-          <h2>{new Date(1663635600 * 1000) > new Date() ? 0 : totalMinted}</h2>
+          <h2>{totalMinted >= 2920 ? "Sold Out" : totalMinted}</h2>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <div className="">Total Supply</div>
@@ -337,7 +347,7 @@ const PublicMint: React.FC = () => {
             <h1>|</h1>
             <div className="flex items-center gap-1">
               <img src="/icons/flow_icon.png" alt="" className="w-6 h-6"></img>
-              {`$${12 * quantity}`}
+              {`${12 * quantity}`}
             </div>
           </div>
         </div>

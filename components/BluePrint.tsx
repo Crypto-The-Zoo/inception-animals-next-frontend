@@ -268,7 +268,7 @@ const BluePrint: React.FC = () => {
           blueprint
         </h1>
         <h1 className="uppercase text-4xl text-inception-brown">
-          [Looks dope, isn&#39;t it]
+          [Looks dope, doesn&#39;t it]
         </h1>
         <br></br>
       </section>
