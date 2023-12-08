@@ -5,18 +5,21 @@ const CODE = `import NonFungibleToken from ${process.env.NEXT_PUBLIC_NON_FUNGIBL
 import MetadataViews from ${process.env.NEXT_PUBLIC_NON_FUNGIBLE_TOKEN_ADDRESS}
 import InceptionAvatar from ${process.env.NEXT_PUBLIC_CONTRACT_ADDRESS}
 import InceptionBlackBox from ${process.env.NEXT_PUBLIC_CONTRACT_ADDRESS}
+import InceptionExchange from ${process.env.NEXT_PUBLIC_CONTRACT_ADDRESS}
 
 pub struct NFTData {
   pub let MetadataViewsDisplay: MetadataViews.Display
   pub let metadata: {String: AnyStruct}
   pub let serialNumber: UInt64
   pub let id: UInt64
+  pub let nextClaimTimeInSeconds: UInt64
 
-  init(metadataViewsDisplay: MetadataViews.Display, serialNumber: UInt64, metadata: {String: AnyStruct}, id: UInt64) {
+  init(metadataViewsDisplay: MetadataViews.Display, serialNumber: UInt64, metadata: {String: AnyStruct}, id: UInt64, nextClaimTimeInSeconds: UInt64) {
     self.MetadataViewsDisplay = metadataViewsDisplay
     self.metadata = metadata
     self.serialNumber = serialNumber
     self.id = id
+    self.nextClaimTimeInSeconds = nextClaimTimeInSeconds
   }
 }
 
@@ -29,7 +32,8 @@ pub fun getItemMetadata(address: Address, itemID: UInt64): NFTData? {
           metadataViewsDisplay: display,
           serialNumber: item.getNFTTemplate().templateID,
           metadata: item.getNFTTemplate().getMetadata(),
-          id: item.id
+          id: item.id,
+          nextClaimTimeInSeconds: 0
         )
       }
     }
@@ -40,13 +44,16 @@ pub fun getItemMetadata(address: Address, itemID: UInt64): NFTData? {
 pub fun getBlackBoxMetadata(address: Address, itemID: UInt64): NFTData? {
   if let collection = getAccount(address).getCapability<&InceptionBlackBox.Collection{NonFungibleToken.CollectionPublic, InceptionBlackBox.InceptionBlackBoxCollectionPublic}>(InceptionBlackBox.CollectionPublicPath).borrow() {
     if let item = collection.borrowInceptionBlackBox(id: itemID) {
+      let nextClaimTimeInSeconds = InceptionExchange.getNextInceptionBlackBoxRedemptionTimeInSeconds(tokenID: itemID)
+
       if let view = item.resolveView(Type<MetadataViews.Display>()) {
         let display = view as! MetadataViews.Display
         return NFTData(
           metadataViewsDisplay: display,
           serialNumber: item.serialNumber,
           metadata: item.getNFTMetadata().getMetadata(),
-          id: item.id
+          id: item.id,
+          nextClaimTimeInSeconds: nextClaimTimeInSeconds
         )
       }
     }

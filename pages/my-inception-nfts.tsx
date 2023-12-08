@@ -185,7 +185,9 @@ const MyInceptionNfts: NextPage = () => {
                   )}`}</h3>
 
                   <div className="flex w-full items-center justify-between">
-                    <CountdownTimer />
+                    <CountdownTimer
+                      nextCountdownDateInSeconds={box.nextClaimTimeInSeconds}
+                    />
                   </div>
                 </div>
               </div>
