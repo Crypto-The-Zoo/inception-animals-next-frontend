@@ -142,6 +142,7 @@ const MyInceptionNfts: NextPage = () => {
           </h1>
           <br></br>
         </section>
+
         <div
           className="grid gap-1"
           style={{

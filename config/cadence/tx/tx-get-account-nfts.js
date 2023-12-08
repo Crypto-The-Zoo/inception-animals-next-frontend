@@ -1,5 +1,5 @@
-import * as fcl from "@onflow/fcl"
-import * as t from "@onflow/types"
+import * as fcl from "@onflow/fcl";
+import * as t from "@onflow/types";
 
 const CODE = `import NonFungibleToken from ${process.env.NEXT_PUBLIC_NON_FUNGIBLE_TOKEN_ADDRESS}
 import MetadataViews from ${process.env.NEXT_PUBLIC_NON_FUNGIBLE_TOKEN_ADDRESS}
@@ -104,12 +104,12 @@ pub fun main(address: Address): {String: [NFTData?]} {
     "InceptionAvatars": InceptionAvatars,
     "InceptionBlackBoxes": InceptionBlackBoxes
   }
-}`
+}`;
 
 export async function getAccountNfts({ address }) {
-  if (!address) return Promise.resolve({})
+  if (!address) return Promise.resolve({});
 
   return fcl
     .send([fcl.script(CODE), fcl.args([fcl.arg(address, t.Address)])])
-    .then(fcl.decode)
+    .then(fcl.decode);
 }

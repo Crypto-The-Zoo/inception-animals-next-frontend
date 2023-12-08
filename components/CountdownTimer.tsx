@@ -20,7 +20,7 @@ const CountdownTimer: React.FC<CountdownProps> = ({ countdownDate }) => {
 
   return (
     <div className="flex w-full items-center justify-between">
-      <span className="font-inception-ink text-lg">Claim Refresh In</span>
+      <span className="font-inception-ink text-lg">Next Claim In</span>
       <div className="bg-inception-blue px-2 py-1 rounded-lg min-w-[75px]">
         <Countdown
           className="font-inception-ink-italic text-md"

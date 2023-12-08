@@ -1,5 +1,5 @@
-import * as fcl from "@onflow/fcl"
-import { tx } from "../helper/tx"
+import * as fcl from "@onflow/fcl";
+import { tx } from "../helper/tx";
 
 const TRANSACTION =
   process.env.NEXT_PUBLIC_NET_TYPE === "mainnet"
@@ -22,12 +22,24 @@ transaction {
       signer.save(<-collection, to: InceptionAvatar.CollectionStoragePath)
       // create a public capability for the collection
       signer.link<&InceptionAvatar.Collection{NonFungibleToken.CollectionPublic, InceptionAvatar.InceptionAvatarCollectionPublic, MetadataViews.ResolverCollection}>(InceptionAvatar.CollectionPublicPath, target: InceptionAvatar.CollectionStoragePath)
+    } else {
+      // Unlink the existing collection (if any)
+      signer.unlink(/public/InceptionAvatarCollection)
+
+      // Re-link
+      signer.link<&InceptionAvatar.Collection{NonFungibleToken.CollectionPublic, InceptionAvatar.InceptionAvatarCollectionPublic, MetadataViews.ResolverCollection}>(InceptionAvatar.CollectionPublicPath, target: InceptionAvatar.CollectionStoragePath)
     }
 
     // if account does not already have InceptionBlackBox
     if signer.borrow<&InceptionBlackBox.Collection>(from: InceptionBlackBox.CollectionStoragePath) == nil {
       let collection <- InceptionBlackBox.createEmptyCollection()
       signer.save(<-collection, to: InceptionBlackBox.CollectionStoragePath)
+      signer.link<&InceptionBlackBox.Collection{NonFungibleToken.CollectionPublic, InceptionBlackBox.InceptionBlackBoxCollectionPublic, MetadataViews.ResolverCollection}>(InceptionBlackBox.CollectionPublicPath, target: InceptionBlackBox.CollectionStoragePath)
+    } else {
+      // Unlink the existing collection (if any)
+      signer.unlink(/public/InceptionBlackBoxCollection)
+
+      // Re-link
       signer.link<&InceptionBlackBox.Collection{NonFungibleToken.CollectionPublic, InceptionBlackBox.InceptionBlackBoxCollectionPublic, MetadataViews.ResolverCollection}>(InceptionBlackBox.CollectionPublicPath, target: InceptionBlackBox.CollectionStoragePath)
     }
 
@@ -36,11 +48,17 @@ transaction {
       let collection <- InceptionCrystal.createEmptyCollection()
       signer.save(<-collection, to: InceptionCrystal.CollectionStoragePath)
       signer.link<&InceptionCrystal.Collection{NonFungibleToken.CollectionPublic, InceptionCrystal.InceptionCrystalCollectionPublic, MetadataViews.ResolverCollection}>(InceptionCrystal.CollectionPublicPath, target: InceptionCrystal.CollectionStoragePath)
+    } else {
+      // Unlink the existing collection (if any)
+      signer.unlink(/public/InceptionCrystalCollection)
+
+      // Re-link
+      signer.link<&InceptionCrystal.Collection{NonFungibleToken.CollectionPublic, InceptionCrystal.InceptionCrystalCollectionPublic, MetadataViews.ResolverCollection}>(InceptionCrystal.CollectionPublicPath, target: InceptionCrystal.CollectionStoragePath)
     }
   }
 }
 `
-    : ``
+    : ``;
 
 // prettier-ignore
 export function initializeAccount(opts = {}, updateToast) {
