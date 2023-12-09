@@ -21,6 +21,7 @@ const MyInceptionNfts: NextPage = () => {
   // @ts-ignore
   const { InceptionAvatars, InceptionBlackBoxes } = accountNfts;
   const [showSuccess, setShowSucces] = useState<boolean>(false);
+  const [showClaimSuccess, setShowClaimSuccess] = useState<boolean>(false);
 
   const mainToast = useRef(null);
   const errorToast = useRef(null);
@@ -29,6 +30,11 @@ const MyInceptionNfts: NextPage = () => {
 
   const onSuccess = () => {
     setShowSucces(true);
+    confetti();
+  };
+
+  const onClaimSuccess = () => {
+    setShowClaimSuccess(true);
     confetti();
   };
 
@@ -74,10 +80,10 @@ const MyInceptionNfts: NextPage = () => {
   const [state, claimCrystal, __] = useClaimCrystal({
     updateToast: updateToast,
     initToast: initToast,
-    onSuccess,
+    onClaimSuccess,
   });
 
-  const renderSuccessMessage = () => {
+  const renderClaimSuccessMessage = () => {
     return (
       <div className="flex flex-col h-screen relative justify-center items-center m-auto font-inception-ink text-2xl text-inception-taro z-40">
         <div className="bg-inception-off-white backdrop-blur-sm bg-opacity-60 rounded-md relative max-w-2xl border-2 border-red-600 p-14 z-50 flex flex-col justify-center gap-4">
@@ -94,6 +100,27 @@ const MyInceptionNfts: NextPage = () => {
             ></img>
             <h1>X 7</h1>
           </div>
+
+          <button
+            className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green m-auto"
+            onClick={() => router.reload()}
+          >
+            {"Let's go!"}
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const renderSuccessMessage = () => {
+    return (
+      <div className="flex flex-col h-screen relative justify-center items-center m-auto font-inception-ink text-2xl text-inception-taro z-40">
+        <div className="bg-inception-off-white backdrop-blur-sm bg-opacity-60 rounded-md relative max-w-2xl border-2 border-red-600 p-14 z-50 flex flex-col justify-center gap-4">
+          <h3 className="text-inception-green text-center text-sm lg:text-2xl font-bold tracking-widest opacity-90">
+            <h3 className="text-inception-green text-center text-sm lg:text-2xl font-bold tracking-widest opacity-90">
+              Congratulations you are all set!
+            </h3>
+          </h3>
 
           <button
             className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green m-auto"
@@ -253,7 +280,11 @@ const MyInceptionNfts: NextPage = () => {
         </Head>
       </div>
       <Navigation />
-      {!showSuccess ? renderNfts() : renderSuccessMessage()}
+      {!showSuccess
+        ? showClaimSuccess
+          ? renderClaimSuccessMessage()
+          : renderNfts()
+        : renderSuccessMessage()}
     </div>
   );
 };
