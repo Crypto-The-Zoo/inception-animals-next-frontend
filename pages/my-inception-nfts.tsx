@@ -200,7 +200,6 @@ const MyInceptionNfts: NextPage = () => {
             );
           })}
           {(InceptionBlackBoxes || []).map((box: any, index: any) => {
-            console.log("--nextClaimTimeInSeconds", box.nextClaimTimeInSeconds);
             return (
               <div
                 className="flex flex-col text-center gap-4 relative duration-300 px-4 py-4 rounded-xl max-w-xl"

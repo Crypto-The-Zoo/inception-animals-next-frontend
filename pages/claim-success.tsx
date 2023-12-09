@@ -18,10 +18,13 @@ const ClaimSuccess: NextPage = () => {
         <div className="bg-inception-off-white backdrop-blur-sm bg-opacity-60 rounded-md relative max-w-2xl border-2 border-red-600 p-14 z-50 flex flex-col justify-center gap-4">
           <h3 className="text-inception-green text-center text-sm lg:text-2xl font-bold tracking-widest opacity-90">
             <h3 className="text-inception-green text-center text-sm lg:text-2xl font-bold tracking-widest opacity-90">
-              Congratulations you are all set!
+              Congratulations you've Claimed Inception Crystals!
             </h3>
           </h3>
-
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            💨
+            <h1>X 7</h1>
+          </div>
           <button
             className="text-inception-green font-inception-ink font-extrabold hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-2 bg-inception-off-white backdrop-blur-sm rounded bg-opacity-60 hover:cursor-pointer border-2 border-inception-green m-auto"
             onClick={handleClick}
