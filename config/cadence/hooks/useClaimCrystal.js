@@ -16,8 +16,6 @@ export default function useClaimCrystal(props) {
   const [txStatus, setTxStatus] = useState(null);
 
   const claimCrystal = ({ tokenId }) => {
-    console.log("--tokenId", tokenId);
-
     claimCrystalTx(
       { tokenId },
       {

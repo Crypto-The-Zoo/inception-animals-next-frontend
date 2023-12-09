@@ -28,6 +28,7 @@ const TRANSACTION =
 
 // prettier-ignore
 export function claimCrystalTx(opts = {tokenId}, updateToast) {
+  const { tokenId } = opts;
   return tx(
     {
       cadence: TRANSACTION,
