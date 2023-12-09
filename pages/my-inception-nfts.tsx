@@ -12,16 +12,13 @@ import { toast } from "react-toastify";
 import confetti from "canvas-confetti";
 import { useRouter } from "next/router";
 import CountdownTimer from "../components/CountdownTimer";
-import useClaimCrystal from "../config/cadence/hooks/useClaimCrystal";
 
 const MyInceptionNfts: NextPage = () => {
   const { accountNfts } = useAccountMintStats();
-  const [countdownComplete, setCountdownComplete] = useState<boolean>(false);
 
   // @ts-ignore
   const { InceptionAvatars, InceptionBlackBoxes } = accountNfts;
   const [showSuccess, setShowSucces] = useState<boolean>(false);
-  const [showClaimSuccess, setShowClaimSuccess] = useState<boolean>(false);
 
   const mainToast = useRef(null);
   const errorToast = useRef(null);
@@ -30,11 +27,6 @@ const MyInceptionNfts: NextPage = () => {
 
   const onSuccess = () => {
     setShowSucces(true);
-    confetti();
-  };
-
-  const onClaimSuccess = () => {
-    setShowClaimSuccess(true);
     confetti();
   };
 
@@ -75,12 +67,6 @@ const MyInceptionNfts: NextPage = () => {
     updateToast: updateToast,
     initToast: initToast,
     onSuccess,
-  });
-
-  const [state, claimCrystal, __] = useClaimCrystal({
-    updateToast: updateToast,
-    initToast: initToast,
-    onClaimSuccess,
   });
 
   const renderClaimSuccessMessage = () => {
@@ -214,6 +200,7 @@ const MyInceptionNfts: NextPage = () => {
             );
           })}
           {(InceptionBlackBoxes || []).map((box: any, index: any) => {
+            console.log("--nextClaimTimeInSeconds", box.nextClaimTimeInSeconds);
             return (
               <div
                 className="flex flex-col text-center gap-4 relative duration-300 px-4 py-4 rounded-xl max-w-xl"
@@ -230,25 +217,10 @@ const MyInceptionNfts: NextPage = () => {
                   )}`}</h3>
 
                   <div className="flex w-full items-center justify-between">
-                    {!countdownComplete && (
-                      <CountdownTimer
-                        nextClaimTimeInSeconds={box.nextClaimTimeInSeconds}
-                        countdownComplete={countdownComplete}
-                        setCountdownComplete={setCountdownComplete}
-                      />
-                    )}
-                    {countdownComplete && (
-                      <div className="flex w-full items-center justify-between">
-                        <div className="bg-inception-taro px-2 py-1 rounded-lg min-w-[75px]">
-                          <button
-                            onClick={() => claimCrystal({ tokenId: box.id })}
-                            className="font-inception-ink-italic text-md"
-                          >
-                            Claim
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                    <CountdownTimer
+                      nftId={box.id}
+                      nextClaimTimeInSeconds={box.nextClaimTimeInSeconds}
+                    />
                   </div>
                 </div>
               </div>
@@ -280,11 +252,7 @@ const MyInceptionNfts: NextPage = () => {
         </Head>
       </div>
       <Navigation />
-      {!showSuccess
-        ? showClaimSuccess
-          ? renderClaimSuccessMessage()
-          : renderNfts()
-        : renderSuccessMessage()}
+      {!showSuccess ? renderNfts() : renderSuccessMessage()}
     </div>
   );
 };

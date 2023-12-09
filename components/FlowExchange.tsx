@@ -36,12 +36,14 @@ const FlowExchange: React.FC = () => {
             Congratulations you've made an exchange!
           </h3>
           <div className="flex items-center gap-4 flex-wrap">
-            <img
-              src="https://storage.googleapis.com/inception_public/crystal.png"
-              alt=""
-              className="w-24 h-24"
-            ></img>
+            <h1>🔥 </h1>
+            💨
             <h1>X {quantity} </h1>
+          </div>
+          <div className="flex items-center gap-4 flex-wrap">
+            <h1>🤑</h1>
+            <img src="/icons/flow_icon.png" alt="" className="w-6 h-6"></img>
+            <h1>{Math.round(0.005 * quantity * 100) / 100} </h1>
           </div>
           <div>
             <button
@@ -151,8 +153,8 @@ const FlowExchange: React.FC = () => {
     return (
       <div className="flex flex-col">
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
-          <p className="uppercase">Crystal Balance</p>
-          <h2>{accountCrystals ? accountCrystals : 0}</h2>
+          <p className="uppercase">Balance</p>
+          <h2>💨 {accountCrystals ? accountCrystals : 0}</h2>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 mx-2 gap-24">
           quantity
