@@ -43,12 +43,8 @@ const WalletProvider = ({ children }: any) => {
         icons: [iconUrl],
       };
 
-      console.log({
-        DEFAULT_APP_METADATA,
-      });
-
       const { FclWcServicePlugin, client } = await init({
-        projectId: "12ed93a2aae83134c4c8473ca97d9399", // required
+        projectId: "4c2e23d4-8649-4cd3-81da-d4afbf59729d", // required
         metadata: DEFAULT_APP_METADATA, // optional
         includeBaseWC: true, // optional, default: false
       });
