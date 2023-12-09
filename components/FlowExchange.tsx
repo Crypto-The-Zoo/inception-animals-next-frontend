@@ -2,27 +2,21 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import useMintPrivate from "../config/cadence/hooks/useMintPrivate";
 import { WalletContext } from "../context/WalletContext";
 import ConnectWalletNav from "./ConnectWallet";
 // @ts-ignore
 import confetti from "canvas-confetti";
-import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats";
+import useExchangeCrystalForFlow from "../config/cadence/hooks/useExchangeCrystalForFlow";
 import { useRouter } from "next/router";
-import Countdown from "react-countdown";
-import useContractMintStats from "../config/cadence/hooks/useContractMintStats";
-import Link from "next/link";
+import useAccountMintStats from "../config/cadence/hooks/useAccountMintStats";
 
 const FlowExchange: React.FC = () => {
   const { walletAddr } = useContext(WalletContext);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [checkboxValue, setCheckboxValue] = useState(0);
   const [showSuccess, setShowSucces] = useState<boolean>(false);
-
   const router = useRouter();
-
-  const { tipMintedCount, whitelistEntries, publicMintedCount } =
-    useAccountMintStats();
+  const { accountCrystals } = useAccountMintStats();
 
   const mainToast = useRef(null);
   const errorToast = useRef(null);
@@ -43,7 +37,7 @@ const FlowExchange: React.FC = () => {
           </h3>
           <div className="flex items-center gap-4 flex-wrap">
             <img
-              src="https://storage.googleapis.com/inception_public/inception-avatar/pre_reveal.jpeg"
+              src="https://storage.googleapis.com/inception_public/crystal.png"
               alt=""
               className="w-24 h-24"
             ></img>
@@ -96,18 +90,17 @@ const FlowExchange: React.FC = () => {
   };
 
   useEffect(() => {
-    if (whitelistEntries !== 0) {
-      setQuantity(whitelistEntries);
+    if (accountCrystals !== 0) {
+      setQuantity(accountCrystals);
     }
-  }, [whitelistEntries]);
+  }, [accountCrystals]);
 
-  const [FlowExchangeState, mintPrivate, FlowExchangeTxStatus] = useMintPrivate(
-    {
+  const [FlowExchangeState, exchangeCrystalForFlow, FlowExchangeTxStatus] =
+    useExchangeCrystalForFlow({
       updateToast: updateToast,
       initToast: initToast,
       onSuccess,
-    }
-  );
+    });
 
   const updateQuantity = ({ method }: { method: string }) => {
     if (method === "increment" && quantity < 4) {
@@ -129,17 +122,7 @@ const FlowExchange: React.FC = () => {
       return;
     }
 
-    if (whitelistEntries < quantity) {
-      toastError({
-        type: toast.TYPE.ERROR,
-        render: "You don't have enough remaining whitelist entries",
-        autoClose: 3000,
-        isLoading: false,
-      });
-      return;
-    }
-
-    if (quantity > 4 || quantity < 1) {
+    if (quantity > accountCrystals || quantity === 0) {
       toastError({
         type: toast.TYPE.ERROR,
         render: "Please enter a valid quantity",
@@ -148,8 +131,8 @@ const FlowExchange: React.FC = () => {
       });
     }
 
-    return mintPrivate({
-      numberOfTokens: quantity,
+    return exchangeCrystalForFlow({
+      amount: quantity,
     });
   };
 
@@ -169,7 +152,7 @@ const FlowExchange: React.FC = () => {
       <div className="flex flex-col">
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
           <p className="uppercase">Crystal Balance</p>
-          <h2>{"TODO ADD"}</h2>
+          <h2>{accountCrystals ? accountCrystals : 0}</h2>
         </div>
         <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 mx-2 gap-24">
           quantity
@@ -191,9 +174,15 @@ const FlowExchange: React.FC = () => {
             </span>
           </div>
         </div>
-        <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2 gap-24">
+
+        <div className="flex justify-between items-center border-b-2 border-inception-taro py-5 flex-wrap mx-2">
           <div className="">Exchange For Flow</div>
-          <div className="">0.05</div>
+          <div className="flex flex-col gap-1 items-end">
+            <div className="flex items-center gap-1">
+              <img src="/icons/flow_icon.png" alt="" className="w-6 h-6"></img>
+              {Math.round(0.005 * quantity * 100) / 100}
+            </div>
+          </div>
         </div>
         <div className="flex items-center justify-end">
           <input

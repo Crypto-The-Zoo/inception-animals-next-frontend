@@ -27,14 +27,14 @@ const TRANSACTION =
 }`;
 
 // prettier-ignore
-export function claimCrystalTx(opts = {tokenId}, updateToast) {
-  const { tokenId } = opts;
+export function claimCrystalTx(params = {tokenId}, opts = {}, updateToast) {
+  const { tokenId } = params;
   return tx(
     {
       cadence: TRANSACTION,
       args: (arg, t) => [arg(tokenId, t.UInt64)],
       authorizations: [fcl.authz],
-      limit: 1000,
+      limit: 9999,
     },
     opts,
     updateToast

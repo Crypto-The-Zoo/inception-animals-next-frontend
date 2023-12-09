@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { WalletContext } from "../../../context/WalletContext";
 import { getAccountMintInfo } from "../tx/tx-get-account-mint-info";
 import { getAccountNfts } from "../tx/tx-get-account-nfts";
+import { getAccountCrystalsScript } from "../tx/tx-get-account-crystals.js";
 
 export default function useAccountMintStats() {
   const { walletAddr } = useContext(WalletContext);
@@ -9,6 +10,7 @@ export default function useAccountMintStats() {
   const [whitelistEntries, setWhitelistEntries] = useState(0);
   const [publicMintedCount, setPublicMintedCount] = useState(0);
   const [accountNfts, setAccountNfts] = useState({});
+  const [accountCrystals, setAccountCrystals] = useState(0);
 
   const getMintInfoPerAccount = () => {
     if (!walletAddr) return;
@@ -42,12 +44,28 @@ export default function useAccountMintStats() {
       });
   };
 
+  const getAccountCrystals = () => {
+    if (!walletAddr) return 0;
+
+    getAccountCrystalsScript({ address: walletAddr })
+      .then((res: any) => {
+        if (res) {
+          setAccountCrystals(res);
+        }
+      })
+      .catch((e) => {
+        console.log("getAccountCrystals error", e);
+      });
+  };
+
   useEffect(() => {
     getMintInfoPerAccount();
+    getAccountCrystals();
   }, []);
 
   useEffect(() => {
     getMintInfoPerAccount();
+    getAccountCrystals();
   }, [walletAddr]);
 
   return {
@@ -55,5 +73,6 @@ export default function useAccountMintStats() {
     whitelistEntries,
     publicMintedCount,
     accountNfts,
+    accountCrystals,
   };
 }
