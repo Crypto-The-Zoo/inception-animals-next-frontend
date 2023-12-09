@@ -1,21 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link"
-import { useRouter } from "next/router"
-import { useState, useEffect } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faWindowClose,
   faBookBookmark,
-} from "@fortawesome/free-solid-svg-icons"
-import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons"
-import ConnectWalletNav from "./ConnectWallet"
+} from "@fortawesome/free-solid-svg-icons";
+import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import ConnectWalletNav from "./ConnectWallet";
 
 const Navigation: React.FC = () => {
-  const router = useRouter()
-  const { pathname } = router
+  const router = useRouter();
+  const { pathname } = router;
   // let [backgroundCss, setBackgroundCss] = useState("bg-inception-off-white")
-  let [showMenu, setShowMenu] = useState<boolean>(false)
+  let [showMenu, setShowMenu] = useState<boolean>(false);
 
   // useEffect(() => {
   //   if (pathname === "/blueprint") {
@@ -32,8 +32,8 @@ const Navigation: React.FC = () => {
       link: "https://zeero.art/collection/inception-animals?",
       isOpen: true,
     },
-    { name: "SECRET MISSION", link: "", isOpen: false },
-  ]
+    { name: "EXCHANGE", link: "/exchange", isOpen: true },
+  ];
 
   const externalNavLinks = [
     {
@@ -59,7 +59,7 @@ const Navigation: React.FC = () => {
     //   link: "https://alliu930410.gitbook.io/inception-animals",
     //   isOpen: true,
     // },
-  ]
+  ];
 
   return (
     <main>
@@ -167,7 +167,7 @@ const Navigation: React.FC = () => {
                       onClick={() => {
                         showMenu && navLinkObj?.isOpen
                           ? setShowMenu(!showMenu)
-                          : null
+                          : null;
                       }}
                       className={`flex justify-between w-full items-center relative hover:text-inception-green transition-all duration-100 hover:bg-white px-4 py-4 bg-inception-light-green backdrop-blur-sm rounded bg-opacity-60 mt-1 ${
                         pathname === navLinkObj.link
@@ -235,7 +235,7 @@ const Navigation: React.FC = () => {
         </section>
       </header>
     </main>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
