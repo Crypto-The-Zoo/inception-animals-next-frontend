@@ -1,4 +1,7 @@
-This is the public repository for https://inceptionanimals.com/
+This is the public repository for Inception Animals hosted at https://inceptionanimals.com/
+
+![image](https://github.com/user-attachments/assets/71efc371-51e1-4833-a056-2ab4f1547f10)
+
 
 ## Getting Started
 
